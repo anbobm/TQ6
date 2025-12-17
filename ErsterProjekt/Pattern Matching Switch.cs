@@ -1,0 +1,113 @@
+﻿/*using System;
+
+namespace ErsterProjekt
+{
+     class Pattern_Matching_Switch
+    {
+        static void Main()
+        {*/
+
+            //Aufgabe 2
+            //Der Benutzer gibt eine Punktzahl(0–100) ein.
+            //Das Programm soll anhand der Punktzahl eine Note ausgeben:
+            //90–100 → „Sehr gut“
+            //75–89 → „Gut“
+            //60–74 → „Befriedigend“
+            //50–59 → „Ausreichend“
+            //0–49 → „Nicht bestanden“
+            //Alle anderen Werte → „Ungültige Eingabe“
+
+            /* Console.WriteLine("Geben Sie bitte eine Punktzahl (0-100) ein.");
+             int punktzahl;
+             bool erfolgreich = int.TryParse(Console.ReadLine(), out punktzahl);
+             if (!erfolgreich)
+             {
+                 Console.WriteLine("Keine Zahl eingegeben.");
+                 return;
+             }
+
+             //Pattern Matching Switch
+             string ausgabe = punktzahl switch
+             {
+                 < 0 or > 100 => "Ungültige Eingabe",
+                 <= 49 => "Nicht bestanden",
+                 <= 59 => "Ausreichend",
+                 <= 74 => "Befriedigend",
+                 <= 89 => "Gut",
+                 _ => "Sehr gut"
+             };
+             Console.WriteLine(ausgabe);
+             //9 Zeilen
+
+             //24 Zeilen
+             string ausgabe1 = "";
+             switch (punktzahl)
+             {
+                 case < 0 or > 100:
+                     ausgabe1 = "Ungültige Eingabe";
+                     break;
+                 case <= 49:
+                     ausgabe1 = "Nicht bestanden";
+                     break;
+                 case <= 59:
+                     Console.WriteLine("Ausreichend");
+                     break;
+                 case <= 74:
+                     Console.WriteLine("Befriedigend");
+                     break;
+                 case <= 89:
+                     Console.WriteLine("Gut");
+                     break;
+                 default:
+                     Console.WriteLine("Sehr gut");
+                     break;
+             }
+
+             Console.WriteLine(ausgabe1);*/
+
+            //Aufgabe 3: Folgendes zu einen Switch oder Pattern Matching Switch Konvertieren.
+            //            Console.Write("Bitte Alter eingeben: ");
+
+            //            int alter = Convert.ToInt32(Console.ReadLine());
+
+            //            if (alter < 0 || alter > 130)
+            //            {
+            //                Console.WriteLine("Ungültige Eingabe");
+            //            }
+            //            else if (alter >= 65)
+            //            {
+            //                Console.WriteLine("Rentner");
+            //            }
+            //            else if (alter >= 18)
+            //            {
+            //                Console.WriteLine("Erwachsen");
+            //            }
+
+            //            else
+            //            {
+            //                Console.WriteLine("Minderjährig");
+            //            }
+
+/*
+            Console.WriteLine("bitte geben sie alt ein:");
+            int alt;
+            bool erfolgreich = int.TryParse(Console.ReadLine(), out alt);
+            if (!erfolgreich)
+            {
+                Console.WriteLine("Keine alt eingegeben.");
+                return;
+            }
+            string ausgabe = alt switch
+            {
+                < 0 or > 130 => "Ungültige Eingabe",
+                <= 18 => "Erwachsen",
+                <= 68 => "Rentner",
+
+                _ => "Minderjahrig"
+            }; Console.WriteLine(ausgabe);
+             
+
+
+        }
+    }
+}*/

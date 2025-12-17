@@ -110,8 +110,8 @@
 
             //string russianMessage = "\u041f\u043e\u0441\u043c\u043e\u0442\u0440\u0435\u0442\u044c \u0440\u0443\u0441\u0441\u043a\u0438\u0439 \u0432\u044b\u0432\u043e\u0434";
 
-            
-            
+
+
             //var firstName = "Bob";
             //int anzahl = 3;
             //double grad = 34.4;
@@ -342,6 +342,120 @@
 
 
 
+            //Übung Auswerten von booleschen Ausdrücken zum Treffen von Entscheidungen in C#
+
+            //Console.WriteLine("a" == "a");
+            //Console.WriteLine("a" == "A");
+            //Console.WriteLine(1 == 2);
+
+            //string myValue = "a";
+            //Console.WriteLine(myValue == "a");
+
+
+
+            //Console.WriteLine("a" == "a ");
+
+            //string value1 = " a";
+            //string value2 = "A ";
+            //Console.WriteLine(value1.Trim().ToLower() == value2.Trim().ToLower());
+
+
+            //Console.WriteLine("a" != "a");
+            //Console.WriteLine("a" != "A");
+            //Console.WriteLine(1 != 2);
+
+            //string myValue = "a";
+            //Console.WriteLine(myValue != "a");
+
+            //Console.WriteLine(1 > 2);
+            //Console.WriteLine(1 < 2);
+            //Console.WriteLine(1 >= 1);
+            //Console.WriteLine(1 <= 1);
+
+            //string pangram = "The quick brown fox jumps over the lazy dog.";
+            //Console.WriteLine(pangram.Contains("fox"));
+            //Console.WriteLine(pangram.Contains("cow"));
+
+            //string pangram = "The quick brown fox jumps over the lazy dog.";
+            //Console.WriteLine(!pangram.Contains("fox"));
+            //Console.WriteLine(!pangram.Contains("cow"));
+
+
+            // Eine Anwendung enthält zwei Zeichenfolgenvariablen mit den Namen myValue1 und myValue2.
+            // Der*Die Benutzer*in gibt die folgenden beiden Werte für diese Variablen ein: „Y“ und „y“.
+            // Welche der folgenden Ausdrücke geben false zurück?
+
+            //(myValue1 != myValue2).
+
+
+            //(myValue1.Trim().ToLower() != myValue2.Trim().ToLower()).       Dieser Ausdruck gibt false zurück,
+            //da die beiden Werte gleich sind und der Ungleichheitsoperator verwendet wird.
+
+
+            //(myValue1.Trim().ToLower() == myValue2.Trim().ToLower()).
+
+            //int saleAmount = 1001;
+            // int discount = saleAmount > 1000 ? 100 : 50;
+
+            //Console.WriteLine($"Discount: {(saleAmount > 1000 ? 100 : 50)}");
+
+            //Münzwurf
+            //string ergebnis = new Random().Next(0, 2) == 0 ? "Kopf" : "Zahl";
+            //Console.WriteLine(ergebnis);
+
+
+
+//            string permission = "Admin|Manager";
+//            int level = 55;
+//            Ihre Anwendung verwendet eine Kombination aus permission und level, um die Geschäftsregeln in diesem Herausforderungsszenario anzuwenden und auszuwerten.Die vollständige Liste der Bedingungen für Geschäftsregeln wird im nächsten Schritt angegeben. Ihre fertige Lösung muss permission und level verwenden.
+
+// Tipp
+
+//Um alle Kombinationen von permission und level, die in den folgenden Geschäftsregeln beschrieben sind, ausreichend zu testen, müssen Sie diesen Variablen zusätzliche Werte zuweisen und die Anwendung mehrmals ausführen.
+
+//Implementieren von Geschäftsregeln
+// Wichtig
+
+//Sie müssen die Contains() Hilfsmethode verwenden, um zu bestimmen, ob der der Zeichenfolge zugewiesene permission Wert einen der Berechtigungswerte enthält, die durch die "Geschäftsregeln" angegeben sind. Beispielsweise gibt der Ausdruck permission.Contains("Admin") das Ergebnis true zurück, wenn die anfänglichen Datenwerte verwendet werden, die im obigen Code angegeben sind.
+
+//Hier finden Sie die Geschäftsregeln, die Ihre Lösung erfüllen muss:
+
+//            Wenn der Benutzer ein Administrator mit einer höheren Ebene als 55 ist, geben Sie die folgende Meldung aus:
+
+//Output
+//Welcome, Super Admin user.
+//Wenn der Benutzer ein Administrator mit einer Ebene von 55 oder darunter ist, geben Sie die folgende Meldung aus:
+
+//Output
+//Welcome, Admin user.
+//Wenn der Benutzer ein Manager mit einer Ebene von 20 oder höher ist, geben Sie die folgende Meldung aus:
+
+//Output
+//Contact an Admin for access.
+//Wenn der Benutzer ein Manager mit einer niedrigeren Ebene als 20 ist, geben Sie die folgende Meldung aus:
+
+//Output
+//You do not have sufficient privileges.
+//Wenn der Benutzer kein Administrator oder Vorgesetzter ist, geben Sie die Nachricht aus:
+
+//Output
+//You do not have sufficient privileges.
+
+
+            //    Console.Write("Geben Sie Ihre Berechtigung ein (z.B. Admin|Manager): ");
+            //string permission = Console.ReadLine();
+
+            //Console.Write("Geben Sie Ihr Level ein: ");
+            //int level = int.Parse(Console.ReadLine() ?? "0");
+
+            //if (permission.Contains("Admin"))
+            //    Console.WriteLine(level > 55 ? "Welcome, Super Admin user." : "Welcome, Admin user.");
+            //else if (permission.Contains("Manager"))
+            //    Console.WriteLine(level >= 20 ? "Contact an Admin for access." : "You do not have sufficient privileges.");
+            //else
+            //    Console.WriteLine("You do not have sufficient privileges.");
+
+
 
 
 
@@ -349,13 +463,6 @@
 
         }
     }
-
-
-
-
-
-
-
 
 }
     

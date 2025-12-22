@@ -116,35 +116,42 @@ namespace MicrosoftLearn
             //Monster was damaged and lost 9 health and now has -7 health.
             //Hero wins!  
 
-            //Meine Lösung:
-            //Random random = new Random();
+           // Meine Lösung:
+            Random random = new Random();
 
-            //int heroHealth = 10;
-            //int monsterHealth = 10;
+            int heroHealth = 10;
+            int monsterHealth = 10;
 
-            //do
-            //{
-            //    // Der Held greift an
-            //    int heroAttack = random.Next(1, 11);
-            //    monsterHealth -= heroAttack;
-            //    Console.WriteLine($"Das Monster wurde getroffen, verlor {heroAttack} Leben und hat noch {monsterHealth} Leben.");
+            while(heroHealth > 0 && monsterHealth > 0)
+            {
+                // Der Held greift an
+                int heroAttack = random.Next(1, 11);
+                monsterHealth -= heroAttack;
+                Console.WriteLine($"Das Monster wurde getroffen, verlor {heroAttack} Leben und hat noch {monsterHealth} Leben.");
 
-            //    // Prüfen, ob das Monster noch lebt
-            //    if (monsterHealth <= 0)
-            //        break;
+                // Prüfen, ob das Monster noch lebt
+                if (monsterHealth <= 0)
+                    break;
 
-            //    // Das Monster greift an
-            //    int monsterAttack = random.Next(1, 11);
-            //    heroHealth -= monsterAttack;
-            //    Console.WriteLine($"Der Held wurde getroffen, verlor {monsterAttack} Leben und hat noch {heroHealth} Leben.");
+                // Das Monster greift an
+                int monsterAttack = random.Next(1, 11);
+                heroHealth -= monsterAttack;
+                Console.WriteLine($"Der Held wurde getroffen, verlor {monsterAttack} Leben und hat noch {heroHealth} Leben.");
 
-            //} while (heroHealth > 0 && monsterHealth > 0);
+            } 
 
-            //// Der Sieger wird ausgeben
-            //if (heroHealth > 0)
-            //    Console.WriteLine("Der Held hat gewonnen!");
-            //else
-            //    Console.WriteLine("Das Monster hat gewonnen!");
+            // Der Sieger wird ausgeben
+            if (heroHealth > 0)
+                Console.WriteLine("Der Held hat gewonnen!");
+            else
+                Console.WriteLine("Das Monster hat gewonnen!");
+
+
+
+
+
+
+
 
             ////Mögliche Lösung:
             //int hero = 10;

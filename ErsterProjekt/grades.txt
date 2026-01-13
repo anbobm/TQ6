@@ -1,0 +1,6 @@
+﻿Alice;87
+Bob;92
+Charlie;101
+Dora;abc
+;73
+Eve;65

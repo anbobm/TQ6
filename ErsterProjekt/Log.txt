@@ -1,0 +1,56 @@
+
+
+[INFO] - 14-Jan-26 13:32:14 - Eingegebener Pfad: \TQ6\ErsterProjekt\grades.txt
+
+[ERROR] - 14-Jan-26 13:32:14 - System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\TQ6\ErsterProjekt\grades.txt'.
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.Strategies.FileStreamHelpers.ChooseStrategyCore(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.StreamReader.ValidateArgsAndOpenPath(String path, Int32 bufferSize)
+   at System.IO.File.ReadAllLines(String path, Encoding encoding)
+   at ErsterProjekt.FehlerbehandlungsAufgabe.Main() in C:\Users\nicoa\Desktop\TQ6\ErsterProjekt\FehlerbehandlungsAufgabe.cs:line 23
+
+[INFO] - 14-Jan-26 13:32:14 - Dateiverarbeitung abgeschlossen.
+
+[INFO] - 14-Jan-26 13:32:34 - Eingegebener Pfad: C:\\Users\\nicoa\\Desktop\\TQ6\\ErsterProjekt\\grades.txt
+
+[INFO] - 14-Jan-26 13:32:34 - Zeile 3 übersprungen: ungültige Daten
+
+[INFO] - 14-Jan-26 13:32:34 - Zeile 4 übersprungen: ungültige Daten
+
+[INFO] - 14-Jan-26 13:32:34 - Zeile 5 übersprungen: ungültige Daten
+
+[INFO] - 14-Jan-26 13:32:34 - Gültige Einträge: 3
+
+[INFO] - 14-Jan-26 13:32:34 - Übersprungene Einträge: 3
+
+[INFO] - 14-Jan-26 13:32:34 - Durchschnitt: 81.33
+
+[INFO] - 14-Jan-26 13:32:34 - Beste Note: Bob (92)
+
+[INFO] - 14-Jan-26 13:32:34 - Schlechteste Note: Eve (65)
+
+[INFO] - 14-Jan-26 13:32:34 - Dateiverarbeitung abgeschlossen.
+
+[INFO] - 14-Jan-26 13:33:07 - Eingegebener Pfad: C:\\Users\\nicoa\\Desktop\\TQ6\\ErsterProjekt\\grades.txt
+
+[INFO] - 14-Jan-26 13:33:07 - Zeile 3 übersprungen: ungültige Daten
+
+[INFO] - 14-Jan-26 13:33:07 - Zeile 4 übersprungen: ungültige Daten
+
+[INFO] - 14-Jan-26 13:33:07 - Zeile 5 übersprungen: ungültige Daten
+
+[INFO] - 14-Jan-26 13:33:07 - Zeile 6 übersprungen: ungültige Daten
+
+[INFO] - 14-Jan-26 13:33:07 - Gültige Einträge: 2
+
+[INFO] - 14-Jan-26 13:33:07 - Übersprungene Einträge: 4
+
+[INFO] - 14-Jan-26 13:33:07 - Durchschnitt: 89.50
+
+[INFO] - 14-Jan-26 13:33:07 - Beste Note: Bob (92)
+
+[INFO] - 14-Jan-26 13:33:07 - Schlechteste Note: "Alice (87)
+
+[INFO] - 14-Jan-26 13:33:07 - Dateiverarbeitung abgeschlossen.

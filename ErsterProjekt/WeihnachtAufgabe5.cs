@@ -7,19 +7,16 @@
 //{
 //    internal class WeihnachtAufgabe5
 //    {
-//        //scope
-//        static string variableName = "";
+
 
 //        static void Mathe(int a, int b)
 //        {
-//            Console.WriteLine(variableName);
 //            int summe = a + b;
 //            Console.WriteLine(summe);
 //        }
 
 //        static void Main()
 //        {
-//            Console.WriteLine(variableName);
 //            //RNA: "AUGUUUUCUUAAAUG" =>
 //            //Codons: "AUG", "UUU", "UCU", "UAA", "AUG" =>
 //            //Protein: "Methionin", "Phenylalanin", "Serin"

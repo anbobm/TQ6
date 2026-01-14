@@ -1,6 +1,6 @@
 ﻿namespace ErsterProjekt
 {
-    internal class Blackjack
+    public class Blackjack
     {
         public static List<string> stappel = new List<string>();
 

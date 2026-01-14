@@ -1,12 +1,12 @@
-﻿//namespace ErsterProjekt
-//{
-//    internal class Program
-//    {
-//        static void Main()
-//        {
+﻿namespace ErsterProjekt
+{
+    internal class Program
+    {
+        static void Main()
+        {
+            
             
 
-
-//        }
-//    }
-//}
+        }
+    }
+}

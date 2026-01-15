@@ -42,8 +42,32 @@ namespace ErsterProjekt
         
         }
    
-    
-    
+   
+        
+        
+       
+           public static double Exponent(double basisZahl, double exponent)
+        {
+            return Math.Pow(basisZahl, exponent);
+        }
+ 
+
+        }
+        public static double Sinus(double winkel)
+        {
+            return Math.Sin(winkel);
+        }
+
+        public static double Cosinus(double winkel)
+        {
+            return Math.Cos(winkel);
+        }
+
+        public static double Tangens(double winkel)
+        {
+            return Math.Tan(winkel);
+        }
+
     }
 
 }

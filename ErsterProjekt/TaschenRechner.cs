@@ -22,20 +22,20 @@ namespace ErsterProjekt
  * Letzte Aufgabe, schreibe Methoden fuer Addition, Subtraktion, und Multiplikation die eine Liste von
  * int/double werte bekommt und die gesamt summe/subtraktion/produkt berechnet.
  */
-     public static int sum(int a, int b)
+     public static int Sum(int a, int b)
         {
             return a + b;
         }
 
-     public static int sub(int a, int b) 
+     public static int Sub(int a, int b) 
         {
             return a - b;
         }
-     public static int multi(int a, int b)
+     public static int Multi(int a, int b)
         {
             return a * b;
         }
-     public static  int division(int a, int b)
+     public static  int Division(int a, int b)
         {
             return a / b;
       

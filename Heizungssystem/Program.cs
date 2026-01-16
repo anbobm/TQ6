@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 
 namespace Heizungssystem
 {
@@ -9,16 +10,16 @@ namespace Heizungssystem
         private string marke;
         private int maxTemperatur;
         private string typ;
-        private int aktuelleTemperatur;
+        private int aktuelleRaumtemperatur;
         private bool anAusSchaltStatus;
 
         // Konstruktor
-        public Heizung(string marke, int maxTemperatur, string typ)
+        public Heizung(string marke, int maxTemperatur, string typ, int startTemperatur)
         {
             this.marke = marke;
             this.maxTemperatur = maxTemperatur;
             this.typ = typ;
-            this.aktuelleTemperatur = 0;
+            this.aktuelleRaumtemperatur = startTemperatur;
             this.anAusSchaltStatus = false;
         }
 
@@ -35,7 +36,7 @@ namespace Heizungssystem
             Console.WriteLine("Heizung ausgeschaltet.");
         }
 
-        public void Hauserwaermen(int gewuenschteTemp)
+        public void Hauserwaermen(int gewuenschteRaumtemperatur)
         {
             if (!anAusSchaltStatus)
             {
@@ -43,16 +44,23 @@ namespace Heizungssystem
                 return;
             }
 
-            if (gewuenschteTemp > maxTemperatur)
+            if (gewuenschteRaumtemperatur > maxTemperatur)
             {
-                aktuelleTemperatur = maxTemperatur;
-            }
-            else
-            {
-                aktuelleTemperatur = gewuenschteTemp;
+                gewuenschteRaumtemperatur = maxTemperatur;
             }
 
-            Console.WriteLine("Aktuelle Temperatur: " + aktuelleTemperatur + " Grad");
+            Console.WriteLine("Aktuelle Raumtemperatur: " + aktuelleRaumtemperatur + " Grad");
+            Console.WriteLine("Zieltemperatur: " + gewuenschteRaumtemperatur + " Grad");
+
+            while (aktuelleRaumtemperatur < gewuenschteRaumtemperatur && anAusSchaltStatus)
+            {
+                aktuelleRaumtemperatur++;
+                Console.WriteLine("Raumtemperatur steigt auf: " + aktuelleRaumtemperatur + " Grad");
+
+                Thread.Sleep(500); // simuliert Zeit (0,5 Sekunden)
+            }
+
+            Console.WriteLine("Zieltemperatur erreicht.");
         }
     }
 
@@ -60,10 +68,9 @@ namespace Heizungssystem
     {
         static void Main(string[] args)
         {
-            // Objekt erzeugen
-            Heizung heizung = new Heizung("08/15", 80, "Wasser");
+            // Objekt erzeugen (Starttemperatur 15 Grad)
+            Heizung heizung = new Heizung("08/15", 80, "Wasser", 15);
 
-            // Heizung benutzen
             heizung.anschalten();
             heizung.Hauserwaermen(20);
             heizung.ausschalten();

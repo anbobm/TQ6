@@ -52,7 +52,7 @@ namespace ErsterProjekt
         }
  
 
-        }
+        
         public static double Sinus(double winkel)
         {
             return Math.Sin(winkel);

@@ -1,6 +1,4 @@
-﻿
-
-namespace ErsterProjekt
+﻿namespace ErsterProjekt
 {
     internal class Auto
     {
@@ -9,7 +7,7 @@ namespace ErsterProjekt
         string modell;
         string hersteller;
         int ps;
-        int maxGeschwindigkeit;
+        public int maxGeschwindigkeit;
         int aktuelleGeschwindigkeit;
 
         //Konstruktor -> Wie auto erstellt wird
@@ -26,7 +24,7 @@ namespace ErsterProjekt
         //Methoden
         public void Fahren(int neueGeschwindigkeit)
         {
-            for(int i = 0;i<=neueGeschwindigkeit; i += 10)
+            for(int i = aktuelleGeschwindigkeit;i<=neueGeschwindigkeit; i += 10)
             {
                 aktuelleGeschwindigkeit = i;
                 Console.WriteLine($"Wir fahren schneller. Aktuelle Geschwindigkeit: {aktuelleGeschwindigkeit}" );

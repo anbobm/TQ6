@@ -11,9 +11,7 @@
             Console.ForegroundColor = ConsoleColor.Magenta;
             ronsAuto.Fahren(300);
 
-
-
-
+            ronsAuto.maxGeschwindigkeit = 200;
 
         }
     }

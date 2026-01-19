@@ -46,7 +46,11 @@ namespace ErsterProjekt
                     Zahlen_Werkzeug.ZahlenWerk();
                     break;
                 case 5:
-                    Bankkonto MeinBankkonto = new Bankkonto("Hannes", "Parkbank", "Wegberg");
+                    Bankkonto VacheBankkonto = new Bankkonto("Vache", "Parkbank", "Wegberg");
+                    Bankkonto SabaBankkonto = new Bankkonto("Saba", "Parkbank", "Wegberg");
+                    Bankkonto SaschaBankkonto = new Bankkonto("Sascha", "Parkbank", "Wegberg");
+                    Bankkonto NicoBankkonto = new Bankkonto("Nico", "Parkbank", "Wegberg");
+                    Bankkonto HannesBankkonto = new Bankkonto("Hannes", "Parkbank", "Wegberg");
                     break;
 
                 default:

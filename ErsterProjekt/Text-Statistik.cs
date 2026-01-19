@@ -1,4 +1,4 @@
-﻿using System;
+﻿/*using System;
 
 namespace TextStatistikTool
 {
@@ -77,4 +77,4 @@ namespace TextStatistikTool
         }
     }
 }
-
+*/

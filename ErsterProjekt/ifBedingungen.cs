@@ -1,13 +1,13 @@
 ﻿
 
-using System;
+/*using System;
 
 namespace ErsterProjekt
 {
     internal class ifBedingungen
     {
         static void Main()
-        {
+        {*/
             /*
                         Random zufallszahlGenerator = new Random();
 
@@ -158,11 +158,11 @@ namespace ErsterProjekt
 
 
 
-
+/*
 
         }
 
 
 
     }
-}
+}*/

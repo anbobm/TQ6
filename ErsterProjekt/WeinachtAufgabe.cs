@@ -1,4 +1,4 @@
-﻿using System;
+﻿/*using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -76,4 +76,4 @@ namespace ErsterProjekt
             Console.WriteLine("Gefundene Proteinen: " + proteine);
         }
     }
-}
+}*/  

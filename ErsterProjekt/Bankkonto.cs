@@ -164,6 +164,7 @@ namespace ErsterProjekt
             {
                 iban += random.Next(0, 10); 
             }
+
             // Kontonummer anhängen
             iban += kontonummer;
 

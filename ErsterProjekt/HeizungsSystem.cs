@@ -22,7 +22,8 @@ namespace ErsterProjekt
         }
         // Methode: Heizung erwärmt das Haus
 
-        public void Hauserwaermen(int gewuenschteTemp) { 
+        public void Hauserwaermen(int gewuenschteTemp) 
+        { 
             if (AnAusSchaltStatus == "aus") 
             { Console.WriteLine("Heizung ist aus. Bitte zuerst anschalten.");
                 return; 

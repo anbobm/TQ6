@@ -17,6 +17,7 @@ namespace ErsterProjekt
             Console.WriteLine("\n2.Passwort-Stärke-Prüfer");
             Console.WriteLine("\n3.Text Statistik");
             Console.WriteLine("\n4.Zahlen-Werkzeuge");
+            Console.WriteLine("\n5.Bankkonto");
             Console.WriteLine("\nAuswahl:");
 
             int wahl;
@@ -43,6 +44,9 @@ namespace ErsterProjekt
                     break;
                 case 4:
                     Zahlen_Werkzeug.ZahlenWerk();
+                    break;
+                case 5:
+                    Bankkonto MeinBankkonto = new Bankkonto("Hannes", "Parkbank", "Wegberg");
                     break;
 
                 default:

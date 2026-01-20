@@ -25,7 +25,7 @@ internal class Bankkonto
         this.bank = bank;
         this.filiale = filiale;
         kontostand = 0;
-        pin = "1234";// PinErstellen();
+        pin = PinErstellen();
         bic = BicErstellen();
         kontonummer = KontonummerErstellen();
         iban = IBANErstellen();
@@ -41,7 +41,7 @@ internal class Bankkonto
     //Methoden
 
     //bool Einzahlen(decimal betrag, string pin)
-    public bool Einzahlen(decimal betrag, string pin)
+    public bool Einzahlen(decimal betrag, string pin, string quelle = "==========")
     {
         if (betrag <= 0)
         {
@@ -51,7 +51,7 @@ internal class Bankkonto
         if (this.pin == pin)
         {
             kontostand += betrag;
-            verlauf.Add($"+\t{betrag}\t==========\t{kontonummer}");
+            verlauf.Add($"+\t{betrag}\t{quelle}\t{kontonummer}");
             return true;
         }
         else
@@ -60,32 +60,8 @@ internal class Bankkonto
             return false;
         }
     }
-    //bool Auszahlen(decimal betrag, string pin)
-    public bool Auszahlen(decimal betrag, string pin)
-    {
-        if (betrag <= 0)
-        {
-            Console.WriteLine("ungülitige Betrag, Sie dürfen nicht auszahlen");
-            return false;
-        }
-        else 
-        { 
-            if (this.pin == pin)
-            {
-                kontostand -= betrag;
-                verlauf.Add($"-\t{betrag}\t==========\t{kontonummer}");
-                return true;
-            }
-            else
-            {
-                Console.WriteLine("Ungueltiges pin.");
-                return false;
-            }
-        }  //bool Auszahlen(decimal betrag, string pin)
-   
 
-    }
-   
+    //void Kontoauszug(string pin)
     public void Kontoauszug(string pin)
     {
         if (this.pin == pin)
@@ -94,6 +70,7 @@ internal class Bankkonto
             {
                 Console.WriteLine(eintrag);
             }
+            KontostandAnzeigen(pin);
         }
         else
         {
@@ -103,10 +80,45 @@ internal class Bankkonto
 
 
     //bool Auszahlen(decimal betrag, string pin)
-    //void KontostandAnzeigen(string pin)
+    public bool Auszahlen(decimal betrag, string pin, string ziel = "==========")
+    {
+        if (betrag <= 0)
+        {
+            Console.WriteLine("Ungueltiger Betrag. Bitte nur Zahlen groesser 0 eingeben.");
+            return false;
+        }
+        if (this.pin == pin)
+        {
+            if (kontostand < betrag)
+            {
+                Console.WriteLine("Nicht abgedeckt.");
+                return false;
+            }
+            kontostand -= betrag;
+            verlauf.Add($"-\t{betrag}\t{kontonummer}\t{ziel}");
+            return true;
+        }
+        else
+        {
+            Console.WriteLine("Ungueltiges pin.");
+            return false;
+        }
+    }
 
-    //void Kontodetails(string pin)
-    //bool Ueberweisen(string iban, string pin, decimal betrag)
+    //void KontostandAnzeigen(string pin)
+    public void KontostandAnzeigen(string pin)
+    {
+        if (this.pin == pin)
+        {
+            Console.WriteLine($"Dein Aktueller Kontostand betraegt: {kontostand.ToString("F2")}" );
+        }
+        else
+        {
+            Console.WriteLine("Ungueltiges pin.");
+        }
+    }
+
+    //void Kontodetails() - kontonummer, iban, kontoinhaber, bank, pin
 
 
     private string BicErstellen()
@@ -183,7 +195,22 @@ internal class Bankkonto
         return IBAN;
     }
 
-
+    //void Kontodetails() - kontonummer, iban, kontoinhaber, bank, pin
+    public void kontodetails()
+    {
+      
+        
+            Console.WriteLine("=== Kontodetails ===");
+            Console.WriteLine($"Kontoinhaber: {kontoinhaber}");
+            Console.WriteLine($"Bank: {bank}");
+          
+            Console.WriteLine($"Kontonummer: {kontonummer}");
+            Console.WriteLine($"IBAN: {iban}");
+         
+            Console.WriteLine($"PIN: {pin}");
+        
+       
+    }
 
 
 }

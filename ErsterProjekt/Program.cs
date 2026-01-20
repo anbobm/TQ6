@@ -4,23 +4,13 @@
    {
       static void Main()
        {
-            /*Heizungsystem h = new Heizungsystem("Bosch", 30, "Gas", 18, "aus");
+            Bankkonto nicoKonto = new Bankkonto("Nicolas Arevalo Hoelscher");
 
-            h.Anschalten();
-            h.Hauserwaermen(25);
-            h.Ausschalten();*/
+            Console.WriteLine("Geben Sie Ihr pin bitte ein:");
+            string pin = Console.ReadLine();
+            nicoKonto.Einzahlen(100.50m, pin);
+            nicoKonto.Kontoauszug(pin);
 
-            /*  Hunde h = new Hunde("schäfer", "schwarz", "saba", "45 kilo");
-              h.Laufen();
-              h.Bellen();
-              h.Rollen();
-              h.Sitzen();*/
-
-
-
-
-            Bankkonto b = new Bankkonto("Saba");
-           
 
 
 

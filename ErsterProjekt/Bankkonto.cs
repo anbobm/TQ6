@@ -1,4 +1,6 @@
 ﻿
+using System.ComponentModel.Design;
+
 internal class Bankkonto
 {
     //Attribute
@@ -58,8 +60,32 @@ internal class Bankkonto
             return false;
         }
     }
+    //bool Auszahlen(decimal betrag, string pin)
+    public bool Auszahlen(decimal betrag, string pin)
+    {
+        if (betrag <= 0)
+        {
+            Console.WriteLine("ungülitige Betrag, Sie dürfen nicht auszahlen");
+            return false;
+        }
+        else 
+        { 
+            if (this.pin == pin)
+            {
+                kontostand -= betrag;
+                verlauf.Add($"-\t{betrag}\t==========\t{kontonummer}");
+                return true;
+            }
+            else
+            {
+                Console.WriteLine("Ungueltiges pin.");
+                return false;
+            }
+        }  //bool Auszahlen(decimal betrag, string pin)
+   
 
-    //void Kontoauszug(string pin)
+    }
+   
     public void Kontoauszug(string pin)
     {
         if (this.pin == pin)

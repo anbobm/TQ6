@@ -1,180 +1,166 @@
 ﻿
- 
-using System;
-
-using System.Collections.Generic;
-
-using System.Text;
- 
-namespace ErsterProjekt
-
+internal class Bankkonto
 {
+    //Attribute
+    private decimal kontostand;
+    //                      DE              89              37040          04405        3201300
+    private string iban;//country code - check digit - bank id code - branche code - kontonummer
+    private string kontonummer;
+    private string kontoinhaber;
+    private string bank;
+    private string filiale;
+    //    PSTB       DE                MU           MU2       => PSTBDEMUMU2
+    //Bank code - laendercode - standort stadt - filiale
+    private string bic;
+    private string pin;
+    private List<string> verlauf;
+    private static int zaehler = 0;
 
-    internal class Bankkonto
-
+    //Konstruktor
+    public Bankkonto(string kontoinhaber, string bank = "SuperBank", string filiale = "Muenchen")
     {
-
-        //Attribute
-
-        private decimal kontostand;
-
-        //                      DE              89              37040          04405        3201300
-
-        private string iban;//country code - check digit - bank id code - branche code - kontonummer
-
-        private string kontonummer;
-
-        private string kontoinhaber;
-
-        private string bank;
-
-        private string filiale;
-
-        //    PSTB       DE                MU           MU2       => PSTBDEMUMU2
-
-        //Bank code - laendercode - standort stadt - filiale
-
-        private string bic;
-
-        private string pin;
-
-        //Konstruktor
-
-        public Bankkonto(string kontoinhaber, string bank = "SuperBank", string filiale = "Muenchen")
-
-        {
-
-            this.kontoinhaber = kontoinhaber;
-
-            this.bank = bank;
-
-            this.filiale = filiale;
-
-            kontostand = 0;
-
-            pin = PinErstellen();
-
-            bic = BicErstellen();
-            iban = Ibanerstellen();
-            kontonummer = KontonummerErstellen();
-
-            //Pin ueberpruefen methode: Console.WriteLine(pin);
-
-            /*Console.WriteLine(bic);*/
-
-            //Anforderungen fuer BIC:
-
-            //Bic soll zuffaelig 4 zeichen erstellen und abspeichern, dann DE abspeichern,
-
-            //dann 2 zuffaelige buchstaben, dann erste 2 buchstaben
-
-            //von filiale und eine zuffaelige zahl zwischen 0-9
-
-        }
-
-        //Methoden
-
-        private string PinErstellen()
-
-        {
-
-            Random random = new Random();
-
-            string neuerPin = "";
-
-            for (int i = 0; i < 4; i++)
-
-            {
-
-                neuerPin += random.Next(0, 10);
-
-            }
-
-            return neuerPin;
-
-        }
-
-        private string BicErstellen()
-
-        {
-
-            Random random = new Random();
-
-            string neuerBic = "";
-
-            for (int i = 0; i < 4; i++)  // 4 zufällige Buchstaben
-
-            {
-
-                char buchstabe = (char)random.Next('A', 'Z' + 1);
-
-                neuerBic += buchstabe;
-
-            }
-
-
-
-            neuerBic += "DE"; // DE hinzufügen
-
-
-
-            for (int i = 0; i < 2; i++) // 2 zufällige Buchstaben
-
-            {
-
-                char buchstabe = (char)random.Next('A', 'Z' + 1);
-
-                neuerBic += buchstabe;
-
-            }
-
-
-
-            string filialeKurz = filiale.Substring(0, 2).ToUpper(); //  Die ersten 2 Buchstaben der Filiale
-
-            neuerBic += filialeKurz;
-
-
-
-            neuerBic += random.Next(0, 10); // Eine Zufällige Zahl hinzufügen
-
-            return neuerBic;
-
-        }
-        private string KontonummerErstellen()
-        {
-            Random rnd = new Random();
-            string nummer = "";
-
-            for (int i = 0; i < 10; i++)
-            {
-                nummer += rnd.Next(0, 10);
-            }
-
-            return nummer;
-        }
-
-        private string Ibanerstellen()
-        {
-            return null;
-            Random random = new Random();
-            string iban = "DE";
-            // 10 zufällige Ziffern
-            for (int i = 0; i < 10; i++)
-            {
-                iban += random.Next(0, 10); 
-            }
-
-            // Kontonummer anhängen
-            iban += kontonummer;
-
-            return iban;
-        }
-
+        this.kontoinhaber = kontoinhaber;
+        this.bank = bank;
+        this.filiale = filiale;
+        kontostand = 0;
+        pin = "1234";// PinErstellen();
+        bic = BicErstellen();
+        kontonummer = KontonummerErstellen();
+        iban = IBANErstellen();
+        verlauf = new List<string>() { "OP\tBetrag\tQuelle\t\tZiel" };
+        //Verlauf format:
+        /* OP   Betrag  Quelle          Ziel       
+         * +    230     kontonummer     kontonummer
+         * -    100     kontonummer     kontonummer
+         */
+        zaehler++;
     }
 
-}
+    //Methoden
 
+    //bool Einzahlen(decimal betrag, string pin)
+    public bool Einzahlen(decimal betrag, string pin)
+    {
+        if (betrag <= 0)
+        {
+            Console.WriteLine("Ungueltiger Betrag. Bitte nur Zahlen groesser 0 eingeben.");
+            return false;
+        }
+        if (this.pin == pin)
+        {
+            kontostand += betrag;
+            verlauf.Add($"+\t{betrag}\t==========\t{kontonummer}");
+            return true;
+        }
+        else
+        {
+            Console.WriteLine("Ungueltiges pin.");
+            return false;
+        }
+    }
+
+    //void Kontoauszug(string pin)
+    public void Kontoauszug(string pin)
+    {
+        if (this.pin == pin)
+        {
+            foreach (string eintrag in verlauf)
+            {
+                Console.WriteLine(eintrag);
+            }
+        }
+        else
+        {
+            Console.WriteLine("Ungueltiges pin.");
+        }
+    }
+
+
+    //bool Auszahlen(decimal betrag, string pin)
+    //void KontostandAnzeigen(string pin)
+
+    //void Kontodetails(string pin)
+    //bool Ueberweisen(string iban, string pin, decimal betrag)
+
+
+    private string BicErstellen()
+    {
+        Random random = new Random();
+        string neuerBic = "";
+        for (int i = 0; i < 4; i++)  // 4 zufällige Buchstaben
+        {
+            char buchstabe = (char)random.Next('A', 'Z' + 1);
+            neuerBic += buchstabe;
+        }
+
+
+        neuerBic += "DE"; // DE hinzufügen
+
+
+        for (int i = 0; i < 2; i++) // 2 zufällige Buchstaben
+        {
+            char buchstabe = (char)random.Next('A', 'Z' + 1);
+            neuerBic += buchstabe;
+        }
+
+
+        string filialeKurz = filiale.Substring(0, 2).ToUpper(); //  Die ersten 2 Buchstaben der Filiale
+        neuerBic += filialeKurz;
+
+
+        neuerBic += random.Next(0, 10); // Eine Zufällige Zahl hinzufügen
+
+        return neuerBic;
+    }
+    private string KontonummerErstellen()
+    {
+        string kontonummer = "";
+        int zaehlerLaenge = ("" + zaehler).Length;
+
+        for (int i = 0; i < 10 - zaehlerLaenge; i++)
+        {
+            kontonummer += 0;
+        }
+        kontonummer += zaehler;
+
+        return kontonummer;
+    }
+
+    private string PinErstellen()
+    {
+        Random random = new Random();
+        string neuerPin = "";
+
+        for (int i = 0; i < 4; i++)
+        {
+            neuerPin += random.Next(0, 10);
+        }
+        return neuerPin;
+    }
+
+    private string IBANErstellen()
+    {
+        Random random = new Random();
+        string IBAN = "";
+        string laendercode = "DE";
+        string pruefsumme = "";
+        string BLZ = "";
+        for (int i = 0; i < 2; i++)
+        {
+            pruefsumme += random.Next(0, 10);
+        }
+        for (int i = 0; i < 6; i++)
+        {
+            BLZ += random.Next(0, 10);
+        }
+        IBAN += laendercode + pruefsumme + BLZ + kontonummer;
+        return IBAN;
+    }
+
+
+
+
+}
 
 
 

@@ -18,6 +18,7 @@ namespace ErsterProjekt
         //Bank code - laendercode - standort stadt - filiale
         private string bic;
         private string pin;
+        private List<string> verlauf;
         private static int zaehler = 0;
 
         //Konstruktor
@@ -30,20 +31,116 @@ namespace ErsterProjekt
             pin = PinErstellen();
             bic = BicErstellen();
             kontonummer = KontonummerErstellen();
-            this.iban = IBANErstellen();   
-            Console.WriteLine($"Das KN von: {kontoinhaber} ist {kontonummer}.");
+            iban = IBANErstellen();
+            verlauf = new List<string>() {"OP\tBetrag\tQuelle\t\tZiel"};
             zaehler++;
-            //Pin ueberpruefen methode: Console.WriteLine(pin);
-            //iban
-            //kontonummer
-            //bic
-            //Anforderungen fuer BIC:
-            //Bic soll zuffaelig 4 zeichen erstellen und abspeichern, dann DE abspeichern,
-            //dann 2 zuffaelige buchstaben, dann erste 2 buchstaben
-            //von filiale und eine zuffaelige zahl zwischen 0-9
         }
 
         //Methoden
+        public string GetKontonummer()
+        {
+            return kontonummer;
+        }
+
+        public string GetIBAN()
+        {
+            return iban;
+        }
+
+        //bool Einzahlen(decimal betrag, string pin)
+        public bool Einzahlen(decimal betrag, string pin, string quelle="==========")
+        {
+            if(betrag <= 0)
+            {
+                Console.WriteLine("Ungueltiger Betrag. Bitte nur Zahlen groesser 0 eingeben.");
+                return false;
+            }
+            if (this.pin == pin)
+            {
+                kontostand += betrag;
+                verlauf.Add($"+\t{betrag}\t{quelle}\t{kontonummer}");
+                return true;
+            }
+            else
+            {
+                Console.WriteLine("Ungueltiges pin.");
+                return false;
+            }   
+        }
+
+        //void Kontoauszug(string pin)
+        public void Kontoauszug(string pin)
+        {
+            if (this.pin == pin)
+            {
+                foreach (string eintrag in verlauf)
+                {
+                    Console.WriteLine(eintrag);
+                }
+                KontostandAnzeigen(pin);
+            }
+            else
+            {
+                Console.WriteLine("Ungueltiges pin.");
+            }
+        }
+
+
+        //bool Auszahlen(decimal betrag, string pin)
+        public bool Auszahlen(decimal betrag, string pin, string ziel="==========")
+        {
+            if (betrag <= 0)
+            {
+                Console.WriteLine("Ungueltiger Betrag. Bitte nur Zahlen groesser 0 eingeben.");
+                return false;
+            }
+            if (this.pin == pin)
+            {
+                if (kontostand < betrag)
+                {
+                    Console.WriteLine("Nicht abgedeckt.");
+                    return false;
+                }
+                kontostand -= betrag;
+                verlauf.Add($"-\t{betrag}\t{kontonummer}\t{ziel}");
+                return true;
+            }
+            else
+            {
+                Console.WriteLine("Ungueltiges pin.");
+                return false;
+            }
+        }
+
+        //void KontostandAnzeigen(string pin)
+        public void KontostandAnzeigen(string pin)
+        {
+            if(this.pin == pin)
+            {
+                Console.WriteLine($"Dein Aktueller Kontostand betraegt: {kontostand.ToString("F2")} EUR.");
+            }
+            else
+            {
+                Console.WriteLine("Ungueltiges pin.");
+            }
+        }
+
+        //void Kontodetails() - kontonummer, iban, kontoinhaber, bank, pin
+        public void Kontodetails()
+        {
+            Console.WriteLine("=========== KONTODETAILS ===========");
+            Console.WriteLine($"Kontoinhaber : {kontoinhaber}");
+            Console.WriteLine($"Bank         : {bank}");
+            Console.WriteLine($"Filiale      : {filiale}");
+            Console.WriteLine($"Kontonummer  : {kontonummer}");
+            Console.WriteLine($"IBAN         : {iban}");
+            Console.WriteLine($"BIC          : {bic}");
+            Console.WriteLine($"PIN          : {this.pin}");
+            Console.WriteLine("===========================");
+
+        }
+
+
         private string BicErstellen()
         {
             Random random = new Random();

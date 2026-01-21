@@ -128,9 +128,23 @@ namespace ErsterProjekt
 
                 return false;
             }
+                   Console.WriteLine("Sie moechten einloggen.");
+                    Console.WriteLine("Geben Sie bitte Ihr Iban ein:");
+                    string ibanEingabe = Console.ReadLine();
+        Bankkonto meinKonto = KontoFindenDurchIBAN(ibanEingabe);
+                    if (meinKonto != null)
+                    {
+                        Console.WriteLine("Login erfolgreich!"); 
+                      
 
+                     }
 
-            public void BankMenueOeffnen()
+                    else
+                    {
+                        Console.WriteLine("Login nicht erfolgreich ."); 
+                    }
+
+public void BankMenueOeffnen()
             {
 
                 Console.WriteLine($"Wilkommen in die {bankName}. Was moechtest du heute tun?\n1. Konto Erstellen.\n2. Konto Loeschen\n3. Einloggen.");
@@ -144,10 +158,24 @@ namespace ErsterProjekt
                         KontoErstellen(name);
                         break;
 
-                }
-                //Was moechtest du machen?
+                   case "2":
+                    Console.WriteLine("Sie moechten ein Konto loeschen.");
+                    Console.WriteLine("Geben Sie bitte Ihr kontonummer ein:");
+                    string kontonummer = Console.ReadLine();
+                    KontoErstellen(kontonummer);
+                    break;
 
-                Console.WriteLine("Was moechtest du machen?\n1. Einzahlen\n2.Auszahlen...");
+                    case "3":
+                     einloggen();
+                    break;
+                    //Was moechtest du machen?
+
+                    Console.WriteLine("Was moechtest du machen?\n1. Einzahlen\n2.Auszahlen...");
+                
+        
+            
+                
+               }
 
             }
 

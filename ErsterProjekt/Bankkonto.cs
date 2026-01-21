@@ -124,17 +124,13 @@ namespace ErsterProjekt
         //void Kontoauszug(string pin)
         public void Kontoauszug()
         {
-            if (this.pin == pin)
+            Console.WriteLine("==========KONTOAUSZUG==========");
+            foreach (string eintrag in verlauf)
             {
-                foreach (string eintrag in verlauf)
-                {
-                    Console.WriteLine(eintrag);
-                }
+                Console.WriteLine(eintrag);
             }
-            else
-            {
-                Console.WriteLine("Ungültiger Pin");
-            }
+            Kontostand();
+            Console.WriteLine("==========ENDEAUSZUG==========");
         }
         public void Kontodetails()
         {

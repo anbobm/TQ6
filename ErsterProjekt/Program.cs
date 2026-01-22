@@ -4,7 +4,8 @@
    {
       static void Main()
        {
-          
+            Bank superBank = new Bank("Super Bank", "Muenchen1", "Muenchen", "Leopold str.11");
+            superBank.BankMenueOeffnen();
 
             //Bankkonto nicoKonto = new Bankkonto("Nicolas Arevalo Hoelscher");
             //nicoKonto.Kontodetails();

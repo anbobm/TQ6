@@ -128,6 +128,12 @@ namespace ErsterProjekt
 
             return a + b;
         }
+        public static int Summieren(int a, int b, int c)
+        {
+            Console.WriteLine($"Die summe von {a} und {b} und {c} ist: {a + b + c}");
+
+            return a + b;
+        }
 
         public static void RNASequenz(string rnaSequenz)
         {

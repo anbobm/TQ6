@@ -225,7 +225,7 @@ namespace ErsterProjekt
             return null;
         }
 
-        private void KontoMenueOeffnen(Bankkonto eingelogtesKonto)
+        private void BankMenueOeffnen(Bankkonto eingelogtesKonto)
         {
             int auswahl = -1;
 

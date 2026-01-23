@@ -27,6 +27,7 @@ namespace ErsterProjekt
         //methode 
         public string GetName() 
         {
+
             return name;
      
         

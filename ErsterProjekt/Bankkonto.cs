@@ -74,6 +74,7 @@ internal class Bankkonto
     }
 
     //void Kontoauszug(string pin)
+
     public void Kontoauszug()
     {
         Console.WriteLine("==========KONTOAUSZUG==========");

@@ -146,7 +146,7 @@ namespace ErsterProjekt
         }
 
 
-        public void KontoMenueOeffnen()
+        public void BankMenueOeffnen()
         {
             bool aktiv = true;
 
@@ -179,7 +179,7 @@ namespace ErsterProjekt
                             return;
                         else
                         {
-                            BankMenueOeffnen(eingelogtesKonto);
+                            KontoMenueOeffnen(eingelogtesKonto);
                         }
                         break;
                     case "0":
@@ -222,7 +222,7 @@ namespace ErsterProjekt
             return null;
         }
 
-        private void BankMenueOeffnen(Bankkonto eingelogtesKonto)
+        private void KontoMenueOeffnen(Bankkonto eingelogtesKonto)
         {
             int auswahl = -1;
 

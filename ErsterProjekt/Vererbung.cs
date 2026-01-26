@@ -10,7 +10,7 @@ namespace ErsterProjekt
         Strasse,
         Wasser
     }
-    internal class OeffentlichesNahverker
+    internal abstract class OeffentlichesNahverker
     {
         //Eigenschaften/Attribute
         int maxKapazitaet;
@@ -48,6 +48,7 @@ namespace ErsterProjekt
         {
             Console.WriteLine($"Wir halten an einer Haltestelle.");
         }
+        public abstract void Auftanken();
 
         public bool Wartung()
         {
@@ -67,9 +68,14 @@ namespace ErsterProjekt
         {
             Console.WriteLine($"{linie} hält an einer Haltestelle.");
         }
+
+        public override void Auftanken()
+        {
+            Console.WriteLine("Wir tanken an der Tankstelle auf!");
+        }
     }
 
-    internal class Zug
+    internal class Zug : OeffentlichesNahverker
     {
 
     }

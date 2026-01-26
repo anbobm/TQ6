@@ -4,6 +4,16 @@ using System.Text;
 
 namespace ErsterProjekt
 {
+
+    /*
+     * Wir brauchen zunaechst drei weitere Klassen! Kindklassen von Bankkonto.
+     * 1. Kreditkonto: Es soll moeglich sein, dass der kontostand negativ ist.
+     * 2. Investmentkonto: Wir duerfen hiervon nicht auszahlen bis der aktueller datum gleich 2060-01-01 ist.
+     *                      Zusaetzlich bekommen wir jeden Monat eine erhoehung vom kontostand um 1.25%.
+     * 3. Tagesgeldkonto: Eine Tagesgeldkonto darf maximal 500$ pro tag auszahlen, 
+     *                      und bekommt jeden monat eine erhoehung vom Kontostand um 0.7%.
+     */
+
     internal class Bankkonto
     {
         //Attribute
@@ -11,6 +21,7 @@ namespace ErsterProjekt
         //                      DE              89              37040          04405        3201300
         private string iban;//country code - check digit - bank id code - branche code - kontonummer
         private string kontonummer;
+
         private string kontoinhaber;
         private string bank;
         private string filiale;
@@ -38,6 +49,11 @@ namespace ErsterProjekt
         }
 
         //Methoden
+
+        public void SetKontonummer(string kontonummer)
+        {
+            this.kontonummer = kontonummer;
+        }
         public string GetKontonummer()
         {
             return kontonummer;
@@ -57,7 +73,7 @@ namespace ErsterProjekt
         }
 
         //bool Einzahlen(decimal betrag, string pin)
-        public bool Einzahlen(decimal betrag, string quelle="==========")
+        public virtual bool Einzahlen(decimal betrag, string quelle="==========")
         {
             if(betrag <= 0)
             {

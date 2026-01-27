@@ -2,43 +2,83 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-/*
- * Wir brauchen zunaechst drei weitere Klassen! Kindklassen von Bankkonto.
- * 1. Kreditkonto: Es soll moeglich sein, dass der kontostand negativ ist.
- * 2. Investmentkonto: Wir duerfen hiervon nicht auszahlen bis der aktueller datum gleich 2060-01-01 ist.
- *                      Zusaetzlich bekommen wir jeden Monat eine erhoehung vom kontostand um 1.25%.
- * 3. Tagesgeldkonto: Eine Tagesgeldkonto darf maximal 500$ pro tag auszahlen, 
- *                      und bekommt jeden monat eine erhoehung vom Kontostand um 0.7%.
- */
 
+/*
+ * Die abstrakte Klasse Bankkonto bildet die Basis fuer alle Kontoarten.
+ *
+ * Kindklassen:
+ * 1. Girokonto
+ * 2. Kreditkonto
+ * 3. Investmentkonto
+ * 4. Tagesgeldkonto
+ *
+ * Diese Klasse enthaelt nur allgemeine Logik,
+ * keine kontoartspezifischen Regeln.
+ */
 
 namespace Bankkonto.Konten
 {
     public abstract class Bankkonto
     {
+        /*
+         * Vereinfachter Kontonummernzaehler.
+         * In echten Banksystemen waere dies deutlich komplexer.
+         */
+        private static int naechsteKontonummer = 100000;
+
         // ===== Eigenschaften =====
+
         public string Kontoinhaber { get; }
         public string Kontonummer { get; }
+
+        /*
+         * Die IBAN (International Bank Account Number)
+         * identifiziert ein Konto eindeutig.
+         *
+         * Aufbau (vereinfacht):
+         * - Laenderkennung (z. B. DE)
+         * - Pruefziffer
+         * - Bankkennung (aus der BIC abgeleitet)
+         * - Kontonummer
+         */
+        public string IBAN { get; }
+
         public DateTime Eroeffnungsdatum { get; }
+
+        /*
+         * Jedes Konto gehoert zu genau einer Bank.
+         */
+        public Bank Bank { get; }
 
         public decimal Kontostand { get; protected set; }
 
+        /*
+         * Liste aller Buchungen (Einzahlungen, Auszahlungen, Zinsen usw.)
+         */
         protected List<Buchung> Buchungen { get; } = new();
 
         // ===== Konstruktor =====
-        protected Bankkonto(string kontoinhaber, string kontonummer, decimal startguthaben = 0m)
+
+        /*
+         * Beim Erstellen eines Bankkontos wird:
+         * - die Bank zugeordnet
+         * - eine Kontonummer erzeugt
+         * - daraus eine IBAN generiert
+         * - optional ein Startguthaben gebucht
+         */
+        protected Bankkonto(Bank bank, string kontoinhaber, decimal startguthaben = 0m)
         {
+            Bank = bank ?? throw new ArgumentNullException(nameof(bank));
+
             if (string.IsNullOrWhiteSpace(kontoinhaber))
                 throw new ArgumentException("Kontoinhaber darf nicht leer sein.");
-
-            if (string.IsNullOrWhiteSpace(kontonummer))
-                throw new ArgumentException("Kontonummer darf nicht leer sein.");
 
             if (startguthaben < 0)
                 throw new ArgumentException("Startguthaben darf nicht negativ sein.");
 
             Kontoinhaber = kontoinhaber;
-            Kontonummer = kontonummer;
+            Kontonummer = (naechsteKontonummer++).ToString();
+            IBAN = ErzeugeIban(bank, Kontonummer);
             Kontostand = startguthaben;
             Eroeffnungsdatum = DateTime.Now;
 
@@ -48,12 +88,11 @@ namespace Bankkonto.Konten
             }
         }
 
-        // ===== Öffentliche Methoden =====
+        // ===== Oeffentliche Methoden =====
 
         public virtual void Einzahlen(decimal betrag)
         {
             PruefeBetrag(betrag);
-
             Kontostand += betrag;
             Buche(betrag, Buchungsart.Einzahlung, "Einzahlung");
         }
@@ -77,17 +116,28 @@ namespace Bankkonto.Konten
             Auszahlen(betrag);
             zielkonto.Einzahlen(betrag);
 
-            Buche(-betrag, Buchungsart.Ueberweisung, $"Überweisung an {zielkonto.Kontonummer}");
-            zielkonto.Buche(betrag, Buchungsart.Ueberweisung, $"Überweisung von {Kontonummer}");
+            Buche(-betrag, Buchungsart.Ueberweisung, $"Überweisung an {zielkonto.IBAN}");
+            zielkonto.Buche(betrag, Buchungsart.Ueberweisung, $"Überweisung von {IBAN}");
+        }
+
+        /*
+         * Gibt alle wichtigen Kontodaten zur Anzeige aus.
+         */
+        public string KontodetailsAnzeigen()
+        {
+            return
+                $"Kontoinhaber: {Kontoinhaber}\n" +
+                $"IBAN: {IBAN}\n" +
+                $"Kontostand: {Kontostand:C}\n" +
+                $"Eroeffnet am: {Eroeffnungsdatum:d}\n" +
+                $"Bank: {Bank.Name}";
         }
 
         public string KontoauszugErstellen()
         {
             var sb = new StringBuilder();
 
-            sb.AppendLine($"Kontoinhaber: {Kontoinhaber}");
-            sb.AppendLine($"Kontonummer: {Kontonummer}");
-            sb.AppendLine($"Kontostand: {Kontostand:C}");
+            sb.AppendLine(KontodetailsAnzeigen());
             sb.AppendLine("Buchungen:");
 
             foreach (var buchung in Buchungen)
@@ -98,8 +148,13 @@ namespace Bankkonto.Konten
             return sb.ToString();
         }
 
-        // ===== Erweiterungspunkt für Kindklassen =====
+        // ===== Erweiterungspunkt fuer Kindklassen =====
 
+        /*
+         * Standardregel:
+         * Es darf nur ausgezahlt werden, wenn genug Guthaben vorhanden ist.
+         * Kredit- oder Dispo-Logik wird in Kindklassen ueberschrieben.
+         */
         protected virtual bool DarfAuszahlen(decimal betrag)
         {
             return Kontostand >= betrag;
@@ -110,12 +165,22 @@ namespace Bankkonto.Konten
         protected void PruefeBetrag(decimal betrag)
         {
             if (betrag <= 0)
-                throw new ArgumentException("Betrag muss größer als 0 sein.");
+                throw new ArgumentException("Betrag muss groesser als 0 sein.");
         }
 
         protected void Buche(decimal betrag, Buchungsart art, string beschreibung)
         {
             Buchungen.Add(new Buchung(DateTime.Now, betrag, art, beschreibung));
+        }
+
+        /*
+         * Vereinfachte IBAN-Erzeugung fuer Lernzwecke.
+         * Diese ist NICHT bankrechtlich korrekt,
+         * zeigt aber den grundsaetzlichen Aufbau.
+         */
+        private static string ErzeugeIban(Bank bank, string kontonummer)
+        {
+            return $"DE00{bank.BIC.Substring(0, 4)}{kontonummer.PadLeft(10, '0')}";
         }
     }
 }

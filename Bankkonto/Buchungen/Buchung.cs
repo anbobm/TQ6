@@ -1,7 +1,7 @@
 ﻿using Bankkonto.Buchungen;
 using System;
 
-namespace Bankkonto
+namespace Bankkonto.Buchungen
 {
     public class Buchung
     {

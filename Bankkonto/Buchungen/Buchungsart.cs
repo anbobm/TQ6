@@ -1,4 +1,4 @@
-﻿namespace Bankkonto
+﻿namespace Bankkonto.Buchungen
 {
     public enum Buchungsart
     {

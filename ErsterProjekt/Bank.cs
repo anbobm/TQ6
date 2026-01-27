@@ -45,7 +45,7 @@ namespace ErsterProjekt
             }
             else if (kontoArt.ToLower() == "kredit")
             {
-                kontos.Add(new Kreditkonto(kontoinhaber, 500, bankName, filiale));
+                kontos.Add(new Kreditkonto(kontoinhaber, bankName, filiale));
             }
             else
             {
@@ -292,7 +292,7 @@ namespace ErsterProjekt
             {
                 Console.WriteLine("Geben Sie bitte Ihr pin ein:");
                 string pinEingabe = Console.ReadLine();
-                if (pinEingabe == meinKonto.GetPIN())
+                if (pinEingabe == meinKonto.GetPin())
                 {
                     Console.WriteLine("Login erfolgreich!");
                     return meinKonto;

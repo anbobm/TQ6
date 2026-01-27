@@ -30,11 +30,26 @@ namespace ErsterProjekt
             this.ort = ort;
             this.adresse = adresse;
         }
-
+        
         //Methoden
-        private void KontoErstellen(string kontoinhaber)
+        private void KontoErstellen(string kontoinhaber, string kontoArt)
         {
-            kontos.Add(new Bankkonto(kontoinhaber));
+            if (kontoArt.ToLower() == "tagesgeld")
+            {
+                kontos.Add(new Tagesgeldkonto(kontoinhaber, bankName, filiale));
+            }
+            else if (kontoArt.ToLower() == "investment")
+            {
+                kontos.Add(new Investmentkonto(kontoinhaber, bankName, filiale));
+            }
+            else if (kontoArt.ToLower() == "kredit")
+            {
+                kontos.Add(new Kreditkonto(kontoinhaber, 500, bankName, filiale));
+            }
+            else
+            {
+                kontos.Add(new Bankkonto(kontoinhaber, bankName, filiale));
+            }
             Console.WriteLine("Dein Konto wurde erfolgreich erstellt!");
         }
 
@@ -160,7 +175,10 @@ namespace ErsterProjekt
                         Console.WriteLine("Sie moechten ein Konto Erstellen.");
                         Console.WriteLine("Geben Sie bitte Ihr Name ein:");
                         string name = Console.ReadLine();
-                        KontoErstellen(name);
+                        Console.WriteLine($"Hallo {name}, was fuer einen Konto moechten Sie haben? Tagesgeld, Investment, Kredit oder Normal?");
+                        Console.WriteLine("Bei ungueltiger Eingabe wird einen Normalen Konto fuer Ihnen erstellt.");
+                        string kontotyp = Console.ReadLine();
+                        KontoErstellen(name, kontotyp);
                         break;
                     case "2":
                         Console.WriteLine("Sie möchten ein Konto löschen.");

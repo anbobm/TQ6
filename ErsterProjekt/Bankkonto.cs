@@ -45,7 +45,7 @@ namespace ErsterProjekt
             kontonummer = KontonummerErstellen();
             zaehler++;
             iban = IBANErstellen();
-            verlauf = new List<string>() { "OP\tBetrag\tQuelle\t\tZiel" };
+            verlauf = new List<string>() { "OP\tBetrag\tQuelle\t\t\tZiel" };
             Kontodetails();
             //Console.WriteLine($"Iban von {kontoinhaber} ist: " + iban);
             //Verlauf format:

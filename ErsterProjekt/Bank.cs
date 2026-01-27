@@ -51,7 +51,10 @@ namespace ErsterProjekt
                     kontos.Add(new Bankkonto(kontoinhaber));
                     break;
                 case "2":
-                    kontos.Add(new Kreditkonto(kontoinhaber));
+                    Console.Write("Bitte Kreditrahmen eingeben: ");
+                    decimal kreditrahmen = decimal.Parse(Console.ReadLine());
+
+                    kontos.Add(new Kreditkonto(kontoinhaber, kreditrahmen));
                     break;
                 case "3":
                     kontos.Add(new Investmentkonto(kontoinhaber));

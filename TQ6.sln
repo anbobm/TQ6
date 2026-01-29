@@ -27,6 +27,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bankkonto", "Bankkonto\Bank
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonenNahVerkehr", "PersonenNahVerkehr\PersonenNahVerkehr.csproj", "{6908E777-E1C8-4340-A86D-143AFE1076C7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bibliothekverwaltungssystem", "Bibliothekverwaltungssystem\Bibliothekverwaltungssystem.csproj", "{56EDF771-8D71-4877-B840-A543FB60CC02}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -81,6 +83,10 @@ Global
 		{6908E777-E1C8-4340-A86D-143AFE1076C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6908E777-E1C8-4340-A86D-143AFE1076C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6908E777-E1C8-4340-A86D-143AFE1076C7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{56EDF771-8D71-4877-B840-A543FB60CC02}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{56EDF771-8D71-4877-B840-A543FB60CC02}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{56EDF771-8D71-4877-B840-A543FB60CC02}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{56EDF771-8D71-4877-B840-A543FB60CC02}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

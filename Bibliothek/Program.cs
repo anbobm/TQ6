@@ -1,0 +1,105 @@
+﻿using System.ComponentModel.Design;
+
+namespace Bibliothek
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Bibliothek bib = new Bibliothek("Stadtbibliothek", "Mönchengladbach");
+
+            Kunde eingeloggterKunde = null;
+
+            while (true)
+            {
+                if (eingeloggterKunde == null)
+                {
+                    Console.WriteLine("=== Willkommen ===");
+                    Console.WriteLine("\nWas möchten sie tun?");
+                    Console.WriteLine("\n1. Account erstellen");
+                    Console.WriteLine("\n2. Login");
+                    Console.WriteLine("\n0. Beenden");
+
+                    string eingabe = Console.ReadLine();
+
+                    if (eingabe == "1")
+                    {
+                        Console.Write("Bitte geben sie ihren Namen ein:\n");
+                        string name = Console.ReadLine();
+
+                        Console.WriteLine("Bitte geben sie ihre Adresse ein:");
+                        string adresse = Console.ReadLine();
+
+                        eingeloggterKunde = bib.KundeErstellen(name, adresse);
+                        Console.WriteLine($"Willkommen {eingeloggterKunde.name}!");
+                        Console.WriteLine("\n=== Kontodetails ===");
+                        Console.WriteLine($"\nKundennummer = {eingeloggterKunde.kundennummer}");
+                        Console.WriteLine($"\nName = {eingeloggterKunde.name}");
+                        Console.WriteLine($"\nAdresse = {eingeloggterKunde.adresse}");
+                        Console.WriteLine("\n==================");
+                    }
+                    else if (eingabe == "2")
+                    {
+                        Console.WriteLine("Bitte scannen sie ihre Karte für den Login");
+                        string kundennummer = Console.ReadLine();
+
+                        eingeloggterKunde = bib.Login(kundennummer);
+                        if (eingeloggterKunde != null)
+                        {
+                            Console.WriteLine($"Willkommen zurück {eingeloggterKunde.name}!");
+                        }
+                        else
+                        {
+                            Console.WriteLine("Kunde nicht gefunden");
+                        }
+                    }
+                    else if (eingabe == "0")
+                    {
+                        Console.WriteLine("Auf Wiedersehen");
+                        break;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Ungültige Eingabe");
+                        break;
+                    }
+
+                }
+                else
+                {
+                    Console.WriteLine("=== Willkommen ===");
+                    Console.WriteLine("\nWas möchten sie tun?");
+                    Console.WriteLine("\n1. Buch ausleihen");
+                    Console.WriteLine("\n2. Buch zurück geben");
+                    Console.WriteLine("\n3. Meine Daten anzeigen");
+                    Console.WriteLine("\n0. Logout");
+
+                    string eingabe = Console.ReadLine();
+                    if (eingabe == "1")
+                    {
+                        //Bibliothek.Ausleihen();
+                        Console.WriteLine("Coming Soon");
+                    }
+                    else if (eingabe == "2")
+                    {
+                        //Bibliothek.Zurueckgeben();
+                        Console.WriteLine("Coming Soon");
+                    }
+                    else if (eingabe == "3")
+                    {
+                        //Bibliothek.KundendetailsAusgeben();
+                        Console.WriteLine("Coming Soon");
+                    }
+                    else if (eingabe == "0")
+                    {
+                        eingeloggterKunde = null;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Ungültige Eingabe");
+                    }
+                }
+            }
+        }
+    }
+}

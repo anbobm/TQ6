@@ -14,7 +14,7 @@ namespace Bibliothek
             bib.BuecherHinzufuegen(new Buch("Mord im Orient Express", "Agatha Christie", "1934193419340", 1934, "Kriminal Roman"));
 
             Console.WriteLine("=== Bücher in der Bibliothek ===");
-            foreach (Buch b in bib.Buecher) // falls buecher public gemacht
+            foreach (Buch b in bib.Buecher) 
             {
                 Console.WriteLine($"Titel: {b.titel}, Autor: {b.autor}, ISBN: {b.isbn}, Jahr: {b.erscheinungsjahr} Genre: {b.genre}");
             }

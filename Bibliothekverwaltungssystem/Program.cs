@@ -26,7 +26,7 @@ namespace Bibliotheksverwaltung
                 Console.WriteLine("2) Bücher zurückgeben");
                 Console.WriteLine("3) Ausleihe verlängern");
                 Console.WriteLine("4) Aktuelle Ausleihen anzeigen");
-                Console.WriteLine("5) Kundendaten ändern");
+                Console.WriteLine("5) Kundendaten anzeigen");
                 Console.WriteLine("0) Beenden");
                 Console.Write("Auswahl: ");
 

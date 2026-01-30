@@ -23,9 +23,10 @@ namespace Bibliotheksverwaltung
                 Console.Clear();
                 Console.WriteLine("=== Bibliotheksverwaltung ===");
                 Console.WriteLine("1) Buch ausleihen");
-                Console.WriteLine("2) Ausleihe verlängern");
-                Console.WriteLine("3) Aktuelle Ausleihen anzeigen");
-                Console.WriteLine("4) Kundendaten ändern");
+                Console.WriteLine("2) Bücher zurückgeben");
+                Console.WriteLine("3) Ausleihe verlängern");
+                Console.WriteLine("4) Aktuelle Ausleihen anzeigen");
+                Console.WriteLine("5) Kundendaten ändern");
                 Console.WriteLine("0) Beenden");
                 Console.Write("Auswahl: ");
 
@@ -53,6 +54,30 @@ namespace Bibliotheksverwaltung
                         break;
 
                     case "2":
+                        List<Ausleihe> rueckgaben = bibliothek.GetAktuelleAusleihen(kunde);
+
+                        if (rueckgaben.Count == 0)
+                        {
+                            Console.WriteLine("Keine aktiven Ausleihen zum Zurückgeben.");
+                            Pause();
+                            break;
+                        }
+
+                        for (int i = 0; i < rueckgaben.Count; i++)
+                        {
+                            Console.WriteLine($"{i + 1}) {rueckgaben[i].Buch.Titel}");
+                        }
+
+                        Console.Write("Ausleihe auswählen: ");
+                        int rueckgabeIndex = int.Parse(Console.ReadLine()) - 1;
+
+                        bibliothek.Zurueckgeben(rueckgaben[rueckgabeIndex]);
+                        Console.WriteLine("Buch wurde zurückgegeben.");
+
+                        Pause();
+                        break;
+
+                    case "3":
                         List<Ausleihe> ausleihen = bibliothek.GetAktuelleAusleihen(kunde);
 
                         if (ausleihen.Count == 0)
@@ -75,7 +100,7 @@ namespace Bibliotheksverwaltung
                         Pause();
                         break;
 
-                    case "3":
+                    case "4":
                         List<Ausleihe> aktuelleAusleihen = bibliothek.GetAktuelleAusleihen(kunde);
 
                         if (aktuelleAusleihen.Count == 0)
@@ -94,14 +119,23 @@ namespace Bibliotheksverwaltung
                         Pause();
                         break;
 
-                    case "4":
-                        Console.Write("Neuer Name: ");
-                        kunde.SetName(Console.ReadLine());
+                    case "5":
+                        Console.WriteLine("=== Kundendaten ===");
+                        Console.WriteLine($"Kundennummer: {kunde.Kundennummer}");
+                        Console.WriteLine($"Name: {kunde.Name}");
+                        Console.WriteLine($"Adresse: {kunde.Adresse}");
+                        Console.WriteLine();
 
-                        Console.Write("Neue Adresse: ");
-                        kunde.SetAdresse(Console.ReadLine());
+                        Console.Write("Adresse ändern? (j/n): ");
+                        string antwort = Console.ReadLine();
 
-                        Console.WriteLine("Kundendaten aktualisiert.");
+                        if (antwort.ToLower() == "j")
+                        {
+                            Console.Write("Neue Adresse: ");
+                            kunde.SetAdresse(Console.ReadLine());
+                            Console.WriteLine("Adresse wurde aktualisiert.");
+                        }
+
                         Pause();
                         break;
 

@@ -8,9 +8,10 @@ namespace Bibliothek
     {
         string name;
         string stadt;
-        List<Buch> buecher;
+        public List<Buch> buecher;
         List<Kunde> kunden;
         List<Ausleihe> ausleihen;
+
         //Konstruktor
         public Bibliothek(string name, string stadt)
         {
@@ -20,6 +21,13 @@ namespace Bibliothek
             kunden = new List<Kunde>();
             ausleihen = new List<Ausleihe>();
         }
+
+        public void BuecherHinzufuegen(Buch buch)
+        {
+            buecher.Add(buch);
+        }
+
+        public List<Buch> Buecher => buecher;
 
         private int naechsteKundennummer = 0;
         public Kunde KundeErstellen(string name, string adresse)
@@ -42,9 +50,84 @@ namespace Bibliothek
             }
             return null;
         }
-        public void BuecherHinzufuegen(Buch buch)
+        public bool Ausleihverfahren(string isbn, Kunde kunde)
         {
-            buecher.Add(buch);
+            Buch gefundenesBuch = null;
+
+            foreach (Buch b in buecher)
+            {
+                if (b.isbn == isbn)
+                {
+                    gefundenesBuch = b;
+                    break;
+                }
+            }
+
+            if (gefundenesBuch == null)
+            {
+                Console.WriteLine("Buch nicht gefunden.");
+                return false;
+            }
+
+            foreach (Ausleihe a in ausleihen)
+            {
+                if (a.buch == gefundenesBuch && a.rueckgabedatum == null)
+                {
+                    Console.WriteLine("Buch ist bereits ausgeliehen.");
+                    return false;
+                }
+            }
+
+            ausleihen.Add(new Ausleihe(gefundenesBuch, kunde));
+            return true;
+        }
+        public bool Zurueckgeben(string isbn, Kunde kunde)
+        {
+            foreach (Ausleihe a in ausleihen)
+            {
+                if (a.buch.isbn == isbn && a.kunde == kunde && a.rueckgabedatum == null)
+                {
+                    a.rueckgabedatum = DateTime.Now;
+                    Console.WriteLine($"Buch '{a.buch.titel}' erfolgreich zurückgegeben!");
+                    return true;
+                }
+            }
+
+            Console.WriteLine("Keine aktive Ausleihe für dieses Buch gefunden.");
+            return false;
+        }
+
+        public void KundendetailsAusgeben(Kunde kunde)
+        {
+            if (kunde == null)
+            {
+                Console.WriteLine("Kein Kunde ausgewählt.");
+            }
+
+            Console.WriteLine("\n=== Kundendetails ===");
+            Console.WriteLine($"\nKundennummer: {kunde.kundennummer}");
+            Console.WriteLine($"\nName: {kunde.name}");
+            Console.WriteLine($"\nAdresse; {kunde.adresse}");
+            Console.WriteLine($"\n====================");
+
+            Console.WriteLine("\nAktuelle Ausleihen:");
+            bool hatAusleihen = false;
+            foreach (Ausleihe a in ausleihen)
+            {
+                if (a.kunde == kunde && a.rueckgabedatum == null)
+                {
+                    Console.WriteLine($"- {a.buch.titel} (ISBN: {a.buch.isbn}) ausgeliehen am {a.ausleihdatum.ToShortDateString()}");
+                    hatAusleihen = true;
+                }
+            }
+            if (!hatAusleihen)
+            {
+                Console.WriteLine("Keine aktuellen Ausleihen.");
+            }
+
+
+
+
         }
     }
 }

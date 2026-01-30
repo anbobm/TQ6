@@ -8,6 +8,18 @@ namespace Bibliothek
         {
             Bibliothek bib = new Bibliothek("Stadtbibliothek", "Mönchengladbach");
 
+            bib.BuecherHinzufuegen(new Buch("Die Bibel", "Verschiedene", "0000000000000", 0, "Fantasy"));
+            bib.BuecherHinzufuegen(new Buch("Per Anhalter durch die Galaxis", "Douglas Adams", "4204204200420", 1979, "Science Fiction"));
+            bib.BuecherHinzufuegen(new Buch("Das Kapital", "Karl Marx", "1867186718671", 1867, "Wirtschaft"));
+            bib.BuecherHinzufuegen(new Buch("Mord im Orient Express", "Agatha Christie", "1934193419340", 1934, "Kriminal Roman"));
+
+            Console.WriteLine("=== Bücher in der Bibliothek ===");
+            foreach (Buch b in bib.Buecher) // falls buecher public gemacht
+            {
+                Console.WriteLine($"Titel: {b.titel}, Autor: {b.autor}, ISBN: {b.isbn}, Jahr: {b.erscheinungsjahr} Genre: {b.genre}");
+            }
+            Console.WriteLine("==============================\n");
+
             Kunde eingeloggterKunde = null;
 
             while (true)
@@ -77,18 +89,26 @@ namespace Bibliothek
                     string eingabe = Console.ReadLine();
                     if (eingabe == "1")
                     {
-                        //Bibliothek.Ausleihen();
-                        Console.WriteLine("Coming Soon");
+                        Console.Write("Bitte den QR Code scannen:");
+                        string isbn = Console.ReadLine();
+
+                        bool erfolg = bib.Ausleihverfahren(isbn, eingeloggterKunde);
                     }
                     else if (eingabe == "2")
                     {
-                        //Bibliothek.Zurueckgeben();
-                        Console.WriteLine("Coming Soon");
+                        Console.WriteLine("Bitte den QR Code scannen:");
+                        string isbn = Console.ReadLine();
+
+                        bool erfolg = bib.Zurueckgeben(isbn, eingeloggterKunde);
+
+                        if (!erfolg)
+                        {
+                            Console.WriteLine("Rückgabe nicht möglich. Bitte erneut probieren");
+                        }
                     }
                     else if (eingabe == "3")
                     {
-                        //Bibliothek.KundendetailsAusgeben();
-                        Console.WriteLine("Coming Soon");
+                        bib.KundendetailsAusgeben(eingeloggterKunde);   
                     }
                     else if (eingabe == "0")
                     {

@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Reflection.Metadata.Ecma335;
+using System.Runtime.InteropServices;
 using System.Text;
 
 namespace Bibliothek
@@ -18,5 +20,6 @@ namespace Bibliothek
             ausleihdatum = DateTime.Now;
             rueckgabedatum = null;
         }
+        
     }
 }

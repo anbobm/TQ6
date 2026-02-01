@@ -1,4 +1,6 @@
-﻿namespace ErsterProjekt
+﻿using Microsoft.Data.Sqlite;
+using Microsoft.Data;
+namespace ErsterProjekt
 {
     internal class Program
    {
@@ -33,9 +35,35 @@
                kg.Kontoauszug();
                */
 
+            /*
+                        Bank deutscheBank = new Bank("Deutsche Bank", "Berlin Brandenburg", "Berlin", "Hauptstrasse 2");
+                        deutscheBank.BankMenueOeffnen();*/
 
-            Bank deutscheBank = new Bank("Deutsche Bank", "Berlin Brandenburg", "Berlin", "Hauptstrasse 2");
-            deutscheBank.BankMenueOeffnen();
+
+            string connectionString = "Data Source=C:\\Users\\MYTQ\\Desktop\\repostory\\Bibliothekverwaltungsystemm\\Kunden.db";
+            using (SqliteConnection connection = new SqliteConnection(connectionString))
+            {
+                connection.Open();
+                Console.WriteLine("Verbindung erfolgreich");
+
+
+
+
+                string sql = "SELECT * FROM Kunden Where Name = 'Clara' ";
+                SqliteCommand command = new SqliteCommand(sql, connection);
+                SqliteDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    Console.WriteLine(
+                    $"{reader["Id"]}: {reader["Name"]} ({reader["Alter"]} Jahre)"
+                    );
+                }
+            }
+
+        
+
+
+
 
         }
     }

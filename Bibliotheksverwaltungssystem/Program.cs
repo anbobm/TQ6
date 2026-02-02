@@ -1,52 +1,85 @@
-﻿namespace Bibliotheksverwaltungssystem
+﻿using Microsoft.Data.Sqlite;
+using Microsoft.Data;
+namespace Bibliotheksverwaltungssystem
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-            //TEST3
-            // -------------------------
-            // Bibliothek und Testdaten
-            // -------------------------
-            Bibliothek bibliothek = new Bibliothek();
-
-            // Kunden erstellen
-            Kunde kunde1 = bibliothek.KundeErstellen(1, "Max Mustermann", "Musterstraße 1, 88888 Musterstadt");
-
-            // Bücher erstellen
-            Buch buch1 = new Buch("978-3-16-148410-0", "C# lernen", "Peter Schmidt", 2022);
-            Buch buch2 = new Buch("978-1-23-456789-0", "Programmieren für Anfänger", "Anna Becker", 2021);
-            Buch buch3 = new Buch("978-0-12-345678-9", "Datenstrukturen", "John Doe", 2020);
-            Buch buch4 = new Buch("978-0-98-765432-1", "Algorithmen", "Jane Smith", 2019);
-            Buch buch5 = new Buch("978-1-11-111111-1", "Datenbanken", "Alice Meyer", 2018);
-            Buch buch6 = new Buch("978-2-22-222222-2", "Netzwerke", "Bob Schulz", 2017);
-
-            // -------------------------
-            // 1. Ausleihen testen
-            // -------------------------
-            Console.WriteLine("\n=== Ausleihen testen (Limit 5) ===");
-
-            Buch[] alleBuecher = { buch1, buch2, buch3, buch4, buch5, buch6 };
-
-            for (int i = 0; i < alleBuecher.Length; i++)
+            string connectionString = "Data Source=C:\\Users\\mytq\\Documents\\Repositories\\Bibliotheksverwaltungssystem\\Kunden.db";
+            using (SqliteConnection connection = new SqliteConnection(connectionString))
             {
-                bool erfolgreich = bibliothek.AusleihProzessStarten(alleBuecher[i], kunde1);
-                Console.WriteLine($"Versuch {i + 1}: Ausleihe von '{alleBuecher[i].Titel}' an {kunde1.Name} erfolgreich? {erfolgreich}");
+                connection.Open();
+                Console.WriteLine("Verbindung erfolgreich");
+
+
+                //string sql = "SELECT * FROM Kunden";
+                string sql = "SELECT * FROM Kunden WHERE Names = 'Anna'";
+                SqliteCommand command = new SqliteCommand(sql, connection);
+                SqliteDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    Console.WriteLine(
+                    $"{reader["Id"]}: {reader["Names"]} ({reader["Age"]} Jahre)"
+                    );
+                }
+
+
+
+
+
             }
+            //C: \Users\mytq\Documents\Repositories\Bibliotheksverwaltungssystem\Kunden.db
 
-            // -------------------------
-            // 2. Endstatus anzeigen
-            // -------------------------
-            Console.WriteLine("\n=== Kunde Endstatus ===");
-            kunde1.KundendetailsAnzeigen();
 
-            Console.WriteLine("\n=== Bücherstatus ===");
-            foreach (Buch b in alleBuecher)
-            {
-                Console.WriteLine(b);
-            }
 
-            Console.WriteLine("\nDrücke eine Taste zum Beenden...");
+
+
+
+
+            ////TEST3
+            //// -------------------------
+            //// Bibliothek und Testdaten
+            //// -------------------------
+            //Bibliothek bibliothek = new Bibliothek();
+
+            //// Kunden erstellen
+            //Kunde kunde1 = bibliothek.KundeErstellen(1, "Max Mustermann", "Musterstraße 1, 88888 Musterstadt");
+
+            //// Bücher erstellen
+            //Buch buch1 = new Buch("978-3-16-148410-0", "C# lernen", "Peter Schmidt", 2022);
+            //Buch buch2 = new Buch("978-1-23-456789-0", "Programmieren für Anfänger", "Anna Becker", 2021);
+            //Buch buch3 = new Buch("978-0-12-345678-9", "Datenstrukturen", "John Doe", 2020);
+            //Buch buch4 = new Buch("978-0-98-765432-1", "Algorithmen", "Jane Smith", 2019);
+            //Buch buch5 = new Buch("978-1-11-111111-1", "Datenbanken", "Alice Meyer", 2018);
+            //Buch buch6 = new Buch("978-2-22-222222-2", "Netzwerke", "Bob Schulz", 2017);
+
+            //// -------------------------
+            //// 1. Ausleihen testen
+            //// -------------------------
+            //Console.WriteLine("\n=== Ausleihen testen (Limit 5) ===");
+
+            //Buch[] alleBuecher = { buch1, buch2, buch3, buch4, buch5, buch6 };
+
+            //for (int i = 0; i < alleBuecher.Length; i++)
+            //{
+            //    bool erfolgreich = bibliothek.AusleihProzessStarten(alleBuecher[i], kunde1);
+            //    Console.WriteLine($"Versuch {i + 1}: Ausleihe von '{alleBuecher[i].Titel}' an {kunde1.Name} erfolgreich? {erfolgreich}");
+            //}
+
+            //// -------------------------
+            //// 2. Endstatus anzeigen
+            //// -------------------------
+            //Console.WriteLine("\n=== Kunde Endstatus ===");
+            //kunde1.KundendetailsAnzeigen();
+
+            //Console.WriteLine("\n=== Bücherstatus ===");
+            //foreach (Buch b in alleBuecher)
+            //{
+            //    Console.WriteLine(b);
+            //}
+
+            //Console.WriteLine("\nDrücke eine Taste zum Beenden...");
 
 
 
@@ -147,8 +180,8 @@
             //// -------------------------
             //// 2. Kunden erstellen
             //// -------------------------
-            //Kunde kunde1 = bibliothek.KundeErstellen(1, "Max Mustermann", "Musterstraße 1");
-            //Kunde kunde2 = bibliothek.KundeErstellen(2, "Anna Müller", "Beispielweg 5");
+            //Kunde kunde1 = bibliothek.KundeErstellen(8, "Max Mustermann", "Musterstraße 1");
+            //Kunde kunde2 = bibliothek.KundeErstellen(5, "Anna Müller", "Beispielweg 5");
 
             //// -------------------------
             //// 3. Bücher erstellen
@@ -198,6 +231,7 @@
 
             //Console.WriteLine("\n=== Kundendetails ===");
             //kunde1.KundendetailsAnzeigen();
+            //kunde2.KundendetailsAnzeigen();
 
 
 
@@ -210,5 +244,5 @@
 
 
         }
-}
+    }
 }

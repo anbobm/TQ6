@@ -8,15 +8,15 @@ namespace Bibliotheksverwaltungssystem
     internal class Bibliothek
     {
         //Attribute
-        private List <Buch> buecher;
+        private List<Buch> buecher;
         private List<Ausleihe> ausleihen;
         private List<Kunde> kunden;
 
         //Konstruktor
         public Bibliothek()
         {
-            buecher = new List <Buch>();
-            ausleihen = new List <Ausleihe>();
+            buecher = new List<Buch>();
+            ausleihen = new List<Ausleihe>();
             kunden = new List<Kunde>();
         }
 
@@ -45,13 +45,18 @@ namespace Bibliotheksverwaltungssystem
         {
             if (PruefeBuchVerfuegbarkeit(buch))
             {
-                Ausleihe ausleihe = new Ausleihe(buch, kunde);
-                ausleihe.StarteAusleihe();
+                if (kunde.AnzahlAusleihen() < 5)
+                {
 
-                ausleihen.Add(ausleihe);
-                kunde.BuchAusleihen(ausleihe);
 
-                return true;
+                    Ausleihe ausleihe = new Ausleihe(buch, kunde);
+                    ausleihe.StarteAusleihe();
+
+                    ausleihen.Add(ausleihe);
+                    kunde.BuchAusleihen(ausleihe);
+
+                    return true;
+                }
             }
             return false;
         }

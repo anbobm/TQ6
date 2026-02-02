@@ -1,10 +1,12 @@
-﻿namespace Bibliothekverwaltungsystemm
+﻿/*using Bibliothekverwaltungsystemm.Models;
+
+namespace Bibliothekverwaltungsystemm
 {
     internal class Program
     {
         static void Main()
         {
-            /*  Buch bu = new Buch("978-1234567890", "Mein Titel", "Mein Autor", 2024);
+            *//*  Buch bu = new Buch("978-1234567890", "Mein Titel", "Mein Autor", 2024);
               bu.IstVerfuegbar();
               bu.SetzeAusgeliehen();
               bu.SetzeZurueckgegeben();*/
@@ -22,7 +24,7 @@
                         bu.SetzeAusgeliehen();   // ❌ Fehlermeldung
                         bu.SetzeZurueckgegeben(); // OK
                         bu.SetzeAusgeliehen();   // OK
-            */
+            *//*
 
             Bibliothek meinbibliothek = new Bibliothek();
             meinbibliothek.kundeErstellen(123, "Saba", "München");
@@ -32,3 +34,4 @@
         }
     }
 }
+*/

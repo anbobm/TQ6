@@ -2,17 +2,19 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Bibliothekverwaltungsystemm
+namespace Bibliothekverwaltungsystemm.Models
 {
     internal class Ausleihe
     {
         //Attribute
-        private Buch buch;
-        private Kunde kunde;
-        private DateOnly ausleihdatum;
-        private DateOnly rueckgabedatum;
+        public Buch buch;
+        public Kunde kunde;
+        public DateOnly ausleihdatum;
+        public DateOnly rueckgabedatum;
 
-
+        // Jede Ausleihe braucht eine ID
+        private static int counter = 1;
+        public int Id { get; }
         //konstruktor
         public Ausleihe(Buch buch, Kunde kunde, DateOnly ausleihdatum)
         {
@@ -20,6 +22,7 @@ namespace Bibliothekverwaltungsystemm
             this.kunde = kunde;
             this.ausleihdatum = ausleihdatum; 
             this.rueckgabedatum = default;// noch kein Rückgabedatum
+            this.Id = counter++;
          
 
 

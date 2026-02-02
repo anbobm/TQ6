@@ -1,4 +1,4 @@
-﻿namespace Bibliothekverwaltungsystemm
+﻿namespace Bibliothekverwaltungsystemm.Models
 {
     internal class Buch
     {

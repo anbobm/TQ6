@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CsharpProjektsRandom", "..\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bibliothekverwaltungsystemm", "Bibliothekverwaltungsystemm\Bibliothekverwaltungsystemm.csproj", "{91A45200-5356-4489-97BE-766BC39B9BAC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bibliothekverwaltungssystemm.Web", "Bibliothekverwaltungssystemm.Web\Bibliothekverwaltungssystemm.Web.csproj", "{7741CB4E-CF1B-4ABE-94A6-23EB12768ACE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{91A45200-5356-4489-97BE-766BC39B9BAC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{91A45200-5356-4489-97BE-766BC39B9BAC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{91A45200-5356-4489-97BE-766BC39B9BAC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7741CB4E-CF1B-4ABE-94A6-23EB12768ACE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7741CB4E-CF1B-4ABE-94A6-23EB12768ACE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7741CB4E-CF1B-4ABE-94A6-23EB12768ACE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7741CB4E-CF1B-4ABE-94A6-23EB12768ACE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

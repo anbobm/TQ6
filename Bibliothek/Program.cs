@@ -82,14 +82,14 @@ namespace Bibliothek
                     Console.WriteLine("=== Willkommen ===");
                     Console.WriteLine("\nWas möchten sie tun?");
                     Console.WriteLine("\n1. Buch ausleihen");
-                    Console.WriteLine("\n2. Buch zurück geben");
+                    Console.WriteLine("\n2. Buch zurückgeben");
                     Console.WriteLine("\n3. Meine Daten anzeigen");
                     Console.WriteLine("\n0. Logout");
 
                     string eingabe = Console.ReadLine();
                     if (eingabe == "1")
                     {
-                        Console.Write("Bitte den QR Code scannen:");
+                        Console.Write("Bitte den QR Code scannen:\n");
                         string isbn = Console.ReadLine();
 
                         bool erfolg = bib.Ausleihverfahren(isbn, eingeloggterKunde);

@@ -107,7 +107,7 @@ namespace Bibliothek
             Console.WriteLine("\n=== Kundendetails ===");
             Console.WriteLine($"\nKundennummer: {kunde.kundennummer}");
             Console.WriteLine($"\nName: {kunde.name}");
-            Console.WriteLine($"\nAdresse; {kunde.adresse}");
+            Console.WriteLine($"\nAdresse: {kunde.adresse}");
             Console.WriteLine($"\n====================");
 
             Console.WriteLine("\nAktuelle Ausleihen:");

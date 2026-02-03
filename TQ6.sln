@@ -29,6 +29,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonenNahVerkehr", "Perso
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bibliothekverwaltungssystem", "Bibliothekverwaltungssystem\Bibliothekverwaltungssystem.csproj", "{56EDF771-8D71-4877-B840-A543FB60CC02}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HTML", "HTML\HTML.csproj", "{81F881F6-1C15-4255-8F08-7DA0582D3EFB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -87,6 +89,10 @@ Global
 		{56EDF771-8D71-4877-B840-A543FB60CC02}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{56EDF771-8D71-4877-B840-A543FB60CC02}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{56EDF771-8D71-4877-B840-A543FB60CC02}.Release|Any CPU.Build.0 = Release|Any CPU
+		{81F881F6-1C15-4255-8F08-7DA0582D3EFB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{81F881F6-1C15-4255-8F08-7DA0582D3EFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{81F881F6-1C15-4255-8F08-7DA0582D3EFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{81F881F6-1C15-4255-8F08-7DA0582D3EFB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Begrüßung</title>
+</head>
+<body>
+    <h1>Willkommen!</h1>
+
+   <input type="text" id="nameInput" placeholder="Dein Name">
+
+    <button id="button">click mich</button>
+
+    <p id="ausgabe"></p>
+
+    <script>
+       function  begruesse( ){
+        const name =document.getElementById("nameInput").value;
+        const ausgabe = document.getElementById("ausgabe");
+        ausgabe.textContent = "Hello" +  name + "! Du hast gerade zum ersten Mal JavaScript benutzt!";
+       }
+    </script>
+</body>
+</html>

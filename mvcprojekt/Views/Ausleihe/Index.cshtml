@@ -1,0 +1,48 @@
+﻿@model IEnumerable<Mvcprojekt.Models.Ausleihe>
+
+<h2>Alle Ausleihen</h2>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Buch</th>
+            <th>Kunde</th>
+            <th>Ausleihdatum</th>
+            <th>Rückgabedatum</th>
+            <th>Aktion</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var a in Model)
+        {
+            <tr>
+                <td>@a.Buch.Titel</td>
+                <td>@a.Kunde.Name</td>
+                <td>@a.Ausleihdatum</td>
+                <td>
+                    @(a.Rueckgabedatum == default
+                                    ? "Noch nicht zurückgegeben"
+                                    : a.Rueckgabedatum.ToString())
+                </td>
+
+                <td>
+                    @if (a.Rueckgabedatum == default)
+                    {
+                        <form method="post" asp-action="Return">
+                            <input type="hidden" name="ausleiheId" value="@a.Id" />
+                            <button class="btn btn-warning">Zurückgeben</button>
+                        </form>
+                    }
+                    else
+                    {
+                        <span class="text-success">Erledigt</span>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a class="btn btn-primary" asp-action="Create">Neue Ausleihe starten</a>
+

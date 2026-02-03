@@ -1,0 +1,34 @@
+﻿<h2>Neue Ausleihe starten</h2>
+
+<form method="post">
+    <div class="form-group">
+        <label>Buch auswählen</label>
+        <select name="buchId" class="form-control">
+            @foreach (var buch in ViewBag.Buecher)
+            {
+                <option value="@buch.Id">@buch.Titel</option>
+            }
+        </select>
+    </div>
+
+    <br>
+
+    <div class="form-group">
+        <label>Kunde auswählen</label>
+        <select name="kundenId" class="form-control">
+            @foreach (var kunde in ViewBag.Kunden)
+            {
+                <option value="@kunde.Id">@kunde.Name</option>
+            }
+        </select>
+    </div>
+
+    <br>
+
+    <button type="submit" class="btn btn-success">Ausleihe starten</button>
+</form>
+
+<br>
+
+<a class="btn btn-secondary" asp-action="Index">Zurück zur Übersicht</a>
+

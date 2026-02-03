@@ -1,0 +1,26 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eine erste Demo</title>
+</head>
+<body>
+
+    <h1>Willkommen!</h1>
+
+    <p id="message">Klick den Button für eine Begrüßung</p>
+
+    <button id="button">Sag Hallo</button>
+
+    <script>
+        const button = document.getElementById("button");
+        const message = document.getElementById("message");
+
+        function clickHandler() {
+            message.textContent = "Hallo! Du hast gerade zum ersten mal JavaScript benutzt!"
+        }
+        button.addEventListener("click", clickHandler);
+    </script>
+</body>
+</html>

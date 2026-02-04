@@ -1,0 +1,72 @@
+<!--
+------------------------------------------------------------------------------------------------   
+Aufgabe
+Erweitere die HTML Datei um eine Input Box, in die der Benutzer seinen Namen eintragen kann:
+
+<input type="text">
+Wenn der Benutzer dann den bereits vorhandenen Button klickt, dann soll der Begrüßungtext auch seinen eingetragenen Namen beinhalten, z.B. "Hallo Max! Du hast gerade zum ersten mal JavaScript benutzt!". Wenn das Textfeld leer ist, dann soll stattdessen "Gib erst deinen Namen ein." ausgegeben werden.
+
+Den Wert der Input-Box erhält man, mit der Eigenschaft .value. 
+-------------------------------------------------------------------------------------------------
+-->  
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eine erste Datei</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+            background-color: grey;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        input {
+            padding: 10px;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Willkommen!</h1>
+
+    <p id="message">Klick den Button für eine Begrüßung</p>
+
+    <input type="text" id="usernameInput" placeholder="Hier kommt dein Name rein!">
+
+    <br><br><br>
+
+    <button id="button">Sag Hallo</button>
+
+    <script>
+        const button = document.getElementById("button");
+        const message = document.getElementById("message");
+        const usernameInput = document.getElementById("usernameInput");
+
+        function greetUser() {
+            const name = usernameInput.value;
+
+            if (name.trim() === "") {
+                message.textContent = "Bitte gib zuerst deinen namen ein!";
+            } else {
+                message.textContent = `Hallo ${name}! Du hast gerade zum ersten mal JavaScript benutzt!`;
+            }
+        }
+
+        button.addEventListener("click", greetUser);
+    </script>
+</body>
+
+</html>

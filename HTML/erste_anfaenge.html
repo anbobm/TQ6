@@ -43,9 +43,12 @@
         function clickHandler() {
             const name = nameInput.value;
 
-            if (name === "") {
+            if (name === "")
+            {
                 message.textContent = "Gib erst deinen Namen ein.";
-            } else {
+            }
+            else
+            {
                 message.textContent = "Hallo " + name + "! Du hast gerade zum ersten mal JavaScript benutzt!";
             }
         }

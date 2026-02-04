@@ -20,9 +20,9 @@
 <body>
     <h1>Willkommen!</h1>
 
-    <input type="text" id="name">
-
     <p id="message">Klick den Button für eine Begrüßung</p>
+
+    <input id="name" type="text">
 
     <button id="button">Sag Hallo</button>
 
@@ -32,11 +32,12 @@
         const nameInput = document.getElementById("name");
 
         function clickHandler() {
-            const name = nameInput.value;
+            const name = nameInput.value.trim();
 
             if(name === "") {
-                message.textContent = "Du musst erst einen Namen eingeben";
-            } else {
+                message.textContent = "Gib erstmal deinen Namen ein!"
+            }
+            else {
                 message.textContent = `Hallo ${name}! Du hast gerade zum ersten mal JavaScript benutzt!`;
             }
         }

@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo List</title>
+</head>
+<body>
+    <h1>Todo List</h1>
+
+    <input type="text" id="todoInput" placeholder="New task">
+    <button id="addButton">Add</button>
+    <button id="clearButton">Clear</button>
+
+    <p id="errorMessage" style="color: red;"></p>
+
+    <ul id="todoList"></ul>
+
+    <script>
+        const todoInput = document.getElementById("todoInput");
+        const addButton = document.getElementById("addButton");
+        const clearButton = document.getElementById("clearButton");
+        const todoList = document.getElementById("todoList");
+        const errorMessage = document.getElementById("errorMessage");
+
+        addButton.addEventListener("click", function () {
+            const text = todoInput.value.trim();
+
+            if (text === "") {
+                errorMessage.textContent = "Bitte gib ein Todo ein!";
+                return;
+            }
+
+            errorMessage.textContent = "";
+
+            const li = document.createElement("li");
+            li.textContent = text;
+            todoList.appendChild(li);
+
+            todoInput.value = "";
+        });
+
+        clearButton.addEventListener("click", function () {
+            todoList.innerHTML = "";
+            errorMessage.textContent = "";
+        });
+    </script>
+</body>
+</html>

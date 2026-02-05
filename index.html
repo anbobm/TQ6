@@ -3,23 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Begrüßung</title>
+    <title>Eine erste Demo</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .error {
+            color: red;
+        }
+    </style>
 </head>
 <body>
     <h1>Willkommen!</h1>
 
-   <input type="text" id="nameInput" placeholder="Dein Name">
+    <p id="message">Klick den Button für eine Begrüßung</p>
 
-    <button id="button">click mich</button>
+    <input id="name" type="text">
 
-    <p id="ausgabe"></p>
+    <button id="button">Sag Hallo</button>
 
     <script>
-       function  begruesse( ){
-        const name =document.getElementById("nameInput").value;
-        const ausgabe = document.getElementById("ausgabe");
-        ausgabe.textContent = "Hello" +  name + "! Du hast gerade zum ersten Mal JavaScript benutzt!";
-       }
+        const button = document.getElementById("button");
+        const message = document.getElementById("message");
+        const nameInput = document.getElementById("name");
+
+        function clickHandler() {
+            const name = nameInput.value.trim();
+
+            if(name === "") {
+                message.textContent = "Gib erstmal deinen Namen ein!"
+                message.classList.add(["error"]);
+            }
+            else {
+                message.textContent = `Hallo ${name}! Du hast gerade zum ersten mal JavaScript benutzt!`;
+                message.classList.remove(["error"]);
+            }
+        }
+
+        button.addEventListener("click", clickHandler);
     </script>
 </body>
 </html>

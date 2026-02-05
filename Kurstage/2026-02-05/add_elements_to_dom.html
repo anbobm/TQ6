@@ -1,0 +1,10 @@
+<body id="body">
+    <button id="btn">Klick mich</button>
+    <script>
+        btn.addEventListener("click", function(){
+            const el = document.createElement("p");
+            el.textContent = "Ich bin ein Absatz!";
+            body.appendChild(el);
+        });
+    </script>
+</body>

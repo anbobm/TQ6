@@ -1,9 +1,15 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="de">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Todo List</title>
+
+    <style>
+        .done {
+            text-decoration: line-through;
+        }
+    </style>
 </head>
 <body>
     <h1>Todo List</h1>
@@ -17,55 +23,70 @@
     <ul id="todoList"></ul>
 
     <script>
-    const todoInput = document.querySelector("#todoInput");
-    const addBtn = document.querySelector("#addBtn");
-    const clearBtn = document.querySelector("#clearBtn");
-    const todoList = document.querySelector("#todoList");
-    const errorEl = document.querySelector("#error");
-    const countEl = document.querySelector("#count");
+        const todoInput = document.querySelector("#todoInput");
+        const addBtn = document.querySelector("#addBtn");
+        const clearBtn = document.querySelector("#clearBtn");
+        const todoList = document.querySelector("#todoList");
+        const errorEl = document.querySelector("#error");
+        const countEl = document.querySelector("#count");
 
-    // Todos aus localStorage laden
-    let todos = JSON.parse(localStorage.getItem("todos")) || [];
+        // Todos aus localStorage laden
+        let todos = JSON.parse(localStorage.getItem("todos")) || [];
 
-    function renderTodos() {
-      todoList.innerHTML = "";
+        function renderTodos() {
+            todoList.innerHTML = "";
 
-      for (let todo of todos) {
-        const li = document.createElement("li");
-        li.textContent = todo;
-        todoList.appendChild(li);
-      }
+            for (let index = 0; index < todos.length; index++) {
+                const todo = todos[index];
 
-      // Anzahl anzeigen
-      countEl.textContent = `Anzahl Todos: ${todos.length}`;
+                const li = document.createElement("li");
+                li.textContent = todo.titel;
 
-      // State speichern
-      localStorage.setItem("todos", JSON.stringify(todos));
-    }
+                // erledigt → Klasse setzen
+                if (todo.erledigt) {
+                    li.classList.add("done");
+                }
 
-    addBtn.addEventListener("click", function () {
-      const value = todoInput.value.trim();
+                // Klick toggelt erledigt
+                li.addEventListener("click", function () {
+                    todo.erledigt = !todo.erledigt;
+                    renderTodos();
+                });
 
-      if (value === "") {
-        errorEl.textContent = "Bitte eine Aufgabe eingeben.";
-        return;
-      }
+                todoList.appendChild(li);
+            }
 
-      todos.push(value);
-      todoInput.value = "";
-      errorEl.textContent = "";
+            countEl.textContent = `Anzahl Todos: ${todos.length}`;
+            localStorage.setItem("todos", JSON.stringify(todos));
+        }
 
-      renderTodos();
-    });
+        addBtn.addEventListener("click", function () {
+            const value = todoInput.value.trim();
 
-    clearBtn.addEventListener("click", function () {
-      todos = [];
-      errorEl.textContent = "";
-      renderTodos();
-    });
+            if (value === "") {
+                errorEl.textContent = "Bitte eine Aufgabe eingeben.";
+                return;
+            }
 
-    // Initiales Rendern nach dem Laden
-    renderTodos();
+            // NEU: Todo als Objekt
+            todos.push({
+                titel: value,
+                erledigt: false
+            });
+
+            todoInput.value = "";
+            errorEl.textContent = "";
+
+            renderTodos();
+        });
+
+        clearBtn.addEventListener("click", function () {
+            todos = [];
+            errorEl.textContent = "";
+            renderTodos();
+        });
+
+        renderTodos();
     </script>
 </body>
 </html>

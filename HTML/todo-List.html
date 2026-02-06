@@ -4,10 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Todo List</title>
+    <!-- <link rel="stylesheet" href="stylesheet.css"> -->
 
     <style>
         .done {
             text-decoration: line-through;
+            color: #777777;
         }
     </style>
 </head>
@@ -30,7 +32,7 @@
         const errorEl = document.querySelector("#error");
         const countEl = document.querySelector("#count");
 
-        // Todos aus localStorage laden
+        // ToDos aus localStorage laden
         let todos = JSON.parse(localStorage.getItem("todos")) || [];
 
         function renderTodos() {
@@ -56,6 +58,7 @@
                 todoList.appendChild(li);
             }
 
+            // ToDos in localStorage schreiben
             countEl.textContent = `Anzahl Todos: ${todos.length}`;
             localStorage.setItem("todos", JSON.stringify(todos));
         }
@@ -68,7 +71,7 @@
                 return;
             }
 
-            // NEU: Todo als Objekt
+            // ToDo als Objekt
             todos.push({
                 titel: value,
                 erledigt: false

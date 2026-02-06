@@ -4,6 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Todo List</title>
+
+    <style>
+        .done {
+            text-decoration: line-through;
+            color: gray;
+        }
+
+        li {
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
     <h1>Todo List</h1>
@@ -25,13 +36,11 @@
         const errorMessage = document.getElementById("errorMessage");
         const todoCount = document.getElementById("todoCount");
 
-
         let todos = [];
 
         function saveTodos() {
             localStorage.setItem("todos", JSON.stringify(todos));
         }
-
 
         function updateTodoCount() {
             todoCount.textContent = "Anzahl Todos: " + todos.length;
@@ -39,11 +48,24 @@
 
         function renderTodos() {
             todoList.innerHTML = "";
-            todos.forEach(todo => {
+
+            todos.forEach((todo, index) => {
                 const li = document.createElement("li");
-                li.textContent = todo;
+                li.textContent = todo.text;
+
+                if (todo.done) {
+                    li.classList.add("done");
+                }
+
+                li.addEventListener("click", function () {
+                    todos[index].done = !todos[index].done;
+                    saveTodos();
+                    renderTodos();
+                });
+
                 todoList.appendChild(li);
             });
+
             updateTodoCount();
         }
 
@@ -65,7 +87,11 @@
 
             errorMessage.textContent = "";
 
-            todos.push(text);
+            todos.push({
+                text: text,
+                done: false
+            });
+
             saveTodos();
             renderTodos();
 

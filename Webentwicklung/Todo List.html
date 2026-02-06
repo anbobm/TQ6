@@ -13,6 +13,7 @@
     <button id="clearButton">Clear</button>
 
     <p id="errorMessage" style="color: red;"></p>
+    <p id="todoCount">Anzahl Todos: 0</p>
 
     <ul id="todoList"></ul>
 
@@ -22,6 +23,37 @@
         const clearButton = document.getElementById("clearButton");
         const todoList = document.getElementById("todoList");
         const errorMessage = document.getElementById("errorMessage");
+        const todoCount = document.getElementById("todoCount");
+
+
+        let todos = [];
+
+        function saveTodos() {
+            localStorage.setItem("todos", JSON.stringify(todos));
+        }
+
+
+        function updateTodoCount() {
+            todoCount.textContent = "Anzahl Todos: " + todos.length;
+        }
+
+        function renderTodos() {
+            todoList.innerHTML = "";
+            todos.forEach(todo => {
+                const li = document.createElement("li");
+                li.textContent = todo;
+                todoList.appendChild(li);
+            });
+            updateTodoCount();
+        }
+
+        function loadTodos() {
+            const storedTodos = localStorage.getItem("todos");
+            if (storedTodos) {
+                todos = JSON.parse(storedTodos);
+                renderTodos();
+            }
+        }
 
         addButton.addEventListener("click", function () {
             const text = todoInput.value.trim();
@@ -33,17 +65,21 @@
 
             errorMessage.textContent = "";
 
-            const li = document.createElement("li");
-            li.textContent = text;
-            todoList.appendChild(li);
+            todos.push(text);
+            saveTodos();
+            renderTodos();
 
             todoInput.value = "";
         });
 
         clearButton.addEventListener("click", function () {
-            todoList.innerHTML = "";
+            todos = [];
+            saveTodos();
+            renderTodos();
             errorMessage.textContent = "";
         });
+
+        loadTodos();
     </script>
 </body>
 </html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo List</title>
+</head>
+<body>
+    <h1>Todo List</h1>
+
+    <input type="text" id="todoInput" placeholder="New task">
+    <button id="addBtn">Add</button>
+    <button id="clearBtn">Clear All</button>
+
+    <p id="error" style="color: red;"></p>
+    <p id="count"></p>
+    <ul id="todoList"></ul>
+
+    <script>
+    const todoInput = document.querySelector("#todoInput");
+    const addBtn = document.querySelector("#addBtn");
+    const clearBtn = document.querySelector("#clearBtn");
+    const todoList = document.querySelector("#todoList");
+    const errorEl = document.querySelector("#error");
+    const countEl = document.querySelector("#count");
+
+    // Todos aus localStorage laden
+    let todos = JSON.parse(localStorage.getItem("todos")) || [];
+
+    function renderTodos() {
+      todoList.innerHTML = "";
+
+      for (let todo of todos) {
+        const li = document.createElement("li");
+        li.textContent = todo;
+        todoList.appendChild(li);
+      }
+
+      // Anzahl anzeigen
+      countEl.textContent = `Anzahl Todos: ${todos.length}`;
+
+      // State speichern
+      localStorage.setItem("todos", JSON.stringify(todos));
+    }
+
+    addBtn.addEventListener("click", function () {
+      const value = todoInput.value.trim();
+
+      if (value === "") {
+        errorEl.textContent = "Bitte eine Aufgabe eingeben.";
+        return;
+      }
+
+      todos.push(value);
+      todoInput.value = "";
+      errorEl.textContent = "";
+
+      renderTodos();
+    });
+
+    clearBtn.addEventListener("click", function () {
+      todos = [];
+      errorEl.textContent = "";
+      renderTodos();
+    });
+
+    // Initiales Rendern nach dem Laden
+    renderTodos();
+    </script>
+</body>
+</html>

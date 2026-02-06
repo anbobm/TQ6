@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo List</title>
+</head>
+<body>
+    <h1>Todo List</h1>
+
+    <input type="text" id="todoInput" placeholder="New task">
+    <button id="addBtn">Add</button>
+    <button id="clearBtn">Clear All</button>
+
+    <p id="error"></p>
+
+    <p id="count"></p>
+    <ul id="todoList"></ul>
+
+    <script>
+        const todoInput = document.querySelector("#todoInput");
+        const addBtn = document.querySelector("#addBtn");
+        const clearBtn = document.querySelector("#clearBtn");
+        const todoList = document.querySelector("#todoList");
+        const errorEl = document.querySelector("#error");
+        const count = document.querySelector("#count");
+
+        let todos = [];
+
+        // restore saved todos from localStorage
+        let savedTodos = localStorage.getItem("todos");
+        if(savedTodos) {
+            todos = JSON.parse(savedTodos);
+        }
+        renderTodos();
+
+        function saveTodos() {
+            localStorage.setItem("todos", JSON.stringify(todos));
+        }
+
+        function renderTodos() {
+            todoList.innerHTML = "";
+
+            for (const todo of todos) {
+                const li = document.createElement("li");
+                li.textContent = todo;
+                todoList.appendChild(li);
+            }
+
+            if(todos.length) {
+                count.textContent = `${todos.length} Todos:`;
+            }
+            else {
+                count.textContent = "";
+            }
+        }
+
+        addBtn.addEventListener("click", function () {
+            const todo = todoInput.value;
+
+            if (todo === "") {
+                errorEl.textContent = "Please enter Task name";
+                return;
+            }
+
+            todos.push(todo);
+            saveTodos();
+
+            errorEl.textContent = "";
+            todoInput.value = "";
+
+            renderTodos();
+        });
+
+        clearBtn.addEventListener("click", function () {
+            todos = [];
+            saveTodos();
+
+            renderTodos();
+        });
+
+    </script>
+</body>
+</html>

@@ -5,6 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Todo List</title>
 </head>
+<style>
+    .erledigt {
+        text-decoration: line-through;
+        color: #777777;
+    }
+</style>
 <body>
     <h1>Todo List</h1>
 
@@ -43,7 +49,18 @@
 
             for (const todo of todos) {
                 const li = document.createElement("li");
-                li.textContent = todo;
+                li.textContent = todo.titel;
+
+                if(todo.erledigt) {
+                    li.classList.add("erledigt");
+                }
+
+                li.addEventListener("click", function () {
+                    li.classList.toggle("erledigt");
+                    todo.erledigt = !todo.erledigt;
+                    saveTodos();
+                });
+
                 todoList.appendChild(li);
             }
 
@@ -63,7 +80,7 @@
                 return;
             }
 
-            todos.push(todo);
+            todos.push({titel: todo, erledigt: false});
             saveTodos();
 
             errorEl.textContent = "";

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo List</title>
+</head>
+
+<body>
+   <h1>Todolist</h1>
+
+   <input type="text" id="todoinput" placeholder="New Task">
+   <button id="addbtn">Add</button>
+   <button id="clearbtn">Clear All</button>
+
+   <p id="error"></p>
+   <ul id="todolist"></ul>
+
+<script>
+const todoInput = document.getElementById("todoinput");
+const addBtn = document.getElementById("addbtn");
+const clearBtn = document.getElementById("clearbtn");
+const errorEl = document.getElementById("error");
+const todoList = document.getElementById("todolist");
+
+let todos = [];
+
+function createTodos() {
+    todoList.innerHTML = "";
+
+    for (const todo of todos) {
+        const li = document.createElement("li");
+        li.textContent = todo;
+        todoList.appendChild(li);
+    }
+}
+
+addBtn.addEventListener("click", function () {
+    const todo = todoInput.value;
+
+    if (todo === "") {
+        errorEl.textContent = "Please enter Task name";
+        return;
+    }
+
+    todos.push(todo);
+    errorEl.textContent = "";
+    todoInput.value = "";
+    createTodos();
+});
+
+clearBtn.addEventListener("click", function () {
+    todos = [];
+    createTodos();
+});
+</script>
+
+</body>
+</html>

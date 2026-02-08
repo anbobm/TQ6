@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eine erste Demo</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Willkommen!</h1>
+
+    <p id="message">Klick den Button für eine Begrüßung</p>
+    <input id="name" type="text">
+    <button id="button">Sag Hallo</button>
+  
+
+    <script>
+        const button = document.getElementById("button");
+        const message = document.getElementById("message");
+        const nameInput = document.getElementById("name");
+
+        function clickHandler() {
+           const name = nameInput.value.trim();
+           if (name ===""){
+            message.textContent="Gib bitte deinen name ein";
+           }
+             else{
+                message.textContent = "hello " + name + " du hast gerade erste mal javascript benutzt";
+             }
+        }
+
+        button.addEventListener("click", clickHandler);
+    </script>
+</body>
+</html>

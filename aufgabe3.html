@@ -2,9 +2,9 @@
     <button id="btn">Klick mich</button>
     <script>
         const button = document.getElementById("btn");
+        const body = document.getElementById("body");
         function clickhandler(){
-            const el = button.createElement("p");
-            el.textContent ="ich bin einsatz";
+          body.textContent = "ich bin einsatz"
         }
        button.addEventListener("click", clickhandler);
     </script>

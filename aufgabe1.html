@@ -23,5 +23,16 @@
          <p id="message">Klick den Button für eine Begrüßung</p>
 
     <button id="button">Sag Hallo</button>
+
+    <script>
+        const button = document.getElementById("button")
+        const message = document.getElementById("message");
+
+        function clicHandler(){
+            message.textContent = "Hallo! Du hast gerade zum ersten mal JavaScript benutzt!";
+        }
+        button.addEventListener("click",clickHandler);
+        
+</script>
     </body>
 </html>

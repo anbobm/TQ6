@@ -14,6 +14,7 @@
    <button id="clearbtn">Clear All</button>
 
    <p id="error"></p>
+   <p id="count"></p>
    <ul id="todolist"></ul>
 
 <script>
@@ -22,8 +23,9 @@ const addBtn = document.getElementById("addbtn");
 const clearBtn = document.getElementById("clearbtn");
 const errorEl = document.getElementById("error");
 const todoList = document.getElementById("todolist");
+const count= document.getElementById("count");
 
-let todos = [];
+let todos = JSON.parse(localStorage.getItem("todos")) || [];
 
 function createTodos() {
     todoList.innerHTML = "";
@@ -33,8 +35,13 @@ function createTodos() {
         li.textContent = todo;
         todoList.appendChild(li);
     }
-}
+        // Anzahl anzeigen
+    count.textContent = `Total tasks: ${todos.length}`;
 
+    // Liste speichern
+    localStorage.setItem("todos", JSON.stringify(todos));
+}
+    // 3. Add-Button
 addBtn.addEventListener("click", function () {
     const todo = todoInput.value;
 
@@ -53,6 +60,8 @@ clearBtn.addEventListener("click", function () {
     todos = [];
     createTodos();
 });
+// 5. Beim Laden direkt anzeigen
+createTodos();
 </script>
 
 </body>

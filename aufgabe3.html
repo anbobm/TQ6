@@ -1,0 +1,12 @@
+<body>
+  <button id="btn">Klick mich</button>
+    <p id="off"></p>
+    <script>
+        const button = document.getElementById("btn");
+        const off = document.getElementById("off");
+        function clickhandler(){
+          off.textContent = "ich bin einsatz"
+        }
+       button.addEventListener("click", clickhandler);
+    </script>
+</body>

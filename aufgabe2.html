@@ -15,37 +15,29 @@
             font-size: 16px;
             cursor: pointer;
         }
-        .error {
-            color: red;
-        }
     </style>
 </head>
 <body>
     <h1>Willkommen!</h1>
 
     <p id="message">Klick den Button für eine Begrüßung</p>
-
     <input id="name" type="text">
-
     <button id="button">Sag Hallo</button>
+  
 
     <script>
-      
         const button = document.getElementById("button");
         const message = document.getElementById("message");
         const nameInput = document.getElementById("name");
 
         function clickHandler() {
-            const name = nameInput.value.trim();
-
-            if(name === "") {
-                message.textContent = "Gib erstmal deinen Namen ein!"
-                message.classList.add(["error"]);
-            }
-            else {
-                message.textContent = `Hallo ${name}! Du hast gerade zum ersten mal JavaScript benutzt!`;
-                message.classList.remove(["error"]);
-            }
+           const name = nameInput.value.trim();
+           if (name ===""){
+            message.textContent="Gib bitte deinen name ein";
+           }
+             else{
+                message.textContent = "hello " + name + " du hast gerade erste mal javascript benutzt";
+             }
         }
 
         button.addEventListener("click", clickHandler);

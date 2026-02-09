@@ -1,0 +1,14 @@
+﻿@page
+@model IndexModel
+
+@{
+    ViewData["Title"] = "Todos";
+}
+
+<p>Es ist jetzt @Model.Uhrzeit</p>
+
+<ul>
+    @foreach(var todo in Model.Todos) {
+        <li>@todo.Titel</li>
+    }
+</ul>

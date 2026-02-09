@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo List</title>
+</head>
+<body>
+    <h1>Todo List</h1>
+
+    <input type="text" id="todoInput" placeholder="New task">
+    <button id="addBtn">Add</button>
+    <button id="clearBtn">Clear All</button>
+
+    <p id="error"></p>
+
+    <ul id="todoList"></ul>
+
+    <script>
+        const todoInput = document.querySelector("#todoInput");
+        const addBtn = document.querySelector("#addBtn");
+        const clearBtn = document.querySelector("#clearBtn");
+        const todoList = document.querySelector("#todoList");
+        const errorEl = document.querySelector("#error");
+
+        let todos = [];
+
+        function renderTodos() {
+        // 1. Clear the list
+        // 2. Loop over todos
+        // 3. Create <li> for each todo
+        // 4. Add it to the <ul>
+        }
+
+        addBtn.addEventListener("click", function () {
+        // 1. Read input value
+        // 2. Validate (not empty)
+        // 3. Add to todos array
+        // 4. Clear input + error
+        // 5. Call renderTodos
+        });
+
+        clearBtn.addEventListener("click", function () {
+        // Clear todos array
+        // Clear error
+        // Call renderTodos
+        });
+
+    </script>
+</body>
+</html>
+
+ 

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo List</title>
+</head>
+
+<body>
+
+    <h1>Todo List</h1>
+    <input type="text" id="eingabeFeld" placeholder="Hier Aufgabe eingeben">
+    <button id="hinzufuegenButton">Hinzufügen</button>
+    <button id="allesLoeschenButton">Alles löschen</button>
+
+    <p id="fehlermeldung"></p>
+
+    <ul id="aufgabenListe"></ul>
+    <script>
+        const eingabeFeld = document.getElementById("eingabeFeld");
+        const hinzufuegenButton = document.getElementById("hinzufuegenButton");
+        const allesLoeschenButton = document.getElementById("allesLoeschenButton");
+        const aufgabenListe = document.getElementById("aufgabenListe");
+        const fehlermeldung = document.getElementById("fehlermeldung");
+
+        hinzufuegenButton.addEventListener("click", function () {
+            const aufgabeText = eingabeFeld.value;
+
+            if (aufgabeText.trim() === "") {
+                fehlermeldung.textContent = "Bitte gib eine Aufgabe ein!";
+                fehlermeldung.style.color = "red";
+            } else {
+                const listenEintrag = document.createElement("li");
+                listenEintrag.textContent = aufgabeText;
+
+                aufgabenListe.appendChild(listenEintrag);
+
+                eingabeFeld.value = "";
+                fehlermeldung.textContent = "";
+                fehlermeldung.style.color = "";
+            }
+        });
+        allesLoeschenButton.addEventListener("click", function () {
+            aufgabenListe.innerHTML = "";
+            fehlermeldung.textContent = "";
+            fehlermeldung.style.color = "";
+        });
+    </script>
+</body>
+
+</html>

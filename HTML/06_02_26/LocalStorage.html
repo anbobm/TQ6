@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-do Liste</title>
+    <style>
+        .erledigt {
+            text-decoration: line-through;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>To-do Liste</h1>
+
+    <input type="text" id="todoInput" placeholder="Aufgabe hinzufügen">
+    <button id="addBtn">Hinzufügen</button>
+    <button id="clearBtn">Alles Löschen</button>
+
+    <p id="fehler"></p>
+    <p id="zaehler"></p> <!-- 1. Zähler hinzufügen:-->
+    <ul id="todoList"></ul>
+
+    <script>
+        const todoInput = document.querySelector("#todoInput");
+        const addBtn = document.querySelector("#addBtn");
+        const clearBtn = document.querySelector("#clearBtn");
+        const todoList = document.querySelector("#todoList");
+        const fehlerEl = document.querySelector("#fehler");
+        const zaehlerEl = document.querySelector("#zaehler"); // hinzugefügt!
+
+        // 2. Beim Start die gespeicherten Todos aus dem localStorage laden:
+        let todos = JSON.parse(localStorage.getItem("todos")) || [];
+        // (vorher let todos = [] )
+
+        //  NEU: Alte gespeicherte Todos (Strings) in Objekt-Form umwandeln (falls vorhanden)
+        // Grund: renderTodos() erwartet jetzt Objekte mit { titel: "...", erledigt: false/true }
+        todos = todos.map(t => typeof t === "string" ? { titel: t, erledigt: false } : t);
+
+        function renderTodos() {
+            todoList.innerHTML = "";
+            // Leert die aktuelle Liste, damit sie neu aufgebaut werden kann
+
+            for (const todo of todos) {
+                // Schleife über alle To-dos (jetzt Objekte mit titel + erledigt)
+
+                const li = document.createElement("li");
+                // Erstellt ein neues <li>-Element für ein To-do
+
+                li.textContent = todo.titel;
+                // 6. GEÄNDERT: Statt todo (String) jetzt todo.titel anzeigen
+
+                li.classList.toggle("erledigt", todo.erledigt);
+                // 7. NEU: Wenn todo.erledigt === true → Klasse "erledigt" hinzufügen
+                //         Wenn false → Klasse wird entfernt (kein Durchstreichen)
+
+                li.addEventListener("click", function () {
+                    // 8. NEU: Klick-Event für jedes To-do
+
+                    todo.erledigt = !todo.erledigt;
+                    // 9. NEU: Status umschalten (true ↔ false)
+
+                    localStorage.setItem("todos", JSON.stringify(todos));
+                    // 10. NEU: Geänderten Status im localStorage speichern
+
+                    renderTodos();
+                    // 11. NEU: Liste neu anzeigen, damit Änderung sichtbar wird
+                });
+
+                todoList.appendChild(li);
+                // Fügt das <li> zur <ul>-Liste hinzu
+            }
+
+            // 3. Hier wird die Anzahl der To-dos angezeigt:
+            zaehlerEl.textContent = `To-dos: ${todos.length}`;
+        }
+
+        renderTodos(); // Erste Anzeige der To-dos!
+
+        addBtn.addEventListener("click", function () {
+            const todo = todoInput.value.trim();
+
+            if (todo === "") {
+                fehlerEl.textContent = "Bitte Aufgabe eingeben!";
+                fehlerEl.style.color = "red";
+                return;
+            }
+
+            todos.push({ titel: todo, erledigt: false });
+            // 4. GEÄNDERT: Todo wird jetzt als Objekt gespeichert (titel + erledigt)
+
+            localStorage.setItem("todos", JSON.stringify(todos));
+            // 4. Beim Hinzufügen die Todos speichern:
+
+            fehlerEl.textContent = "";
+            todoInput.value = "";
+            renderTodos();
+        });
+
+        clearBtn.addEventListener("click", function () {
+            todos = [];
+            // 5. Bei Klick auf "Alles Löschen"
+
+            localStorage.removeItem("todos");
+            // hinzugefügt! Gespeicherte Todos aus localStorage entfernen:
+
+            renderTodos();
+        });
+
+    </script>
+</body>
+
+</html>

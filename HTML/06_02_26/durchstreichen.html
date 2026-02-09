@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-do Liste</title>
+    <style>
+        .erledigt {
+            text-decoration: line-through;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>To-do Liste</h1>
+
+    <input type="text" id="todoInput" placeholder="Aufgabe hinzufügen">
+    <button id="addBtn">Hinzufügen</button>
+    <button id="clearBtn">Alles Löschen</button>
+
+    <p id="fehler"></p>
+    <p id="zaehler"></p>
+    <ul id="todoList"></ul>
+
+    <script>
+        const todoInput = document.querySelector("#todoInput");
+        const addBtn = document.querySelector("#addBtn");
+        const clearBtn = document.querySelector("#clearBtn");
+        const todoList = document.querySelector("#todoList");
+        const fehlerEl = document.querySelector("#fehler");
+        const zaehlerEl = document.querySelector("#zaehler");
+
+        let todos = JSON.parse(localStorage.getItem("todos")) || [];
+
+        // Alte String-Todos in Objekt-Todos umwandeln (für Durchstreichen nötig)
+        todos = todos.map(t => typeof t === "string" ? { titel: t, erledigt: false } : t);
+
+        function renderTodos() {
+            todoList.innerHTML = "";
+
+            for (const todo of todos) {
+                const li = document.createElement("li");
+                li.textContent = todo.titel;
+
+                // Durchstreichen je nach erledigt-Status
+                li.classList.toggle("erledigt", todo.erledigt);
+
+                li.addEventListener("click", function () {
+                    // erledigt-Status per Klick umschalten
+                    todo.erledigt = !todo.erledigt;
+
+                    localStorage.setItem("todos", JSON.stringify(todos));
+                    renderTodos();
+                });
+
+                todoList.appendChild(li);
+            }
+
+            zaehlerEl.textContent = `To-dos: ${todos.length}`;
+        }
+
+        renderTodos();
+
+        addBtn.addEventListener("click", function () {
+            const todo = todoInput.value.trim();
+
+            if (todo === "") {
+                fehlerEl.textContent = "Bitte Aufgabe eingeben!";
+                fehlerEl.style.color = "red";
+                return;
+            }
+
+            // Neues Todo als Objekt mit erledigt-Status speichern
+            todos.push({ titel: todo, erledigt: false });
+            localStorage.setItem("todos", JSON.stringify(todos));
+
+            fehlerEl.textContent = "";
+            todoInput.value = "";
+            renderTodos();
+        });
+
+        clearBtn.addEventListener("click", function () {
+            todos = [];
+            localStorage.removeItem("todos");
+            renderTodos();
+        });
+    </script>
+</body>
+
+</html>

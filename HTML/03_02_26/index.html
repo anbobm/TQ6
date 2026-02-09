@@ -22,7 +22,7 @@ Den Wert der Input-Box erhält man, mit der Eigenschaft .value.
             font-family: Arial, Helvetica, sans-serif;
             text-align: center;
             margin-top: 50px;
-            background-color: grey;
+            background-color: rgb(236, 236, 236);
         }
 
         button {
@@ -42,26 +42,28 @@ Den Wert der Input-Box erhält man, mit der Eigenschaft .value.
 <body>
     <h1>Willkommen!</h1>
 
+
+    <input type="text" id="usernameInput" placeholder="Hier bitte Name eingeben!">
+
+    <br>
     <p id="message">Klick den Button für eine Begrüßung</p>
 
-    <input type="text" id="usernameInput" placeholder="Hier kommt dein Name rein!">
-
-    <br><br><br>
-
-    <button id="button">Sag Hallo</button>
+    <button id="knopf">Sag Hallo</button>
 
     <script>
-        const button = document.getElementById("button");
+        const button = document.getElementById("knopf");
         const message = document.getElementById("message");
         const usernameInput = document.getElementById("usernameInput");
 
         function greetUser() {
-            const name = usernameInput.value;
+            const eingabename = usernameInput.value;
 
-            if (name.trim() === "") {
-                message.textContent = "Bitte gib zuerst deinen namen ein!";
+            if (eingabename.trim() === "") {
+                message.textContent = "Bitte gib zuerst deinen Namen ein!";
+                message.style.color = "red";
             } else {
-                message.textContent = `Hallo ${name}! Du hast gerade zum ersten mal JavaScript benutzt!`;
+                message.textContent = `Hallo ${eingabename}! Du hast gerade zum ersten mal JavaScript benutzt!`;
+                message.style.color = "black";
             }
         }
 

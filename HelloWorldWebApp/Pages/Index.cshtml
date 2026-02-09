@@ -1,0 +1,16 @@
+﻿@page
+@model IndexModel
+@{
+    var name = "Max";
+    List<string> todos = ["Wäsche waschen", "Einkaufen", "Staubsaugen"];
+    var erledigt = true;
+}
+
+<p>Es ist jetzt @Model.Uhrzeit</p>
+
+<ul>
+    @foreach (var todo in todos)
+    {
+        <li @erledigt>@todo</li>
+}
+</ul>

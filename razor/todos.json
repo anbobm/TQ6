@@ -1,0 +1,15 @@
+﻿ [
+    {
+      "Titel": "Aufräumen",
+      "Erledigt": true
+    },
+    {
+      "Titel": "Wäsche",
+      "Erledigt": false
+    },
+    {
+      "Titel": "Mutti anrufen",
+      "Erledigt": false
+    }
+  ]
+

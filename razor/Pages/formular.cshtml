@@ -1,0 +1,14 @@
+﻿@page
+@model razor.Pages.formularModel
+@{
+    ViewData["Title"] = "Todos";
+}
+
+<form method="get">
+    <input type="text" name="name">
+    <input type="submit" value="absenden">
+</form>
+@if (!string.IsNullOrEmpty(Model.Name))
+{
+    <p>Hallo @Model.Name!</p>
+}

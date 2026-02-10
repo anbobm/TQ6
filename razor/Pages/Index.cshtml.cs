@@ -1,35 +1,40 @@
+using System.Text.Json;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using System.Text.Json;
 
-namespace razor.Pages
+
+
+public class IndexModel : PageModel
 {
-    public class IndexModel : PageModel
+    public string? Uhrzeit { get; set; }
+
+    public List<Todo> Todos { get; set; }
+   
+    public void OnGet(string search)
+
     {
-        public string Uhrzeit { get; set; }
+        Uhrzeit = DateTime.Now.ToString("HH:mm");
 
-        public List<Todo> Todos { get; set; }
-        public void OnGet()
+        if (!System.IO.File.Exists("todos.json"))
         {
-            Uhrzeit = DateTime.Now.ToString("HH:mm");
+            Todos = new List<Todo>();
+        }
+        else
+        {
+            var file = System.IO.File.ReadAllText("todos.json");
 
-            if (!System.IO.File.Exists("todos.json"))
-            {
-                Todos = new List<Todo>();
-            }
-            else
-            {
-                var file = System.IO.File.ReadAllText("todos.json");
-
-                Todos = JsonSerializer.Deserialize<List<Todo>>(file) ?? new List<Todo>();
-            }
+            Todos = JsonSerializer.Deserialize<List<Todo>>(file) ?? new List<Todo>();
+        }
+        if (!string.IsNullOrEmpty(search))
+        {
+            Todos = Todos.Where(t => t.Titel.Contains(search, StringComparison.OrdinalIgnoreCase)).ToList();
         }
 
-        public class Todo
-        {
-            public string Titel { get; set; }
-            public bool Erledigt { get; set; }
-        }
     }
+}
 
+public class Todo
+{
+    public string Titel { get; set; }
+    public bool Erledigt { get; set; }
 }

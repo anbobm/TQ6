@@ -4,3 +4,14 @@
 <h1>Datum</h1>
 
 <p>Heute ist der @Model.HeutigesDatum</p>
+
+<form method="post">
+    <input type="text" asp-for="eingabe" />
+    <button type="submit">Senden</button>
+</form>
+
+@if (Model.ausgabe != null)
+{
+    <p>@Model.ausgabe</p>
+}
+

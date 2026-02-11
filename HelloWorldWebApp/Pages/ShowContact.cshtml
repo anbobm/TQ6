@@ -1,0 +1,21 @@
+﻿@page
+@model HelloWorldWebApp.Pages.Index1Model
+@{
+
+    <form method="get" action="/ShowContact">
+        <input type="number" name="id" />
+        <button type="submit">Senden</button>
+    </form>
+
+    <p>@Model.Message</p>
+    <p>Id aus der URL: @Model.Id</p>
+    @if (Model.ErrorMessage != null)
+    {
+        <p>@Model.ErrorMessage</p>
+    }
+    else if (Model.FoundContact != null)
+    {
+        <p>@Model.FoundContact.Name</p>
+        <p>@Model.FoundContact.Email</p>
+    }
+}

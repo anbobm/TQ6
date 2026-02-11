@@ -1,16 +1,20 @@
 ﻿@page
 @model IndexModel
+
 @{
-    var name = "Max";
-    List<string> todos = ["Wäsche waschen", "Einkaufen", "Staubsaugen"];
-    var erledigt = true;
+    ViewData["Title"] = "Todos";
 }
 
-<p>Es ist jetzt @Model.Uhrzeit</p>
+<p class="foo">Es ist jetzt @Model.Uhrzeit</p>
+
+<form method="get">
+    <input type="text" name="search">
+    <input type="submit" value="Suchen">
+</form>
 
 <ul>
-    @foreach (var todo in todos)
+    @foreach (var todo in Model.Todos)
     {
-        <li @erledigt>@todo</li>
-}
+        <li>@todo.Titel</li>
+    }
 </ul>

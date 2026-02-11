@@ -1,3 +1,4 @@
+using System.ComponentModel.DataAnnotations;
 using System.Text.Json;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -10,7 +11,7 @@ public class IndexModel : PageModel
 
     public List<Todo> Todos { get; set; }
 
-    public void OnGet()
+    public void OnGet(string search)
     {
         Uhrzeit = DateTime.Now.ToString("HH:mm");
 
@@ -23,6 +24,11 @@ public class IndexModel : PageModel
             var file = System.IO.File.ReadAllText("todos.json");
 
             Todos = JsonSerializer.Deserialize<List<Todo>>(file) ?? new List<Todo>();
+        }
+
+        if (!String.IsNullOrEmpty(search))
+        {
+            Todos = Todos.Where(t => t.Titel.Contains(search)).ToList();
         }
     }
 }

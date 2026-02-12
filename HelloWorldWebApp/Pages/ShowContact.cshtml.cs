@@ -11,12 +11,13 @@ namespace HelloWorldWebApp.Pages
         public int? Id { get; set; }
         public string Message { get; set; } = "";
         public string ErrorMessage { get; set; }
-        public Contact? FoundContact {  get; set; }
-        private Dictionary<int, Contact> contacts = new Dictionary<int, Contact>{
-        {1, new Contact() {Name = "Max Mustermann", Email = "max@mustermann.com"}},
-        {2, new Contact() {Name = "Petra Schuster", Email = "petraschuster@gmail.com"}},
-        { 23, new Contact() {Name = "Foo Bar", Email = "foo.bar@einfallslos.org"}},
-    };
+        public Contact? FoundContact { get; set; }
+        private Dictionary<int, Contact> contacts = new Dictionary<int, Contact>
+        {
+            { 1, new Contact() { Name = "Max Mustermann", Email = "max@mustermann.com" } },
+            { 2, new Contact() { Name = "Petra Schuster", Email = "petraschuster@gmail.com" } },
+            { 23, new Contact() { Name = "Foo Bar", Email = "foo.bar@einfallslos.org" } },
+        };
 
         public class Contact
         {
@@ -26,6 +27,7 @@ namespace HelloWorldWebApp.Pages
 
         public void OnGet()
         {
+
             if (Id == null)
             {
                 ErrorMessage = "Bitte eine ID eingeben.";
@@ -41,7 +43,6 @@ namespace HelloWorldWebApp.Pages
             {
                 ErrorMessage = "Kein Contact mit dieser ID Gefunden.";
             }
-
         }
     }
 }

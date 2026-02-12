@@ -1,0 +1,23 @@
+﻿@page
+@model HelloWorldWebApp.Pages.LoginModel
+
+@if (!string.IsNullOrEmpty(Model.Username))
+{
+    <h2>Du bist als @Model.Username eingeloggt</h2>
+}
+else
+{
+    <form method="post" asp-page="/Login">
+        <div>
+            <label for="username">Benutzername:</label><br />
+            <input type="text" name="Benutzername"/>
+        </div>
+
+        <div>
+            <label for="passwort">Passwort:</label><br />
+            <input type="password" name="Passwort"/>
+        </div>
+
+        <button type="submit">Login</button>
+    </form>
+}

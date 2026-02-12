@@ -1,36 +1,11 @@
 ﻿@page
-@model razor.Pages.formularModel
-@{
-    ViewData["Title"] = "Todos";
-}
+@model formularModel
 
 <form method="get">
-    <input type="text" name="name">
-    <input type="submit" value="absenden">
-</form>
-@if (!string.IsNullOrEmpty(Model.Name))
-{
-    <p>Hallo @Model.Name!</p>
-}
-
-
-<h2>Contact suchen</h2>
-
-<form method="get" asp-page="/ShowContact">
-    <label>Contact-ID eingeben:</label>
-    <input type="text" name="id" />
-    <input type="submit" value="anzeigen" />
+    <input type="text" name="name" placeholder="Dein Name">
+    <input type="submit" value="Senden">
 </form>
 
+<p>@Model.formular</p>
 
-<h2>Contact Details</h2>
 
-@if (Model.Contact != null)
-{
-    <p><strong>ID:</strong> @Model.Contact.Id</p>
-    <p><strong>Name:</strong> @Model.Contact.Name</p>
-}
-else
-{
-    <p>Kein Contact mit dieser ID gefunden.</p>
-}

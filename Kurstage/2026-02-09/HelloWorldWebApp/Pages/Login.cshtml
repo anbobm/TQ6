@@ -1,0 +1,16 @@
+@page
+
+@model LoginModel
+
+@if(Model.LoggedIn)
+{
+    <p>Du bist als @Model.Username eingeloggt.</p>
+}
+else
+{
+    <form method="post">
+        <input type="text" name="username" placeholder="Benutzername">
+        <input type="password" name="password" placeholder="Passwort">
+        <input type="submit">
+    </form>
+}

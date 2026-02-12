@@ -1,0 +1,10 @@
+[
+  {
+    "Titel": "Aufräumen",
+    "Erledigt": true
+  },
+  {
+    "Titel": "Wäsche",
+    "Erledigt": false
+  }
+]

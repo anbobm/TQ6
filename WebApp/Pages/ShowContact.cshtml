@@ -1,0 +1,14 @@
+@page
+@model ShowContactModel
+
+<h1>Contact</h1>
+
+@if (Model.ContactFound)
+{
+    <p>Name: @Model.Name</p>
+    <p>Email: @Model.Email</p>
+}
+else
+{
+    <p>Contact @Request.Query["id"] nicht gefunden</p>
+}

@@ -8,7 +8,7 @@ public class IndexModel : PageModel
 {
     public string? Uhrzeit { get; set; }
 
-    public List<Todo> Todos { get; set; }
+    public List<Todo> Todos { get; set; }=new();
    
     public void OnGet(string search)
 

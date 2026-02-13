@@ -1,8 +1,11 @@
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-
-public class GreetingModel : PageModel
+namespace razor.Pages{
+public class formularModel : PageModel
 {
-    public string Greeting { get; set; }
+   [BindProperty(SupportsGet = true)]
+    public string? formular { get; set; }
+
 
     public void OnGet(string name)
     {
@@ -11,10 +14,11 @@ public class GreetingModel : PageModel
             return;
         }
 
-        Greeting = $"Hallo {name}!";
+        formular = $"Hallo {name}!";
     }
 }
 
+}
 
 
 

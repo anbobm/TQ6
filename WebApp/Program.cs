@@ -5,7 +5,10 @@ public partial class Program
         var builder = WebApplication.CreateBuilder(args);
 
         // Add services to the container.
-        builder.Services.AddRazorPages();
+        builder.Services.AddRazorPages()
+            .AddRazorRuntimeCompilation();
+
+        builder.Services.AddDbContext<Database>();
 
         var app = builder.Build();
 

@@ -1,0 +1,26 @@
+@page
+@model NeuesWebProjekt.Pages.ListBooksModel
+
+<h1>Alle Bücher</h1>
+
+<table border="1">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Titel</th>
+            <th>Autor</th>
+            <th>Ausgeliehen</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var buch in Model.Buecher)
+        {
+            <tr>
+                <td>@buch.Id</td>
+                <td>@buch.Titel</td>
+                <td>@buch.Autor</td>
+                <td>@(buch.IsAusgeliehen ? "Ja" : "Nein")</td>
+            </tr>
+        }
+    </tbody>
+</table>

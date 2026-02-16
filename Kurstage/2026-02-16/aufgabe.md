@@ -56,6 +56,8 @@ void Foo()
 }
 ```
 
+Um diese Page anschließend testen zu können, legt euch im DB Browser ein paar Datensätze in der Tabelle Bücher an.
+
 ## Page `/AddBook` anlegen
 
 Legt euch eine Page `/AddBook` an. Diese bekommt ein Formular mit allen für den Buch-Typ benötigten Feldern.

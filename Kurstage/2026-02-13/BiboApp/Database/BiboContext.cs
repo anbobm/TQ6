@@ -1,0 +1,11 @@
+using Microsoft.EntityFrameworkCore;
+
+public class BiboContext : DbContext
+{
+    public DbSet<Buch> Bücher { get; set; }
+
+    public DbSet<Nutzer> Nutzer { get; set; }
+
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        => optionsBuilder.UseSqlite("Data Source=db.db");
+}

@@ -1,0 +1,17 @@
+﻿@page
+@model WebApp1.Pages.ShowContactModel
+
+<h1>Kontakt anzeigen</h1>
+
+@if (!string.IsNullOrEmpty(Model.ErrorMessage))
+{
+    <p style="color:red">@Model.ErrorMessage</p>
+}
+else if (Model.FoundContact != null)
+{
+    <p><b>Name:</b> @Model.FoundContact.Name</p>
+    <p><b>Email:</b> @Model.FoundContact.Email</p>
+}
+
+<hr />
+<a asp-page="/ContactSearch">Zurück zur Suche</a>

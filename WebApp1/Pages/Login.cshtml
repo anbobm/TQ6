@@ -1,0 +1,20 @@
+﻿@page
+@model WebApp1.Pages.LoginModel
+
+<h1>Login</h1>
+
+@if (!string.IsNullOrEmpty(Model.Username))
+{
+    <p>Du bist als <b>@Model.Username</b> eingeloggt.</p>
+}
+else
+{
+    <form method="post">
+        <input type="text" name="username" placeholder="Benutzername" />
+        <br />
+        <input type="password" name="password" placeholder="Passwort" />
+        <br />
+        <br />
+        <input type="submit" value="Einloggen" />
+    </form>
+}

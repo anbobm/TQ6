@@ -1,0 +1,9 @@
+﻿@page
+@model WebApp1.Pages.ContactSearchModel
+
+<h1>Kontakt suchen</h1>
+
+<form method="get" asp-page="/ShowContact">
+    <input type="text" name="id" placeholder="Kontakt-ID eingeben" />
+    <input type="submit" value="Suchen" />
+</form>

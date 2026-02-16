@@ -7,5 +7,5 @@ public class BiboContext : DbContext
     public DbSet<Nutzer> Nutzer { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        => optionsBuilder.UseSqlite("Data Source=db.db");
+        => optionsBuilder.UseSqlite("Data Source=bibo.db");
 }

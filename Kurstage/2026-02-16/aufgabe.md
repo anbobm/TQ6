@@ -2,7 +2,15 @@
 
 ## Razor Pages Projekt erstellen
 
-Erstellt euch in einem leeren Ordner ein neues Razor Pages Projekt mit `dotnet new razor`. (Wenn ihr mit Visual Studio arbeitet, dann fügt der Projektmappe ein neues Projekt hinzu und wählt das Razor Pages Template aus).
+### Visual Studio
+
+Fügt der Projektmappe ein neues Projekt hinzu und wählt das `Razor Pages` Template aus.
+
+### Visual Studio Code
+
+Erstellt euch in einem leeren Ordner ein neues Razor Pages Projekt indem ihr innerhalb des Ordners auf der Kommandozeile `dotnet new razor` ausführt.
+
+Anschließend könnt ihr dieses Projekt der `.sln` hinzufügen, indem ihr im Ordner wo die `.sln` liegt ausführt `dotnet solution add <PFAD ZUM RAZOR PAGES PROJEKT>`
 
 ## EF Core mit Sqlite installieren
 

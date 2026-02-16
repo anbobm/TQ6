@@ -1,0 +1,34 @@
+﻿@page
+@model Libary.Pages.ListBooksModel
+
+<h1>Bücherliste</h1>
+
+@if (Model.Buecher == null || Model.Buecher.Count == 0)
+{
+    <p>Keine Bücher gefunden</p>
+}
+else
+{
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Titel</th>
+                <th>Autor</th>
+                <th>IsAusgeliehen</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var b in Model.Buecher)
+            {
+                <tr>
+                    <td>@b.Id</td>
+                    <td>@b.Titel</td>
+                    <td>@b.Autor</td>
+                    <td>@(b.IsAusgeliehen ? "Ja" : "Nein")</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+

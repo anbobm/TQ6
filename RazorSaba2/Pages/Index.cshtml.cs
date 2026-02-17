@@ -15,7 +15,9 @@ namespace RazorSaba2.Pages
             var db = new DB_Kontext();
             Bücher = db.Bücher.Where(b => b.Autor!.StartsWith("Lo"))
                 .OrderBy(b => b.Titel).ToList(); 
-            var buch = new Buch { Autor = "Lord Voldemort",
+            var buch = new Buch 
+            {
+                Autor = "Lord Voldemort",
                 Titel = "Harry Potter - Der Gefangene von Askaban", 
                 IsAusgeliehen = false };
             db.Bücher.Add(buch); 

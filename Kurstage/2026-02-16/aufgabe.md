@@ -76,6 +76,15 @@ Um Änderungen in die Datenbank zu schreiben muss wenigstens am Schluss ein `db.
 
 Wir wollen den Nutzer nach dem Absenden des Formulars auf die Startseite umleiten. Das gelingt indem wir `return RedirectToPage("/ListBooks");` zurückgeben. Dafür müssen wir auch den Rückgabe-Typ des `OnPost()..)`-Handlers von `void` nach `IActionResult` ändern.
 
+## Page `/ShowBook` anlegen
+
+Legt euch auf der Page `/ListBooks` zu jedem Buch das ihr anzeigt einen Link an, der auf die Page `/ShowBook` führt und den Parameter `id` im Querystring auf die ID des konkreten Buches setzt: `<a asp-page="/ShowBook" asp-route-id="..."> ...`
+
+Die ID des Buches steht im Model.
+
+Auf der Page `/ShowBook` sollen dann alle Felder des angeklickten Buches angezeigt werden.
+
+
 ## Hinweise
 
 Folgende Dinge tun wir hier nur damit es simpel bleibt:

@@ -12,7 +12,7 @@ namespace RazorSaba2.Pages
 
         public void OnGet()
         {
-            var db = new DB_Kontext();
+           /* var db = new DB_Kontext();
             Bücher = db.Bücher.Where(b => b.Autor!.StartsWith("Lo"))
                 .OrderBy(b => b.Titel).ToList(); 
             var buch = new Buch 
@@ -21,7 +21,7 @@ namespace RazorSaba2.Pages
                 Titel = "Harry Potter - Der Gefangene von Askaban", 
                 IsAusgeliehen = false };
             db.Bücher.Add(buch); 
-            db.SaveChanges();
+            db.SaveChanges();*/
         }
     }
 }

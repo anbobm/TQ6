@@ -74,7 +74,7 @@ Beim Absenden des Formulars (`method="post"`), soll in `OnPost(...)` ein neues O
 
 Um Änderungen in die Datenbank zu schreiben muss wenigstens am Schluss ein `db.SaveChanges()` erfolgen.
 
-Wir wollen den Nutzer nach dem Absenden des Formulars auf die Startseite umleiten. Das gelingt indem wir `return RedirectToPage("/Index");` zurückgeben. Dafür müssen wir auch den Rückgabe-Typ des `OnPost()..)`-Handlers von `void` nach `IActionResult` ändern.
+Wir wollen den Nutzer nach dem Absenden des Formulars auf die Startseite umleiten. Das gelingt indem wir `return RedirectToPage("/ListBooks");` zurückgeben. Dafür müssen wir auch den Rückgabe-Typ des `OnPost()..)`-Handlers von `void` nach `IActionResult` ändern.
 
 ## Hinweise
 

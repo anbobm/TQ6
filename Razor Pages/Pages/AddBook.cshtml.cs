@@ -14,7 +14,7 @@ namespace Razor_Pages.Pages
         { 
             var db = new BiboContext();
             db.Bücher.Add(NeuesBuch);
-            db.SaveChanges(); return RedirectToPage("/Index");
+            db.SaveChanges(); return RedirectToPage("/ListBook");
         }
 
 

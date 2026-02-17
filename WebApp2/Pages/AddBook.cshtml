@@ -1,0 +1,33 @@
+﻿@page
+@model WebApp2.Pages.AddBookModel
+
+<h1>Buch hinzufügen</h1>
+
+<form method="post">
+
+    <div class="row mb-3">
+        <label asp-for="Titel" class="col-sm-2 col-form-label"></label>
+        <div class="col-sm-4">
+            <input asp-for="Titel" class="form-control" />
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <label asp-for="Autor" class="col-sm-2 col-form-label"></label>
+        <div class="col-sm-4">
+            <input asp-for="Autor" class="form-control" />
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <label asp-for="IsAusgeliehen" class="col-sm-2 col-form-label"></label>
+        <div class="col-sm-4">
+            <div class="form-check">
+                <input asp-for="IsAusgeliehen" class="form-check-input" />
+            </div>
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Speichern</button>
+
+</form>

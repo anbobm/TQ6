@@ -1,0 +1,33 @@
+﻿@page
+@model WebApp2.Pages.ListBooksModel
+
+<h1>Bücherliste</h1>
+
+@if (!Model.Bücher.Any())
+{
+    <p>Keine Bücher passend zum Filter gefunden.</p>
+}
+else
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Titel</th>
+                <th>Autor</th>
+                <th>Ausgeliehen</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var buch in Model.Bücher)
+            {
+                <tr>
+                    <td>@buch.Id</td>
+                    <td>@buch.Titel</td>
+                    <td>@buch.Autor</td>
+                    <td>@(buch.IsAusgeliehen ? "Ja" : "Nein")</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

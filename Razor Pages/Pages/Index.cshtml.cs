@@ -10,7 +10,7 @@ namespace Razor_Pages.Pages
        public List<Buch> Bücher { get; set; } = new();
        public void OnGet()
        {
-          var db = new BiboContext();
+      /*    var db = new BiboContext();
             Bücher = db.Bücher.Where(b => b.Autor!.StartsWith("Lo"))
               .OrderBy(b => b.Titel).ToList();
            var buch = new Buch 
@@ -20,7 +20,7 @@ namespace Razor_Pages.Pages
             IsAusgeliehen = false
            };
           db.Bücher.Add(buch);
-          db.SaveChanges();
+          db.SaveChanges();*/
        }
    }
 }

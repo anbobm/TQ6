@@ -1,6 +1,8 @@
-﻿namespace Razor_Pages.Database
+﻿using Microsoft.EntityFrameworkCore;
+
+namespace Razor_Pages.Database
 {
-    public class BiboContext
+    public class BiboContext: DbContext
     {
-    }
+  
 }

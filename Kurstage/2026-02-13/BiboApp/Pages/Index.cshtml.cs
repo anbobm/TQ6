@@ -9,43 +9,26 @@ public class IndexModel : PageModel
 
     public void OnGet()
     {
-        var db = new BiboContext();
+        // var db = new BiboContext();
 
-        // "SELECT * FROM Bücher WHERE Autor LIKE 'To%' ORDER BY Titel"
-        Bücher = db.Bücher.Where(buch => buch.Autor.StartsWith("Lo"))
-            .OrderBy(buch => buch.Titel).ToList();
+        // // "SELECT * FROM Bücher WHERE Autor LIKE 'To%' ORDER BY Titel"
+        // Bücher = db.Bücher.Where(buch => buch.Autor.StartsWith("Lo"))
+        //     .OrderBy(buch => buch.Titel).ToList();
 
-        // "INSERT INTO Bücher VALUES(..)"
-        var buch = new Buch
-        {
-            Autor = "Lord Voldemort",
-            Titel = "Harry Potter - Der Gefangene von Askaban",
-            IsAusgeliehen = false
-        };
-        db.Bücher.Add(buch);
-        db.SaveChanges();
+        // // "INSERT INTO Bücher VALUES(..)"
+        // var buch = new Buch
+        // {
+        //     Autor = "Lord Voldemort",
+        //     Titel = "Harry Potter - Der Gefangene von Askaban",
+        //     IsAusgeliehen = false
+        // };
+        // db.Bücher.Add(buch);
+        // db.SaveChanges();
 
-        // UPDATE Bücher SET AusleihenderId = ... WHERE Id = ...
-        buch = db.Bücher.First();
-        var nutzer = db.Nutzer.First();
-        nutzer.AusgelieheneBücher.Add(buch);
-        db.SaveChanges();
-    }
-
-    private bool BuchFilter(Buch b)
-    {
-        return b.Autor.StartsWith("To");
-    }
-
-    private void Knödelfee()
-    {
-        List<string> liste = new List<string>
-        {
-            "foo",
-            "bar",
-            "baz"
-        };
-
-        liste.Where(str => str.Contains("ar")).ToList();
+        // // UPDATE Bücher SET AusleihenderId = ... WHERE Id = ...
+        // buch = db.Bücher.First();
+        // var nutzer = db.Nutzer.First();
+        // nutzer.AusgelieheneBücher.Add(buch);
+        // db.SaveChanges();
     }
 }

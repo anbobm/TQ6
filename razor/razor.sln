@@ -5,6 +5,8 @@ VisualStudioVersion = 18.3.11505.172
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RazorSaba", "RazorSaba.csproj", "{727E89A2-68C9-2280-7FF5-6CCCF3B702C3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RazorSaba2", "..\RazorSaba2\RazorSaba2.csproj", "{85C2E1C2-20F2-4C98-9C95-6DAD0D46B701}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{727E89A2-68C9-2280-7FF5-6CCCF3B702C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{727E89A2-68C9-2280-7FF5-6CCCF3B702C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{727E89A2-68C9-2280-7FF5-6CCCF3B702C3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{85C2E1C2-20F2-4C98-9C95-6DAD0D46B701}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{85C2E1C2-20F2-4C98-9C95-6DAD0D46B701}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{85C2E1C2-20F2-4C98-9C95-6DAD0D46B701}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{85C2E1C2-20F2-4C98-9C95-6DAD0D46B701}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

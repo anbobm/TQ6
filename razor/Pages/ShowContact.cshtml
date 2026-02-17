@@ -1,12 +1,10 @@
 ﻿@page
-@model RazorSaba.Pages.ShowContactModel
-@{
-}
-
+@model ShowContactModel
 
 <h1>Contact</h1>
 
-@if(Model.ContactFound) {
+@if (Model.ContactFound)
+{
     <p>Name: @Model.Name</p>
     <p>Email: @Model.Email</p>
 }

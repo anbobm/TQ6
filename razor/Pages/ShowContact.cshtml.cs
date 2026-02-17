@@ -1,27 +1,35 @@
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace RazorSaba.Pages
+public class ShowContactModel : PageModel
 {
-    public class ShowContactModel : PageModel
+    private Dictionary<int, Contact> contacts = new Dictionary<int, Contact>{
+        {1, new Contact() {Name = "Max Mustermann", Email = "max@mustermann.com"}},
+        {2, new Contact() {Name = "Petra Schuster", Email = "petraschuster@gmail.com"}},
+        {23, new Contact() {Name = "Foo Bar", Email = "foo.bar@einfallslos.org"}},
+    };
+
+    public string? Name { get; set; }
+
+    public string? Email { get; set; }
+
+    public bool ContactFound { get; set; } = false;
+
+    public void OnGet(int id)
     {
-        public bool ContactFound { get; set; }
-        public string Name { get; set; } = "";
-        public string Email { get; set; } = "";
-
-        public void OnGet()
+        if (contacts.ContainsKey(id))
         {
-            var id = Request.Query["id"];
+            var contact = contacts[id];
 
-            if (id == "1")
-            {
-                ContactFound = true;
-                Name = "Max";
-                Email = "max@test.de";
-            }
-            else
-            {
-                ContactFound = false;
-            }
+            Name = contact.Name;
+            Email = contact.Email;
+            ContactFound = true;
         }
     }
+}
+
+public class Contact
+{
+    public string? Name { get; set; }
+
+    public string? Email { get; set; }
 }

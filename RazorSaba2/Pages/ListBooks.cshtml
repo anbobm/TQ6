@@ -1,0 +1,11 @@
+﻿@page
+@model RazorSaba2.Pages.ListBooksModel
+
+@{
+    ViewData["Title"] = "Home page";
+}
+
+@foreach (var buch in Model.Bücher)
+{
+    <p>Titel: @buch.Titel, Autor: @buch.Autor, Ausgeliehen: @buch.IsAusgeliehen</p>
+}

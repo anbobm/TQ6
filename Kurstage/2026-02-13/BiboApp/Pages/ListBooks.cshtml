@@ -1,0 +1,6 @@
+@page
+@model ListBooksModel
+
+@foreach(var buch in Model.Bücher) {
+    <p>@buch.Titel, Ausgeliehen: <input type="checkbox" @(buch.IsAusgeliehen ? "checked" : "") /></p>
+}

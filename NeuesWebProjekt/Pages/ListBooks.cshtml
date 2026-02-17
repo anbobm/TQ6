@@ -3,7 +3,7 @@
 
 <h1>Alle Bücher</h1>
 
-<table border="1">
+<table border="0">
     <thead>
         <tr>
             <th>ID</th>
@@ -17,7 +17,11 @@
         {
             <tr>
                 <td>@buch.Id</td>
-                <td>@buch.Titel</td>
+                <td>
+                    <a asp-page="/ShowBook" asp-route-id="@buch.Id">
+                        @buch.Titel
+                    </a>
+                </td>
                 <td>@buch.Autor</td>
                 <td>@(buch.IsAusgeliehen ? "Ja" : "Nein")</td>
             </tr>

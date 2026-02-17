@@ -1,0 +1,21 @@
+@page
+@model NeuesWebProjekt.Pages.ShowBookModel
+
+<h1>@Model.Buch.Titel</h1>
+
+@if (Model.Buch == null)
+{
+    <p>Buch nicht gefunden.</p>
+}
+else
+{
+    <div>
+        <p><strong>ID:</strong> @Model.Buch.Id</p>
+        @* <p><strong>Titel:</strong> @Model.Buch.Titel</p> *@
+        <p><strong>Autor:</strong> @Model.Buch.Autor</p>
+        <p><strong>Ausgeliehen:</strong> @(Model.Buch.IsAusgeliehen ? "Ja" : "Nein")</p>
+    </div>
+
+    <br />
+    <a asp-page="/ListBooks">Zurück zur Liste</a>
+}

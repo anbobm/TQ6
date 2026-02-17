@@ -1,6 +1,8 @@
 @page
 @model ListBooksModel
 
+<a asp-page="/AddBook">Buch hinzufügen</a>
+
 @foreach(var buch in Model.Bücher) {
     <p>@buch.Titel, Ausgeliehen: <input type="checkbox" @(buch.IsAusgeliehen ? "checked" : "") /></p>
 }

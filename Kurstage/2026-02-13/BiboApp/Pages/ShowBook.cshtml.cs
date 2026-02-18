@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore;
 
 public class ShowBookModel : PageModel
 {
@@ -8,6 +9,9 @@ public class ShowBookModel : PageModel
     {
         var db = new BiboContext();
 
-        Buch = db.Bücher.Where(buch => buch.Id == id).FirstOrDefault();
+        Buch = db.Bücher
+            .Include(buch => buch.Ausleihender)
+            .Where(buch => buch.Id == id)
+            .FirstOrDefault();
     }
 }

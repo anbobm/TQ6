@@ -22,7 +22,8 @@ namespace BiboApp.Pages
                 return NotFound();
 
             Buch = await _context.Buch
-                                 .FirstOrDefaultAsync(b => b.Id == id);
+                .Include(b => b.Ausleihender)
+                .FirstOrDefaultAsync(b => b.Id == id);
 
             if (Buch == null)
                 return NotFound();

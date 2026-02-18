@@ -6,6 +6,8 @@ namespace BiboApp.Database
         public string Titel { get; set; }
         public string Autor { get; set; }
         public bool IsAusgeliehen { get; set; }
+
+        public int? AusleihenderId { get; set; }
         public Nutzer? Ausleihender { get; set; }
     }
 }

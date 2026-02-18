@@ -1,0 +1,22 @@
+@page
+@model NeuesWebProjekt.Pages.NutzerModel
+
+<h1>Alle Nutzer</h1>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Email</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var nutzer in Model.NutzerListe)
+        {
+            <tr>
+                <td>@nutzer.Id</td>
+                <td>@nutzer.Email</td>
+            </tr>
+        }
+    </tbody>
+</table>

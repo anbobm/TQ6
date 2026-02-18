@@ -1,12 +1,23 @@
 @page
 @model ListBooksModel
 
-<a asp-page="/AddBook">Buch hinzufügen</a>
-
-@foreach(var buch in Model.Bücher) {
-    <p>@buch.Titel,
-        Ausgeliehen:
-        <input type="checkbox" @(buch.IsAusgeliehen ? "checked" : "") />
-        <a asp-page="/ShowBook" asp-route-id="@buch.Id">Anzeigen</a>
-    </p>
-}
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Titel</th>
+            <th>Autor</th>
+            <th>Ausgeliehen</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var buch in Model.Bücher) {
+            <tr>
+                <td>@buch.Id</td>
+                <td>@buch.Titel</td>
+                <td>@buch.Autor</td>
+                <td><input type="checkbox" disabled @(@buch.IsAusgeliehen ? "checked" : "")></td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using BiboApp.Database;
 
-namespace NeuesWebProjekt.Pages
+namespace BiboApp.Pages
 {
     public class NutzerModel : PageModel
     {

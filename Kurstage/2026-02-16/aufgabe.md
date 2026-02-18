@@ -105,4 +105,4 @@ Von dieser Page soll es wieder für jeden Nutzer einen Link auf eine `/ShowUser`
 Folgende Dinge tun wir hier nur damit es simpel bleibt:
 
 * Im Normalfall erstellt man im EF nicht Datenbank-Klassen **und** Datenbank manuell, sondern nur eines von beiden und lässt sich das andere daraus generieren. Das nennt sich dann `migrations`(Klassen -> DB) bzw. `scaffolding`(DB -> Klassen).
-* Das Datenbankobjekt (`BiboContext`) erstellt man normalerweise nicht selbst, sondern bekommt es vom ASP.NET Core Framework im Konstrukter des Models übergeben. Man überlässt also dem Framework die Verwaltung und anschließende Entsorgung dieses Objekts.
+* Das Datenbankobjekt (`BiboContext`) erstellt man normalerweise nicht selbst, sondern bekommt es vom ASP.NET Core Framework im Konstruktor des Models übergeben. Man überlässt also dem Framework die Verwaltung und anschließende Entsorgung dieses Objekts.

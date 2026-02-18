@@ -1,0 +1,13 @@
+@page
+@model ShowBookModel
+
+<h1>Detailansicht</h1>
+@if(Model.Buch == null) {
+    <p>Das Buch wurde nicht gefunden.</p>
+}
+else{
+    <p>Id: @Model.Buch.Id</p>
+    <p>Titel: @Model.Buch.Titel</p>
+    <p>Autor: @Model.Buch.Autor</p>
+    <p>Ausgeliehen: @(Model.Buch.IsAusgeliehen ? "Ja" : "Nein")</p>
+}

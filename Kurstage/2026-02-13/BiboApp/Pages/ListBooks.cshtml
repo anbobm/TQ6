@@ -4,5 +4,9 @@
 <a asp-page="/AddBook">Buch hinzufügen</a>
 
 @foreach(var buch in Model.Bücher) {
-    <p>@buch.Titel, Ausgeliehen: <input type="checkbox" @(buch.IsAusgeliehen ? "checked" : "") /></p>
+    <p>@buch.Titel,
+        Ausgeliehen:
+        <input type="checkbox" @(buch.IsAusgeliehen ? "checked" : "") />
+        <a asp-page="/ShowBook" asp-route-id="@buch.Id">Anzeigen</a>
+    </p>
 }

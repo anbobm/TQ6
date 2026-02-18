@@ -14,7 +14,14 @@ else
         @* <p><strong>Titel:</strong> @Model.Buch.Titel</p> *@
         <p><strong>Autor:</strong> @Model.Buch.Autor</p>
         <p><strong>Ausgeliehen:</strong> @(Model.Buch.IsAusgeliehen ? "Ja" : "Nein")</p>
-        <p>Ausgeliehen von Nutzer ID: @Model.Buch.Ausleihender.Id</p>
+        @if (Model.Buch.Ausleihender != null)
+        {
+            <p>Ausgeliehen von Nutzer ID: @Model.Buch.Ausleihender.Id</p>
+        }
+        else
+        {
+            <p>Ausgeliehen von Nutzer ID: Nicht ausgeliehen</p>
+        }
     </div>
 
     <br />

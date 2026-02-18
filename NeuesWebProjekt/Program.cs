@@ -1,4 +1,4 @@
-using NeuesWebProjekt.Database;
+using BiboApp.Database;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);

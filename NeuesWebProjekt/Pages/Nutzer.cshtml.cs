@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
-using NeuesWebProjekt.Database;
+using BiboApp.Database;
 
 namespace NeuesWebProjekt.Pages
 {

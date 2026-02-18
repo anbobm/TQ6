@@ -1,4 +1,4 @@
-namespace NeuesWebProjekt.Database
+namespace BiboApp.Database
 {
     public class Nutzer
     {

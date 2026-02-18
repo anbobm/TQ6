@@ -1,5 +1,5 @@
 @page
-@model NeuesWebProjekt.Pages.ShowBookModel
+@model BiboApp.Pages.ShowBookModel
 
 <h1>@Model.Buch.Titel</h1>
 
@@ -14,6 +14,7 @@ else
         @* <p><strong>Titel:</strong> @Model.Buch.Titel</p> *@
         <p><strong>Autor:</strong> @Model.Buch.Autor</p>
         <p><strong>Ausgeliehen:</strong> @(Model.Buch.IsAusgeliehen ? "Ja" : "Nein")</p>
+        <p>Ausgeliehen von Nutzer ID: @Model.Buch.Ausleihender.Id</p>
     </div>
 
     <br />

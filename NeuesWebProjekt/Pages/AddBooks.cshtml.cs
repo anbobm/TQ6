@@ -1,8 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using NeuesWebProjekt.Database;
+using BiboApp.Database;
 
-namespace NeuesWebProjekt.Pages
+namespace BiboApp.Pages
 {
     public class AddBooksModel : PageModel
     {

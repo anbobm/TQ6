@@ -2,7 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Reflection.Emit;
 
-namespace NeuesWebProjekt.Database
+namespace BiboApp.Database
 {
     public class BiboContext : DbContext
     {

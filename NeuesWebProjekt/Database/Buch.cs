@@ -1,4 +1,4 @@
-namespace NeuesWebProjekt.Database
+namespace BiboApp.Database
 {
     public class Buch
     {
@@ -6,5 +6,6 @@ namespace NeuesWebProjekt.Database
         public string Titel { get; set; }
         public string Autor { get; set; }
         public bool IsAusgeliehen { get; set; }
+        public Nutzer? Ausleihender { get; set; }
     }
 }

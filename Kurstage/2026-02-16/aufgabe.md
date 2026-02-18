@@ -84,6 +84,15 @@ Die ID des Buches steht im Model.
 
 Auf der Page `/ShowBook` sollen dann alle Felder des angeklickten Buches angezeigt werden.
 
+## Datenbank erweitern
+
+Füge der Tabelle Bücher eine weitere Spalte `AusleihenderId` hinzu, die ein Foreign Key auf `Id` der Tabelle `Nutzer` ist.
+
+Dann füge der Klasse `Buch` eine Property `Ausleihender` hinzu vom Typ `Nutzer?`.  Füge der Klasse `Nutzer` eine Property `List<Buch> AusgelieheneBücher` hinzu.
+
+Anschließend erweitert die `/ShowBook` Page so, dass, sofern das Buch ausgeliehen ist, der Ausleihende Benutzer mit angezeigt wird.
+
+Um das zu testen, solltet ihr euch natürlich in der Datenbank auch Buch-Datensätze entsprechend vorbereiten, sodass manche ausgeliehen sind.
 
 ## Hinweise
 

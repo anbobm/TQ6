@@ -94,6 +94,12 @@ Anschließend erweitert die `/ShowBook` Page so, dass, sofern das Buch ausgelieh
 
 Um das zu testen, solltet ihr euch natürlich in der Datenbank auch Buch-Datensätze entsprechend vorbereiten, sodass manche ausgeliehen sind.
 
+## Page `/ListUsers` und `/ShowUser` anlegen
+
+Legt euch eine Page `/ListUsers` an, die analog zu `/ListBooks` alle Nutzer in der Datenbank auflistet.
+
+Von dieser Page soll es wieder für jeden Nutzer einen Link auf eine `/ShowUser` Page geben, die dann für diesen Nutzer alle Eigenschaften anzeigt. Dort soll man auch eine Liste von ausgeliehenen Büchern sehen können.
+
 ## Hinweise
 
 Folgende Dinge tun wir hier nur damit es simpel bleibt:

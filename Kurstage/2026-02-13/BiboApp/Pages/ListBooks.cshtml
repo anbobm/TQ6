@@ -14,7 +14,7 @@
         @foreach(var buch in Model.Bücher) {
             <tr>
                 <td>@buch.Id</td>
-                <td>@buch.Titel</td>
+                <td><a asp-page="/ShowBook" asp-route-id="@buch.Id">@buch.Titel</a></td>
                 <td>@buch.Autor</td>
                 <td><input type="checkbox" disabled @(@buch.IsAusgeliehen ? "checked" : "")></td>
             </tr>

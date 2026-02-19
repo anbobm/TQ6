@@ -13,6 +13,7 @@ else
         <p><strong>ID:</strong> @Model.Buch.Id</p>
         @* <p><strong>Titel:</strong> @Model.Buch.Titel</p> *@
         <p><strong>Autor:</strong> @Model.Buch.Autor</p>
+        <p><strong>Genre:</strong> @Model.Buch.Genre</p>
         <p><strong>Ausgeliehen:</strong> @(Model.Buch.IsAusgeliehen ? "Ja" : "Nein")</p>
         @if (Model.Buch.Ausleihender != null)
         {

@@ -11,4 +11,6 @@ public class Buch
     public bool IsAusgeliehen { get; set; }
 
     public Nutzer? Ausleihender { get; set; }
+
+    public Genre? Genre { get; set; }
 }

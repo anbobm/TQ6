@@ -26,7 +26,7 @@ namespace BiboApp.Database
             // Beziehung Buch -> Nutzer (Ausleihender)
             modelBuilder.Entity<Buch>()
                 .HasOne(b => b.Ausleihender)
-                .WithMany()
+                .WithMany(n => n.AusgelieheneBücher)
                 .HasForeignKey(b => b.AusleihenderId);
         }
     }

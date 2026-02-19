@@ -108,6 +108,20 @@ Jedes Buch soll genau einem Genre zugeordnet werden. Dabei soll nicht ein entspr
 
 Leg dir eine neue Datenbankklasse `Genre` an, das entsprechend die Properties `int Id` und `string Bezeichnung` hat.
 
+## `/AddBook` Page anpassen
+
+Ändere das Formular auf der `/AddBook` Page so, dass der Benutzer über ein `select` Input das Genre einstellen kann.
+
+## `/ShowBook` und `/ListBooks` Page anpassen
+
+Ändere die `/ShowBook` Page so, dass auch das zugeordnete Genre mit angezeigt wird. (Zum Testen empfiehlt es sich natürlich Genres in der Datenbank anzulegen und die Bücher-Datensätze so zu ändern, dass den Büchern auch ein Genre zugeordnet ist.)
+
+Passe gegebenenfalls auch `/ListBooks` an, sofern du dort auch das Genre mit anzeigen willst.
+
+## `/ListGenres` und `/AddGenre` Page
+
+Leg dir Pages `/ListGenres` und `/AddGenre`. Wie der Name vermuten lässt, soll `/ListGenres` alle Genres auflisten, die in der Datenbank sind und `/AddGenre` soll ein Formular bereitstellen, mit dem man ein Genre in die Datenbank zufügen kann.
+
 
 ## Hinweise
 

@@ -12,6 +12,11 @@ else{
     <p>Ausgeliehen: @(Model.Buch.IsAusgeliehen ? "Ja" : "Nein")</p>
     if(Model.Buch.IsAusgeliehen)
     {
-        <p>Ausgeliehen von NutzerID: @Model.Buch.Ausleihender.Id</p>
+        <p>Ausgeliehen von NutzerID:
+            <a asp-page="/ShowUser"
+                asp-route-id="@Model.Buch.Ausleihender.Id">
+                @Model.Buch.Ausleihender.Email
+            </a>
+        </p>
     }
 }

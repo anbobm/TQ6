@@ -1,0 +1,15 @@
+@page
+@model ShowUserModel
+
+@if (Model.Nutzer == null) {
+    <p>Nutzer nicht gefunden</p>
+}
+else {
+    <p>Id: @Model.Nutzer.Id</p>
+    <p>Email: @Model.Nutzer.Email</p>
+    <ul>
+        @foreach(var buch in Model.Nutzer.AusgelieheneBücher) {
+            <li><a asp-page="/ShowBook" asp-route-id="@buch.Id">@buch.Titel</a></li>
+        }
+    </ul>
+}

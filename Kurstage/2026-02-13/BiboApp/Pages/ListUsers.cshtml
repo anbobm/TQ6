@@ -1,0 +1,19 @@
+@page
+@model ListUsersModel
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Email</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var nutzer in Model.Nutzer) {
+            <tr>
+                <td>@nutzer.Id</td>
+                <td><a asp-page="/ShowUser" asp-route-id="@nutzer.Id">@nutzer.Email</a></td>
+            </tr>
+        }
+    </tbody>
+</table>

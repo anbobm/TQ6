@@ -7,11 +7,21 @@
     <div>
         <label>Titel:</label>
         <input asp-for="NeuesBuch.Titel" />
+        <span asp-validation-for="NeuesBuch.Titel" style="color:red"></span>
     </div>
 
     <div>
         <label>Autor:</label>
         <input asp-for="NeuesBuch.Autor" />
+        <span asp-validation-for="NeuesBuch.Autor" style="color:red"></span>
+    </div>
+
+    <div>
+        <label>Genre:</label>
+        <select asp-for="NeuesBuch.Genre" asp-items="Model.GenreListe">
+            <option value="">-- Bitte auswählen --</option>
+        </select>
+        <span asp-validation-for="NeuesBuch.Genre" style="color:red"></span>
     </div>
 
     @* <div>
@@ -27,3 +37,7 @@
 <br />
 
 <a href="/ListBooks">Zurück zur Liste</a>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

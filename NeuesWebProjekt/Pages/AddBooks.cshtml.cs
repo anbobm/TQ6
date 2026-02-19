@@ -1,6 +1,9 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 using BiboApp.Database;
+using System.ComponentModel.DataAnnotations;
 
 namespace BiboApp.Pages
 {
@@ -8,25 +11,35 @@ namespace BiboApp.Pages
     {
         private readonly BiboContext _context;
 
-        [BindProperty]
-        public Buch NeuesBuch { get; set; }
-
         public AddBooksModel(BiboContext context)
         {
             _context = context;
         }
 
+        [BindProperty]
+        public Buch NeuesBuch { get; set; }
+
+        public SelectList GenreListe { get; set; }
+
         public void OnGet()
         {
+            GenreListe = new SelectList(_context.Genre.ToList(), "Id", "Bezeichnung");
         }
 
-        public async Task<IActionResult> OnPostAsync()
+        public IActionResult OnPost()
         {
-            if (!ModelState.IsValid)
-                return Page();
+            GenreListe = new SelectList(_context.Genre.ToList(), "Id", "Bezeichnung");
 
-            _context.Buch.Add(NeuesBuch);
-            await _context.SaveChangesAsync();
+            if (!ModelState.IsValid)
+            {
+                return Page();
+            }
+
+            NeuesBuch.IsAusgeliehen = false;
+            NeuesBuch.AusleihenderId = null;
+
+            _context.Buecher.Add(NeuesBuch);
+            _context.SaveChanges();
 
             return RedirectToPage("/ListBooks");
         }

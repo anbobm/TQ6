@@ -5,7 +5,10 @@ namespace BiboApp.Database
         public int Id { get; set; }
         public string Titel { get; set; }
         public string Autor { get; set; }
+
         public int Genre { get; set; }
+        public Genre? GenreNavigation { get; set; }
+
         public bool IsAusgeliehen { get; set; }
 
         public int? AusleihenderId { get; set; }

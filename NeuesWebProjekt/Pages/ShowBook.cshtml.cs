@@ -22,6 +22,7 @@ namespace BiboApp.Pages
                 return NotFound();
 
             Buch = await _context.Buch
+                .Include(b => b.GenreNavigation)
                 .Include(b => b.Ausleihender)
                 .FirstOrDefaultAsync(b => b.Id == id);
 

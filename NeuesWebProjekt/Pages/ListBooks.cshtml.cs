@@ -15,9 +15,11 @@ namespace BiboApp.Pages
             _context = context;
         }
 
-        public async Task OnGetAsync()
+        public void OnGet()
         {
-            Buecher = await _context.Buch.ToListAsync();
+            Buecher = _context.Buecher
+                .Include(b => b.GenreNavigation)
+                .ToList();
         }
     }
 }

@@ -1,27 +1,28 @@
 @page
 @model BiboApp.Pages.ShowBookModel
 
-<h1>@Model.Buch.Titel</h1>
-
 @if (Model.Buch == null)
 {
-    <p>Buch nicht gefunden.</p>
+    <h1>Buch nicht gefunden</h1>
 }
 else
 {
+    <h1>@Model.Buch.Titel</h1>
+
     <div>
         <p><strong>ID:</strong> @Model.Buch.Id</p>
         @* <p><strong>Titel:</strong> @Model.Buch.Titel</p> *@
         <p><strong>Autor:</strong> @Model.Buch.Autor</p>
-        <p><strong>Genre:</strong> @Model.Buch.Genre</p>
+        <p><strong>Genre:</strong> @Model.Buch.GenreNavigation?.Bezeichnung</p>
         <p><strong>Ausgeliehen:</strong> @(Model.Buch.IsAusgeliehen ? "Ja" : "Nein")</p>
+
         @if (Model.Buch.Ausleihender != null)
         {
             <p>Ausgeliehen von Nutzer ID: @Model.Buch.Ausleihender.Id</p>
         }
         else
         {
-            <p>Ausgeliehen von Nutzer ID: Nicht ausgeliehen</p>
+            <p>Nicht ausgeliehen</p>
         }
     </div>
 

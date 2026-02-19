@@ -24,7 +24,7 @@
                     </a>
                 </td>
                 <td>@buch.Autor</td>
-                <td>@buch.Genre</td>
+                <td>@buch.GenreNavigation?.Bezeichnung</td>
                 <td>@(buch.IsAusgeliehen ? "Ja" : "Nein")</td>
             </tr>
         }

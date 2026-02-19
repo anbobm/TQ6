@@ -21,7 +21,7 @@ namespace BiboApp.Pages
             if (id == null)
                 return NotFound();
 
-            Buch = await _context.Buch
+            Buch = await _context.Buecher
                 .Include(b => b.GenreNavigation)
                 .Include(b => b.Ausleihender)
                 .FirstOrDefaultAsync(b => b.Id == id);

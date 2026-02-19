@@ -98,7 +98,14 @@ Um das zu testen, solltet ihr euch natürlich in der Datenbank auch Buch-Datens�
 
 Legt euch eine Page `/ListUsers` an, die analog zu `/ListBooks` alle Nutzer in der Datenbank auflistet.
 
-Von dieser Page soll es wieder für jeden Nutzer einen Link auf eine `/ShowUser` Page geben, die dann für diesen Nutzer alle Eigenschaften anzeigt. Dort soll man auch eine Liste von ausgeliehenen Büchern sehen können.
+Von dieser Page soll es wieder für jeden Nutzer einen Link auf eine `/ShowUser` Page geben, die dann für diesen Nutzer alle Eigenschaften anzeigt. Dort soll man auch eine Liste von ausgeliehenen Büchern sehen können. Von dieser Liste soll man auch direkt zu dem jeweiligen Buch navigieren können.
+
+Ergänze die `/ShowBook` Page um einen Link, der auf die `/ShowUser` Page des Ausleihenden (falls vorhanden) führt.
+
+## Datenbank erweitern um Genre
+
+Jedes Buch soll genau einem Genre zugeordnet werden. Dabei soll nicht ein entsprechender String in der Tabelle Buch gesetzt werden, sondern ein Foreign Key, der auf eine Tabelle Genres zeigt.
+
 
 ## Hinweise
 

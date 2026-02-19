@@ -9,6 +9,7 @@
             <th>ID</th>
             <th>Titel</th>
             <th>Autor</th>
+            <th>Genre</th>
             <th>Ausgeliehen</th>
         </tr>
     </thead>
@@ -23,6 +24,7 @@
                     </a>
                 </td>
                 <td>@buch.Autor</td>
+                <td>@buch.Genre</td>
                 <td>@(buch.IsAusgeliehen ? "Ja" : "Nein")</td>
             </tr>
         }

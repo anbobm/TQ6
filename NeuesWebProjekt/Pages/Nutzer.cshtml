@@ -15,7 +15,11 @@
         {
             <tr>
                 <td>@nutzer.Id</td>
-                <td>@nutzer.Email</td>
+                <td>
+                    <a asp-page="/ShowNutzer" asp-route-id="@nutzer.Id">
+                        @nutzer.Email
+                    </a>
+                </td>
             </tr>
         }
     </tbody>

@@ -1,0 +1,39 @@
+@page
+@model BiboApp.Pages.ShowNutzerModel
+
+@if (Model.Nutzer == null)
+{
+    <p>Nutzer nicht gefunden.</p>
+}
+else
+{
+    <h1>Nutzer Details</h1>
+
+    <div>
+        <p><strong>ID:</strong> @Model.Nutzer.Id</p>
+        <p><strong>Email:</strong> @Model.Nutzer.Email</p>
+    </div>
+
+    <h3>Ausgeliehene Bücher</h3>
+
+    @if (Model.Nutzer.AusgelieheneBücher != null && Model.Nutzer.AusgelieheneBücher.Any())
+    {
+        <ul>
+            @foreach (var buch in Model.Nutzer.AusgelieheneBücher)
+            {
+                <li>
+                    <a asp-page="/ShowBook" asp-route-id="@buch.Id">
+                        @buch.Titel
+                    </a>
+                </li>
+            }
+        </ul>
+    }
+    else
+    {
+        <p>Keine Bücher ausgeliehen.</p>
+    }
+
+    <br />
+    <a asp-page="/Nutzer">Zurück zur Nutzerliste</a>
+}

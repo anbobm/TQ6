@@ -9,5 +9,14 @@ namespace WebApp2.Database
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
             => optionsBuilder.UseSqlite("Data Source=db.db");
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Buch>()
+                .HasOne(b => b.Ausleihender)
+                .WithMany(n => n.AusgelieheneBücher)
+                .HasForeignKey(b => b.AusleihenderId)
+                .OnDelete(DeleteBehavior.SetNull);
+        }
     }
 }

@@ -1,0 +1,67 @@
+﻿@page
+@model WebApp2.Pages.ShowDetailsModel
+
+<h1>Buch-Details</h1>
+
+@if (Model.Buch == null)
+{
+    <div class="alert alert-info">
+        Bitte wählen Sie ein Buch aus der Liste aus.
+    </div>
+
+    <a asp-page="/ListBooks" class="btn btn-primary">
+        Zur Bücherliste
+    </a>
+}
+else
+{
+    <table class="table table-bordered">
+        <tbody>
+
+            <tr>
+                <th style="width: 200px;">Id</th>
+                <td>@Model.Buch.Id</td>
+            </tr>
+
+            <tr>
+                <th>Titel</th>
+                <td>@Model.Buch.Titel</td>
+            </tr>
+
+            <tr>
+                <th>Autor</th>
+                <td>@Model.Buch.Autor</td>
+            </tr>
+
+            <tr>
+                <th>Ausgeliehen</th>
+                <td>
+                    @(Model.Buch.IsAusgeliehen ? "Ja" : "Nein")
+                </td>
+            </tr>
+
+            @* NEU: Ausleiher anzeigen, wenn ausgeliehen *@
+            @if (Model.Buch.IsAusgeliehen)
+            {
+                <tr>
+                    <th>Ausleiher</th>
+                    <td>
+                        @if (Model.Buch.Ausleihender != null)
+                        {
+                            @Model.Buch.Ausleihender.Email
+                        }
+                        else
+                        {
+                            <span class="text-muted">Kein Ausleiher eingetragen</span>
+                        }
+                    </td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+
+    <a asp-page="/ListBooks" class="btn btn-secondary">
+        Zurück zur Bücherliste
+    </a>
+}

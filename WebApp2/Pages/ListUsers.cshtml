@@ -1,0 +1,32 @@
+﻿@page
+@model WebApp2.Pages.ListUsersModel
+<h1>Nutzerliste</h1>
+
+@if (!Model.NutzerListe.Any())
+{
+    <p>Keine Nutzer gefunden.</p>
+}
+else
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var nutzer in Model.NutzerListe)
+            {
+                <tr>
+                    <td>@nutzer.Id</td>
+                    <td>
+                        <a asp-page="/ShowUser" asp-route-id="@nutzer.Id">
+                            @nutzer.Email
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

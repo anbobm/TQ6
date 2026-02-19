@@ -15,7 +15,6 @@ else
                 <th>Id</th>
                 <th>Titel</th>
                 <th>Autor</th>
-                <th>Ausgeliehen</th>
             </tr>
         </thead>
         <tbody>
@@ -23,9 +22,15 @@ else
             {
                 <tr>
                     <td>@buch.Id</td>
-                    <td>@buch.Titel</td>
+
+                    <td>
+                        <a asp-page="/ShowDetails" asp-route-id="@buch.Id">
+                            @buch.Titel
+                        </a>
+                    </td>
+
                     <td>@buch.Autor</td>
-                    <td>@(buch.IsAusgeliehen ? "Ja" : "Nein")</td>
+                   
                 </tr>
             }
         </tbody>

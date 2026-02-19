@@ -1,0 +1,66 @@
+﻿@page
+@model WebApp2.Pages.ShowUserModel
+<h1>Nutzer-Details</h1>
+
+@if (Model.Nutzer == null)
+{
+    <div class="alert alert-info">
+        Bitte wählen Sie einen Nutzer aus der Liste aus.
+    </div>
+
+    <a asp-page="/ListUsers" class="btn btn-primary">
+        Zur Nutzerliste
+    </a>
+}
+else
+{
+    <table class="table table-bordered">
+        <tbody>
+            <tr>
+                <th style="width: 200px;">Id</th>
+                <td>@Model.Nutzer.Id</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>@Model.Nutzer.Email</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>Ausgeliehene Bücher</h2>
+
+    @if (Model.Nutzer.AusgelieheneBücher == null || !Model.Nutzer.AusgelieheneBücher.Any())
+    {
+        <p class="text-muted">Keine ausgeliehenen Bücher.</p>
+    }
+    else
+    {
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Titel</th>
+                    <th>Autor</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var buch in Model.Nutzer.AusgelieheneBücher.OrderBy(b => b.Id))
+                {
+                    <tr>
+                        <td>@buch.Id</td>
+                        <td>
+                            <a asp-page="/ShowDetails" asp-route-id="@buch.Id">
+                                @buch.Titel
+                            </a>
+                        </td>
+                        <td>@buch.Autor</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+
+    <a asp-page="/ListUsers" class="btn btn-secondary">
+        Zurück zur Nutzerliste
+    </a>
+}

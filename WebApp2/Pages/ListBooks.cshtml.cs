@@ -37,7 +37,7 @@ public class ListBooksModel : PageModel
 
         // SELECT 
         Bücher = db.Bücher
-            .Where(b => b.Autor.StartsWith("Lo"))
+            //.Where(b => b.Autor.StartsWith("Lo"))
             .OrderBy(b => b.Id)
             .ToList();
     }

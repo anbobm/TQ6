@@ -110,7 +110,7 @@ Leg dir eine neue Datenbankklasse `Genre` an, das entsprechend die Properties `i
 
 ## `/AddBook` Page anpassen
 
-Ändere das Formular auf der `/AddBook` Page so, dass der Benutzer über ein `select` Input das Genre einstellen kann.
+Ändere das Formular auf der `/AddBook` Page so, dass der Benutzer über ein `select` Input das Genre einstellen kann. https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/select
 
 ## `/ShowBook` und `/ListBooks` Page anpassen
 

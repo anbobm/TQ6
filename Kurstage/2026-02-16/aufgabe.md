@@ -104,7 +104,9 @@ Ergänze die `/ShowBook` Page um einen Link, der auf die `/ShowUser` Page des Au
 
 ## Datenbank erweitern um Genre
 
-Jedes Buch soll genau einem Genre zugeordnet werden. Dabei soll nicht ein entsprechender String in der Tabelle Buch gesetzt werden, sondern ein Foreign Key, der auf eine Tabelle `Genres` zeigt. In dieser Tabelle gibt es die Spalten `Id` (INTEGER) und `Bezeichnung` (TEXT), im zugehörigen Objekt entsprechend die Properties `int Id` und `string Bezeichnung`.
+Jedes Buch soll genau einem Genre zugeordnet werden. Dabei soll nicht ein entsprechender String in der Tabelle Buch gesetzt werden, sondern ein Foreign Key, der auf eine Tabelle `Genres` zeigt. In dieser Tabelle gibt es die Spalten `Id` (INTEGER) und `Bezeichnung` (TEXT).
+
+Leg dir eine neue Datenbankklasse `Genre` an, das entsprechend die Properties `int Id` und `string Bezeichnung` hat.
 
 
 ## Hinweise

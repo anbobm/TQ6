@@ -4,7 +4,6 @@ namespace BiboApp.Database
     {
         public int Id { get; set; }
         public string Email { get; set; }
-
-        //public List<Buch> AusgelieheneBücher { get; set; } = new();
+        public List<Buch> AusgelieheneBücher { get; set; } = new();
     }
 }

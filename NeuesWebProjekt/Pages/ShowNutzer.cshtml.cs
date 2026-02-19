@@ -22,8 +22,8 @@ namespace BiboApp.Pages
                 return NotFound();
 
             Nutzer = await _context.Nutzer
-                                    .Include(n => n.AusgelieheneBücher)
-                                    .FirstOrDefaultAsync(n => n.Id == id);
+                .Include(n => n.AusgelieheneBücher)
+                .FirstOrDefaultAsync(n => n.Id == id);
 
             if (Nutzer == null)
                 return NotFound();

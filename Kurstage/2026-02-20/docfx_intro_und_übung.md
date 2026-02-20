@@ -32,7 +32,7 @@ public class Rectangle
     {
         if (width < 0 || height < 0)
         {
-            throw ArgumentException("Breite und Höhe müssen größer gleich 0 sein.")
+            throw new ArgumentException("Breite und Höhe müssen größer gleich 0 sein.");
         }
 
         ...

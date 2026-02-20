@@ -9,6 +9,7 @@ else{
     <p>Id: @Model.Buch.Id</p>
     <p>Titel: @Model.Buch.Titel</p>
     <p>Autor: @Model.Buch.Autor</p>
+    <p>Genre: @Model.Buch.Genre.Bezeichnung</p>
     <p>Ausgeliehen: @(Model.Buch.IsAusgeliehen ? "Ja" : "Nein")</p>
     if(Model.Buch.IsAusgeliehen)
     {

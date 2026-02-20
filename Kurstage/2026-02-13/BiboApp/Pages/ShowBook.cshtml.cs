@@ -11,6 +11,7 @@ public class ShowBookModel : PageModel
 
         Buch = db.Bücher
             .Include(buch => buch.Ausleihender)
+            .Include(buch => buch.Genre)
             .Where(buch => buch.Id == id)
             .FirstOrDefault();
     }

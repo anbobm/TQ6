@@ -10,7 +10,7 @@ namespace Bank
      *                      und bekommt jeden monat eine erhoehung vom Kontostand um 0.7%.
      */
 
-    internal class Bankkonto
+    public class Bankkonto
     {
         //Attribute
         protected decimal kontostand;
@@ -230,7 +230,7 @@ namespace Bank
     //2.Die Methode public bool Auszahlen in public virtual bool Auszahlen!
     //3.Bei Attribute private List<string> verlauf; ändern in protected List<string> verlauf;
 
-    internal class Kreditkonto : Bankkonto
+    public class Kreditkonto : Bankkonto
     {
         private decimal kreditrahmen;
 
@@ -272,7 +272,7 @@ namespace Bank
 
     //Keine Änderungen in Elternklasse für die Kindklasse Investmentkonto!
 
-    internal class Investmentkonto : Bankkonto
+    public class Investmentkonto : Bankkonto
     {
         private DateTime sperrDatum = new DateTime(2060, 01, 01);
 
@@ -311,7 +311,7 @@ namespace Bank
 
     //Keine Änderungen in Elternklasse für die Kindklasse Tagesgeldkonto!
 
-    internal class Tagesgeldkonto : Bankkonto
+    public class Tagesgeldkonto : Bankkonto
     {
         private decimal heuteAusgezahlt = 0;
         private DateTime letzterAuszahlungstag = DateTime.Today;

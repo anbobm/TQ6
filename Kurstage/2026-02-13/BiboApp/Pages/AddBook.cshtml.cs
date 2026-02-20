@@ -21,7 +21,6 @@ public class AddBookModel : PageModel
         var buch = new Buch
         {
             Titel = titel,
-            Autor = autor,
             Genre = genreObjekt
         };
 

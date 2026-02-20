@@ -8,8 +8,14 @@
 else{
     <p>Id: @Model.Buch.Id</p>
     <p>Titel: @Model.Buch.Titel</p>
-    <p>Autor: @Model.Buch.Autor</p>
     <p>Genre: @Model.Buch.Genre.Bezeichnung</p>
+    <p>Autoren:
+        <ul>
+            @foreach(var autor in Model.Buch.Autoren) {
+                <li>@autor.Name</li>
+            }
+        </ul>
+    </p>
     <p>Ausgeliehen: @(Model.Buch.IsAusgeliehen ? "Ja" : "Nein")</p>
     if(Model.Buch.IsAusgeliehen)
     {

@@ -8,6 +8,8 @@ public class BiboContext : DbContext
 
     public DbSet<Genre> Genres { get; set; }
 
+    public DbSet<Autor> Autoren { get; set; }
+
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         => optionsBuilder.UseSqlite("Data Source=bibo.db");
 }

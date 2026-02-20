@@ -6,7 +6,6 @@
         <tr>
             <th>Id</th>
             <th>Titel</th>
-            <th>Autor</th>
             <th>Genre</th>
             <th>Ausgeliehen</th>
         </tr>
@@ -16,7 +15,6 @@
             <tr>
                 <td>@buch.Id</td>
                 <td><a asp-page="/ShowBook" asp-route-id="@buch.Id">@buch.Titel</a></td>
-                <td>@buch.Autor</td>
                 <td>@buch.Genre.Bezeichnung</td>
                 <td><input type="checkbox" disabled @(@buch.IsAusgeliehen ? "checked" : "")></td>
             </tr>

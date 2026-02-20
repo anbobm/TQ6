@@ -1,0 +1,19 @@
+@page
+@model ListGenresModel
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Bezeichnung</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var genre in Model.Genres) {
+            <tr>
+                <td>@genre.Id</td>
+                <td>@genre.Bezeichnung</td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -6,11 +6,11 @@ public class Buch
 
     public string Titel { get; set; }
 
-    public string Autor { get; set; }
-
     public bool IsAusgeliehen { get; set; }
 
     public Nutzer? Ausleihender { get; set; }
 
     public Genre? Genre { get; set; }
+
+    public List<Autor> Autoren { get; set; }
 }

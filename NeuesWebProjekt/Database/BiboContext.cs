@@ -7,6 +7,7 @@ namespace BiboApp.Database
         public DbSet<Buch> Buecher { get; set; }
         public DbSet<Nutzer> Nutzer { get; set; }
         public DbSet<Genre> Genre { get; set; }
+        public DbSet<Autor> Autor { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
             => optionsBuilder.UseSqlite("Data Source=Database/Database.db");

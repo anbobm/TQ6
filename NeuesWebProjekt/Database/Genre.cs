@@ -6,5 +6,6 @@ namespace BiboApp.Database
         public string Bezeichnung { get; set; }
 
         public ICollection<Buch>? Buecher { get; set; }
+        // public List<Buch> Bücher { get; set; }
     }
 }

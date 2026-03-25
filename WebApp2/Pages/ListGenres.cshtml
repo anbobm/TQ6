@@ -1,0 +1,33 @@
+﻿@page
+@model WebApp2.Pages.ListGenresModel
+
+<h1>Genres</h1>
+
+
+@if (!Model.Genres.Any())
+{
+    <p>Keine Genres vorhanden.</p>
+}
+else
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Bezeichnung</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var g in Model.Genres)
+            {
+                <tr>
+                    <td>@g.Id</td>
+                    <td>@g.Bezeichnung</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+<a asp-page="/AddGenre" class="btn btn-primary mb-3">Genre hinzufügen</a>
+
+

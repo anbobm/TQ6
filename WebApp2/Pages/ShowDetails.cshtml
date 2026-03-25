@@ -34,6 +34,11 @@ else
             </tr>
 
             <tr>
+                <th>Genre</th>
+                <td>@(Model.Buch.Genre != null ? Model.Buch.Genre.Bezeichnung : "—")</td>
+            </tr>
+
+            <tr>
                 <th>Ausgeliehen</th>
                 <td>
                     @(Model.Buch.IsAusgeliehen ? "Ja" : "Nein")
@@ -48,7 +53,9 @@ else
                     <td>
                         @if (Model.Buch.Ausleihender != null)
                         {
-                            @Model.Buch.Ausleihender.Email
+                            <a asp-page="/ShowUser" asp-route-id="@Model.Buch.Ausleihender.Id">
+                                @Model.Buch.Ausleihender.Email
+                            </a>
                         }
                         else
                         {

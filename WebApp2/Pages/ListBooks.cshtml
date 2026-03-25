@@ -15,6 +15,7 @@ else
                 <th>Id</th>
                 <th>Titel</th>
                 <th>Autor</th>
+                <th>Genre</th>
             </tr>
         </thead>
         <tbody>
@@ -30,6 +31,8 @@ else
                     </td>
 
                     <td>@buch.Autor</td>
+
+                    <td>@(buch.Genre != null ? buch.Genre.Bezeichnung : "—")</td>
                    
                 </tr>
             }

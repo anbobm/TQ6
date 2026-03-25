@@ -25,7 +25,8 @@ public class ShowDetailsModel : PageModel
 
 
         Buch = db.Bücher
-                   .Include(b => b.Ausleihender)   
+                   .Include(b => b.Ausleihender)
+                   .Include(b => b.Genre)     // ✅ neu
                    .FirstOrDefault(b => b.Id == id);
     }
 }

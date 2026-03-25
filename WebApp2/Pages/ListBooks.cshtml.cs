@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore;
 using WebApp2.Database;
 
 namespace WebApp2.Pages;
@@ -37,6 +38,7 @@ public class ListBooksModel : PageModel
 
         // SELECT 
         Bücher = db.Bücher
+            .Include(b => b.Genre)   // neu
             //.Where(b => b.Autor.StartsWith("Lo"))
             .OrderBy(b => b.Id)
             .ToList();

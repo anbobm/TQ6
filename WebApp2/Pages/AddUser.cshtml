@@ -1,0 +1,20 @@
+﻿@page
+@model WebApp2.Pages.AddUserModel
+
+<h2>Nutzer hinzufügen</h2>
+<br />
+
+<form method="post">
+    <div>
+        <label asp-for="InputEmail"></label>
+        <input asp-for="InputEmail" />
+        <span asp-validation-for="InputEmail"></span>
+    </div>
+    <br />
+    <button type="submit">Speichern</button>
+    <a asp-page="/ListUsers">Abbrechen</a>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

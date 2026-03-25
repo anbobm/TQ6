@@ -1,6 +1,6 @@
 ﻿@page
 @model WebApp2.Pages.ShowUserModel
-<h1>Nutzer-Details</h1>
+<h1>Nutzer-Daten</h1>
 
 @if (Model.Nutzer == null)
 {
@@ -27,6 +27,13 @@ else
         </tbody>
     </table>
 
+    <a class="btn btn-warning"
+       asp-page="/EditUser"
+       asp-route-id="@Model.Nutzer.Id">
+        Nutzer-Daten bearbeiten
+    </a>
+    <br />
+    <br />
     <h2>Ausgeliehene Bücher</h2>
 
     @if (Model.Nutzer.AusgelieheneBücher == null || !Model.Nutzer.AusgelieheneBücher.Any())

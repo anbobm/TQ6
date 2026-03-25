@@ -19,8 +19,33 @@
         </div>
     </div>
 
+
+    <!-- Genre Auswahl -->
     <div class="row mb-3">
-        <label asp-for="IsAusgeliehen" class="col-sm-2 col-form-label"></label>
+        <label asp-for="GenreId" class="col-sm-2 col-form-label">Genre</label> <!-- NEU -->
+        <div class="col-sm-4">
+            <select asp-for="GenreId" class="form-select" required> <!-- NEU: asp-for + required -->
+                
+                <option value="">-- Genre auswählen --</option> <!-- NEU: verhindert leere Auswahl -->
+
+                @foreach (var genre in Model.Genres) 
+                {
+                    <option value="@genre.Id">
+                        @genre.Bezeichnung
+                    </option>
+                }
+
+            </select>
+        </div>
+    </div>
+
+
+    <!-- Ausgeliehen Checkbox -->
+    <div class="row mb-3">
+        <label asp-for="IsAusgeliehen" class="col-sm-2 col-form-label">
+            Ausgeliehen
+        </label>
+
         <div class="col-sm-4">
             <div class="form-check">
                 <input asp-for="IsAusgeliehen" class="form-check-input" />
@@ -28,6 +53,9 @@
         </div>
     </div>
 
-    <button type="submit" class="btn btn-primary">Speichern</button>
+
+    <button type="submit" class="btn btn-primary">
+        Speichern
+    </button>
 
 </form>

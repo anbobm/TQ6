@@ -13,7 +13,7 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-page="/Index">WebApp2</a>
+                <a class="navbar-brand" asp-area="" asp-page="/Index">Biblio App</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -24,17 +24,28 @@
                             <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/ListBooks">Book List</a>
+                            <a class="nav-link text-dark" asp-area="" asp-page="/ListUsers">Nutzer</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/ListUsers">User List</a>
+                            <a class="nav-link text-dark" asp-area="" asp-page="/ListBooks">Bücher</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/AddBook">Add Book</a>
+                            <a class="nav-link text-dark" asp-area="" asp-page="/AddBook">Buch hinzufügen</a>
+                        </li>
+                        <!-- Ausleihe Button  -->
+                        <li class="nav-item ms-3">
+                            <a class="btn btn-outline-success" asp-area="" asp-page="/LendBook">
+                                Ausleihe
+                            </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
+                            <a class="nav-link text-dark" asp-area="" asp-page="/ListGenres">Genres</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Impressum</a>
+                        </li>
+
+
                     </ul>
                 </div>
             </div>
@@ -48,7 +59,7 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2026 - WebApp2 - <a asp-area="" asp-page="/Privacy">Privacy</a>
+            &copy; 2026 - Hilmar Lenknereit Biblio App - <a asp-area="" asp-page="/Privacy">Privacy</a>
         </div>
     </footer>
 

@@ -1,0 +1,16 @@
+﻿@page
+@model WebApp2.Pages.AddGenreModel
+
+<h1>Genre hinzufügen</h1>
+
+<form method="post">
+    <div class="row mb-3">
+        <label class="col-sm-2 col-form-label">Bezeichnung</label>
+        <div class="col-sm-4">
+            <input class="form-control" name="Bezeichnung" />
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Speichern</button>
+    <a asp-page="/ListGenres" class="btn btn-secondary">Abbrechen</a>
+</form>

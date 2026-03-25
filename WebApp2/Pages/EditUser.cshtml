@@ -1,0 +1,19 @@
+﻿@page "{id:int}"
+@model WebApp2.Pages.EditUserModel
+
+<h2>Nutzer-Daten bearbeiten</h2>
+
+<form method="post">
+    <div class="mb-3">
+        <label asp-for="InputEmail" class="form-label"></label>
+        <input asp-for="InputEmail" class="form-control" />
+        <span asp-validation-for="InputEmail" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-warning">Speichern</button>
+    <a asp-page="/ShowUser" asp-route-id="@Model.UserId" class="btn btn-secondary">Abbrechen</a>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

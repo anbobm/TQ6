@@ -1,0 +1,81 @@
+﻿@page
+@model WebApp2.Pages.LendBookModel
+
+<h2>Ausleihe / Rückgabe</h2>
+
+<div asp-validation-summary="All" class="text-danger"></div>
+
+@if (!string.IsNullOrWhiteSpace(Model.SuccessMessage))
+{
+    <div class="alert alert-success" role="alert">@Model.SuccessMessage</div>
+}
+@if (!string.IsNullOrWhiteSpace(Model.ErrorMessage))
+{
+    <div class="alert alert-danger" role="alert">@Model.ErrorMessage</div>
+}
+
+<form method="post" asp-page-handler="Find" class="row g-2 align-items-end">
+    <div class="col-auto">
+        <label asp-for="BookId" class="form-label">Buch-Id</label>
+        <input asp-for="BookId" class="form-control" type="number" style="max-width: 160px;" />
+        <span asp-validation-for="BookId" class="text-danger"></span>
+    </div>
+
+    <div class="col-auto">
+        <button type="submit" class="btn btn-outline-primary">Buch laden</button>
+        <a asp-page="/ListBooks" class="btn btn-outline-secondary">Abbrechen</a>
+    </div>
+</form>
+
+@if (Model.Book != null)
+{
+    <hr />
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">@Model.Book.Titel</h5>
+            <p class="mb-1"><b>Id:</b> @Model.Book.Id</p>
+            <p class="mb-1"><b>Autor:</b> @Model.Book.Autor</p>
+            <p class="mb-1"><b>Genre:</b> @Model.Book.Genre?.Bezeichnung</p>
+
+            @if (Model.Book.IsAusgeliehen)
+            {
+                <p class="mb-3"><b>Status:</b> Ausgeliehen an: @Model.Book.Ausleihender?.Email</p>
+
+                <form method="post" asp-page-handler="Return" class="d-flex gap-2">
+                    <input type="hidden" asp-for="BookId" />
+                    <button type="submit" class="btn btn-success">Zurückgeben</button>
+                    <a asp-page="/LendBook" class="btn btn-outline-secondary">Abbrechen</a>
+                </form>
+            }
+            else
+            {
+                <p class="mb-3"><b>Status:</b> Verfügbar</p>
+
+                <form method="post" asp-page-handler="Lend" class="row g-2 align-items-end">
+                    <input type="hidden" asp-for="BookId" />
+
+                    <div class="col-md-6">
+                        <label asp-for="SelectedUserId" class="form-label">Ausleihen an</label>
+                        <select asp-for="SelectedUserId" asp-items="Model.Users" class="form-select">
+                            <option value="">-- Nutzer auswählen --</option>
+                        </select>
+                        <span asp-validation-for="SelectedUserId" class="text-danger"></span>
+                    </div>
+
+                    <div class="col-auto">
+                        <button type="submit" class="btn btn-warning">Ausleihen</button>
+                        <a asp-page="/LendBook" class="btn btn-outline-secondary">Abbrechen</a>
+                    </div>
+                </form>
+            }
+        </div>
+    </div>
+
+    <div class="mt-3">
+        <a asp-page="/LendBook" class="btn btn-outline-primary">Nächstes Buch</a>
+    </div>
+}
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
